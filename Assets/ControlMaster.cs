@@ -15,12 +15,12 @@ public class @ControlMaster : IInputActionCollection, IDisposable
     ""name"": ""ControlMaster"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Player1"",
             ""id"": ""5ee48ad7-2dad-474d-ab3f-9bbc54e3daad"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""ecf6b624-1f09-44f3-9d27-8e3ab972341f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -137,17 +137,6 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""MoveVector"",
-                    ""id"": ""d51f2c90-6b21-41ff-b17e-69e047f9aa49"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""MoveVector"",
                     ""id"": ""a537cc4b-a4e6-4c47-bdb5-01a27352508d"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -215,7 +204,7 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9665ac1e-5662-4064-b88d-fe1b7f773165"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -251,10 +240,10 @@ public class @ControlMaster : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
+        // Player1
+        m_Player1 = asset.FindActionMap("Player1", throwIfNotFound: true);
+        m_Player1_Move = m_Player1.FindAction("Move", throwIfNotFound: true);
+        m_Player1_Action = m_Player1.FindAction("Action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -301,34 +290,34 @@ public class @ControlMaster : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Action;
-    public struct PlayerActions
+    // Player1
+    private readonly InputActionMap m_Player1;
+    private IPlayer1Actions m_Player1ActionsCallbackInterface;
+    private readonly InputAction m_Player1_Move;
+    private readonly InputAction m_Player1_Action;
+    public struct Player1Actions
     {
         private @ControlMaster m_Wrapper;
-        public PlayerActions(@ControlMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Action => m_Wrapper.m_Player_Action;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public Player1Actions(@ControlMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player1_Move;
+        public InputAction @Action => m_Wrapper.m_Player1_Action;
+        public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(Player1Actions set) { return set.Get(); }
+        public void SetCallbacks(IPlayer1Actions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_Player1ActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Action.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
-                @Action.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
-                @Action.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
+                @Move.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
+                @Action.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnAction;
+                @Action.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnAction;
+                @Action.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnAction;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_Player1ActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
@@ -340,7 +329,7 @@ public class @ControlMaster : IInputActionCollection, IDisposable
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public Player1Actions @Player1 => new Player1Actions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -359,7 +348,7 @@ public class @ControlMaster : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IPlayer1Actions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);

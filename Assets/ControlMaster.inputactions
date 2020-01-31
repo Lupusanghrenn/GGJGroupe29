@@ -2,12 +2,12 @@
     "name": "ControlMaster",
     "maps": [
         {
-            "name": "Player",
+            "name": "Player1",
             "id": "5ee48ad7-2dad-474d-ab3f-9bbc54e3daad",
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "ecf6b624-1f09-44f3-9d27-8e3ab972341f",
                     "expectedControlType": "",
                     "processors": "",
@@ -124,17 +124,6 @@
                 },
                 {
                     "name": "MoveVector",
-                    "id": "d51f2c90-6b21-41ff-b17e-69e047f9aa49",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "MoveVector",
                     "id": "a537cc4b-a4e6-4c47-bdb5-01a27352508d",
                     "path": "2DVector",
                     "interactions": "",
@@ -202,7 +191,7 @@
                 {
                     "name": "",
                     "id": "9665ac1e-5662-4064-b88d-fe1b7f773165",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

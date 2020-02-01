@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log(currentInteraction.name);
             if (currentInteraction.name == "CanonBall")
             {
+                Destroy(currentInteraction);
                 currentInteraction = other.gameObject;
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
             }            
@@ -159,7 +160,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "BouletBarrel")
         {
-            currentInteraction = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere));
+            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            currentInteraction.SetActive(false);
             currentInteraction.name = "CanonBall";
             Debug.Log(currentInteraction);
         }

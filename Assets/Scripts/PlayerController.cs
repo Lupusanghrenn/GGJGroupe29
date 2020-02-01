@@ -175,7 +175,10 @@ public class PlayerController : MonoBehaviour
             }            
         }
 
-        if (other.tag == "WoodBarrel") { }
+        if (other.tag == "WoodBarrel")
+        {
+
+        }
 
         if (other.tag == "BouletBarrel")
         {

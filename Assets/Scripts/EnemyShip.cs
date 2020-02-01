@@ -17,23 +17,25 @@ public class EnemyShip : MonoBehaviour
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        Shoot();
+        StartCoroutine(ShootDelay());
     }
 
     private void Shoot()
     {
         GameObject canonBall = Instantiate(canonBallPrefab, this.transform.position, Quaternion.identity);
-        Debug.Log("Shoot");
         StartCoroutine(CanonBallHit());
+    }
+
+    IEnumerator ShootDelay()
+    {
+        yield return new WaitForSeconds(27f);
+        Shoot();
     }
 
     IEnumerator CanonBallHit()
     {
         yield return new WaitForSeconds(1f);
-        gameManager.life -= 10f;
+        //gameManager.life -= 10f;
         // Spawn Hole
     }
 

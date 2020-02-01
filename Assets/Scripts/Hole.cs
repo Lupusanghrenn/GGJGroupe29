@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hole : MonoBehaviour
 {
     public GameObject waterFountain;
-
+    public float maxWaterHeight;
     private GameObject water;
 
     void Start()
@@ -17,6 +17,7 @@ public class Hole : MonoBehaviour
 
     void Update()
     {
-        water.transform.position += new Vector3(0, 0.15f * Time.deltaTime, 0);
+        if(water.transform.position.y <= maxWaterHeight)
+            water.transform.position += new Vector3(0, 0.15f * Time.deltaTime, 0);
     }
 }

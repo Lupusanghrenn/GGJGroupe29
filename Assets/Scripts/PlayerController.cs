@@ -63,18 +63,20 @@ public class PlayerController : MonoBehaviour
     //ActionMap Canon
     public void OnMoveCanon(InputValue inputValue)
     {
-        Debug.Log("MoveCanon");
         var value = inputValue.Get<float>();
-        Debug.Log(value);
+        Debug.Log(currentInteraction.name);
+        Vector3 rot = currentInteraction.gameObject.transform.rotation.eulerAngles;
+        rot.y += (value * 3);
+        currentInteraction.gameObject.transform.rotation = Quaternion.Euler(rot);
     }
 
     public void OnFireCanon(InputValue inputValue)
     {
         Debug.Log("OnFireCannon");
         GameObject boulet = Resources.Load<GameObject>("Prefabs/FriendlyCanonBall");
-        //Instantiate(boulet, transform.position + (transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
-        //Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
-        //Destroy(FindObjectOfType<EnemyShip>().gameObject);
+        
+        GameObject go = Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * -2), Quaternion.Euler(currentInteraction.transform.rotation.eulerAngles + new Vector3(0, 180, 0)), null);
+        
         currentInteraction.GetComponent<AudioSource>().Play();
         //TODO musique
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
@@ -120,10 +122,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("MoveVectorMagnitude", direction.magnitude);
         if (direction.magnitude > 0f)
         {
-            //gameObject.transform.position +=  * Time.deltaTime * speed;
             rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
-            //rigidbody.MoveRotation(Quaternion.Euler(direction));
-            //rigidbody.MoveRotation(Quaternion.AngleAxis(45, new Vector3(0, 1, 0)));
             if (GetComponent<PlayerInput>().currentActionMap.name == "Player")
             {
                 transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));
@@ -153,7 +152,10 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Echelle")
         {
             isOnEchelle = false;
-
+            if (GetComponent<PlayerInput>().currentActionMap.name == "Ladder")
+            {
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            }
         }
     }
 

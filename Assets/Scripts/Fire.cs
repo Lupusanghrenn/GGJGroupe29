@@ -22,7 +22,7 @@ public class Fire : MonoBehaviour
 
     private void Update()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().life -= dot * Time.deltaTime;
+        GameObject.Find("GameManager").GetComponent<GameManager>().currentLife -= dot * Time.deltaTime;
     }
 
     public void Propagate()

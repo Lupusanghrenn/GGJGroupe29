@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float life; //vie du bateau
+    public float maxLife; //vie du bateau
 
+    public float currentLife;
     private GameObject boat;
     public List<GameObject> eventsProbable;
     public List<GameObject> eventsPeuProbable;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float baseTimeMax;
     public float gameTime;
     public Text timerText;
+    public Image lifeFill;
 
     private float timeToWait;
     private float timeElapsed;
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentLife = maxLife;
         gameTimeLeft = gameTime;
         boat = GameObject.FindGameObjectWithTag("Boat");
         timeToWait = Random.Range(baseTimeMin, baseTimeMax);
@@ -118,5 +121,8 @@ public class GameManager : MonoBehaviour
             timeToWait = Random.Range(baseTimeMin, baseTimeMax);
             timeElapsed = 0;
         }
+        //update de l'affichage de la vie
+        Debug.Log(currentLife + ", " + maxLife);
+        lifeFill.fillAmount = currentLife / maxLife;
     }
 }

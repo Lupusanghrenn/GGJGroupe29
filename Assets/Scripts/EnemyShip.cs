@@ -33,8 +33,8 @@ public class EnemyShip : MonoBehaviour
     IEnumerator CanonBallHit()
     {
         yield return new WaitForSeconds(1f);
-        gameManager.life -= 10f;
-        Debug.Log("Boat life : " + gameManager.life);
+        gameManager.currentLife -= 10f;
+        Debug.Log("Boat life : " + gameManager.currentLife);
         // Spawn Hole
     }
 

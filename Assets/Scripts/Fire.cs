@@ -7,7 +7,7 @@ public class Fire : MonoBehaviour
     public List<Transform> spawns;
     public GameObject firePrefab;
 
-    public int dot;
+    public float dot;
     public float timeToPropagate;
 
     // Start is called before the first frame update

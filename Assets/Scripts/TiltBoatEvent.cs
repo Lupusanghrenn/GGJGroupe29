@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class TiltBoatEvent : MonoBehaviour
 {
+    public GameObject boat;
+
     public enum RotateDirection { None, Left, Right, Front, Back };
     public RotateDirection rotateDirection;
+
     private RotateDirection previousDirection;
 
     private bool mustResetRotation = false;
@@ -14,8 +17,9 @@ public class TiltBoatEvent : MonoBehaviour
     public float rotationSpeed;
     public float timeToWaitOnAngle;
 
-    public float boatAngleX;
-    public float boatAngleZ;
+    private float boatAngleX;
+    private float boatAngleZ;
+
 
     IEnumerator ResetBoatAngleTimer()
     {
@@ -25,15 +29,15 @@ public class TiltBoatEvent : MonoBehaviour
 
     void Update()
     {
-        boatAngleX = (this.transform.eulerAngles.x > 180) ? this.transform.eulerAngles.x - 360 : this.transform.eulerAngles.x;
-        boatAngleZ = (this.transform.eulerAngles.z > 180) ? this.transform.eulerAngles.z - 360 : this.transform.eulerAngles.z;
+        boatAngleX = (boat.transform.eulerAngles.x > 180) ? boat.transform.eulerAngles.x - 360 : boat.transform.eulerAngles.x;
+        boatAngleZ = (boat.transform.eulerAngles.z > 180) ? boat.transform.eulerAngles.z - 360 : boat.transform.eulerAngles.z;
 
 
         if (rotateDirection == RotateDirection.Right)
         {
             if (boatAngleX <= maxAngle)
             {
-                transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
+                boat.transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
             }
             else
             {
@@ -47,7 +51,7 @@ public class TiltBoatEvent : MonoBehaviour
         {
             if (boatAngleX >= -maxAngle)
             {
-                transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
+                boat.transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
             }
             else
             {
@@ -61,7 +65,7 @@ public class TiltBoatEvent : MonoBehaviour
         {
             if (boatAngleZ <= maxAngle)
             {
-                transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                boat.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
             }
             else
             {
@@ -75,7 +79,7 @@ public class TiltBoatEvent : MonoBehaviour
         {
             if (boatAngleZ >= -maxAngle)
             {
-                transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
+                boat.transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
             }
             else
             {
@@ -93,7 +97,7 @@ public class TiltBoatEvent : MonoBehaviour
             {
                 if (Mathf.RoundToInt(boatAngleX) != 0)
                 {
-                    transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
+                    boat.transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
                 }
                 else
                 {
@@ -106,7 +110,7 @@ public class TiltBoatEvent : MonoBehaviour
             {
                 if (Mathf.RoundToInt(boatAngleX) != 0)
                 {
-                    transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
+                    boat.transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
                 }
                 else
                 {
@@ -120,7 +124,7 @@ public class TiltBoatEvent : MonoBehaviour
             {
                 if (Mathf.RoundToInt(boatAngleZ) != 0)
                 {
-                    transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
+                    boat.transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
                 }
                 else
                 {
@@ -133,7 +137,7 @@ public class TiltBoatEvent : MonoBehaviour
             {
                 if (Mathf.RoundToInt(boatAngleZ) != 0)
                 {
-                    transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                    boat.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
                 }
                 else
                 {

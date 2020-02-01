@@ -130,33 +130,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52262626}
-  - component: {fileID: 52262625}
-  - component: {fileID: 52262627}
   m_Layer: 0
-  m_Name: Level
-  m_TagString: Level
+  m_Name: BoatLevel
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &52262625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52262624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66802a459b9b17048b6ad274763331ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateDirection: 0
-  maxAngle: 15
-  rotationSpeed: 15
-  timeToWaitOnAngle: 3
-  boatAngleX: 0
-  boatAngleZ: 0
 --- !u!4 &52262626
 Transform:
   m_ObjectHideFlags: 0
@@ -171,31 +151,8 @@ Transform:
   - {fileID: 1701548502}
   - {fileID: 912190560}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &52262627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52262624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2e26f00bd9c374296ba6d9e1de64ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnLocations:
-  - {fileID: 1244094964}
-  - {fileID: 384868318}
-  - {fileID: 1048998100}
-  - {fileID: 539246719}
-  - {fileID: 861785627}
-  heavyObjects:
-  - {fileID: 3152709942623198010, guid: e74d039c10a4a224e9686bbf22813bef, type: 3}
-  - {fileID: 3152709942623198010, guid: cadc0ca30e210514290bea09c57b453b, type: 3}
-  - {fileID: 3152709942623198010, guid: 8c758452bb55d304f8efd8cbe2a61a54, type: 3}
-  mustSpawn: 0
 --- !u!1 &75183850
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +639,92 @@ Transform:
   - {fileID: 861785627}
   m_Father: {fileID: 52262626}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &944325992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 944325996}
+  - component: {fileID: 944325995}
+  - component: {fileID: 944325994}
+  - component: {fileID: 944325993}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &944325993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944325992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66802a459b9b17048b6ad274763331ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boat: {fileID: 52262624}
+  rotateDirection: 0
+  maxAngle: 15
+  rotationSpeed: 20
+  timeToWaitOnAngle: 3
+--- !u!114 &944325994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944325992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2e26f00bd9c374296ba6d9e1de64ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boat: {fileID: 52262624}
+  spawnLocationGameObject: {fileID: 912190559}
+  heavyObjects:
+  - {fileID: 3152709942623198010, guid: e74d039c10a4a224e9686bbf22813bef, type: 3}
+  - {fileID: 3152709942623198010, guid: cadc0ca30e210514290bea09c57b453b, type: 3}
+  - {fileID: 3152709942623198010, guid: 8c758452bb55d304f8efd8cbe2a61a54, type: 3}
+  mustSpawn: 0
+--- !u!114 &944325995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944325992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577313768a71e114aa144a83975c29bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointLeft: {x: -45.32, y: -5.35, z: -49.43}
+  spawnPointRight: {x: -52.32, y: -5.35, z: 64.14}
+  enemyShipPrefab: {fileID: 1326234916917225074, guid: 76f7652c7cd8cb34b8164fc4d680ca72,
+    type: 3}
+  mustSpawn: 0
+--- !u!4 &944325996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944325992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -48.411324, y: -16.491865, z: 0.79822266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1048998099
 GameObject:

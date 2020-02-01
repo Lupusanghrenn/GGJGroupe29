@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnHeavyObject : MonoBehaviour
+public class SpawnHeavyObjectEvent : MonoBehaviour
 {
-    public Transform[] spawnLocations;
+    public GameObject boat;
+
+    public GameObject spawnLocationGameObject;
     public GameObject[] heavyObjects;
+
+    private Transform[] spawnLocations;
 
     public bool mustSpawn = false;
 
     void Start()
     {
+        spawnLocations = new Transform[spawnLocationGameObject.transform.childCount];
 
+        for (int i = 0; i < spawnLocationGameObject.transform.childCount; i++)
+        {
+            spawnLocations[i] = spawnLocationGameObject.transform.GetChild(i);
+        }
     }
 
     private void SpawnObject()
@@ -20,7 +29,7 @@ public class SpawnHeavyObject : MonoBehaviour
         int rand2 = Random.Range(0, spawnLocations.Length);
 
         Vector3 spawnPosition = new Vector3(spawnLocations[rand2].position.x, 30f, spawnLocations[rand2].position.z);
-        Instantiate(heavyObjects[rand1], spawnPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Level").transform);
+        Instantiate(heavyObjects[rand1], spawnPosition, Quaternion.identity, boat.transform);
     }
 
     void Update()

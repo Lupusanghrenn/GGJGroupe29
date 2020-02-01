@@ -13,7 +13,7 @@ public class RespawnCircle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
+        time += Time.deltaTime;
         transform.GetChild(0).GetComponent<Image>().fillAmount = time / timeTimeToRespawn;
     }
 }

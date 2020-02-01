@@ -16,7 +16,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
-        //respawnCircle.enabled = false;
+        respawnCircle.gameObject.SetActive(false);
     }
 
     public void TakeDamage(float amount)
@@ -48,11 +48,12 @@ public class PlayerHealthManager : MonoBehaviour
         Debug.Log("Player dead");
         animator.SetBool("Dead", true);
         GetComponent<PlayerController>().enabled = false;
-        respawnCircle.enabled = true;
+        respawnCircle.timeTimeToRespawn = timeToRespawn;
+        respawnCircle.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(timeToRespawn);
 
-        respawnCircle.enabled = false;
+        respawnCircle.gameObject.SetActive(false);
         int rdm = Random.Range(0, spawnPoints.Count);
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);

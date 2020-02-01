@@ -16,6 +16,7 @@ public class PlayerHealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spawnPoints.Add(GameObject.Find("PlayerSpawnPoint").transform);
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         respawnCircle.gameObject.SetActive(false);

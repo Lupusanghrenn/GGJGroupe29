@@ -342,7 +342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1912825287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,8 +356,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 10000
-  problems: []
+  eventsProbable: []
+  eventsPeuProbable: []
+  spawnFire: {fileID: 0}
   BaseTimeToWait: 0
+  baseTimeMin: 0
+  baseTimeMax: 0
   nbJoueur: 0
 --- !u!4 &1912825288
 Transform:
@@ -388,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 3962862130589109718, guid: 0383c6cc1ddaeaf4eb32a2fd1d60e907,
         type: 3}
       propertyPath: timeToPropagate
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3962862130589109718, guid: 0383c6cc1ddaeaf4eb32a2fd1d60e907,
         type: 3}

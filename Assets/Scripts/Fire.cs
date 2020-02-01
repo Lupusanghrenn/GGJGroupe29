@@ -6,6 +6,7 @@ public class Fire : MonoBehaviour
 {
     public List<Transform> spawns;
     public GameObject firePrefab;
+    public LayerMask layer;
 
     public float dot;
     public float timeToPropagate;
@@ -18,26 +19,27 @@ public class Fire : MonoBehaviour
 
     private void Update()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().life -= dot;
-        Debug.Log(GameObject.Find("GameManager").GetComponent<GameManager>().life);
+        //GameObject.Find("GameManager").GetComponent<GameManager>().life -= dot;
     }
 
     public void Propagate()
     {
         int rdm;
-        //check pour savoir si y'a déjà un feu
-        bool fireDetected = false;
-        do
+        bool ok = false;
+        while(!ok && spawns.Count > 0)
         {
             rdm = Random.Range(0, spawns.Count);
-            Collider[] colliders = Physics.OverlapSphere(transform.position + spawns[rdm].position, 0.2f, 8);
+            Collider[] colliders = Physics.OverlapSphere(transform.position + spawns[rdm].position, 0.005f, layer);
+            ok = true;
             if (colliders.Length > 0)
             {
-                Debug.Log("sdfdsfds");
-                fireDetected = true;
+                spawns.RemoveAt(rdm);
             }
-        } while (fireDetected);
-
-        GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity);
+            else
+            {
+                ok = true;
+                GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity);
+            }
+        }
     }
 }

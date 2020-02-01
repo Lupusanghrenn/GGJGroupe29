@@ -33,7 +33,7 @@ public class EnemyShip : MonoBehaviour
     IEnumerator CanonBallHit()
     {
         yield return new WaitForSeconds(1f);
-        gameManager.life -= 10f;
+        //gameManager.life -= 10f;
         // Spawn Hole
     }
 

@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     private bool isOnEchelle = false;
     private GameObject currentInteraction;
 
+    public bool isInWater;
+    public bool isUnderWater;
+    private GameObject water;
+
     public AudioClip piedBois;
     public AudioClip piedEau;
     public AudioClip repairTrou;
@@ -30,7 +34,20 @@ public class PlayerController : MonoBehaviour
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
             rb.useGravity = false;
             //switch entre actionmap ladder et player
+        }
 
+        // Remove water logic
+        if(isInWater)
+        {
+            if(water.transform.position.y > 0)
+            {
+                water.transform.position -= new Vector3(0, 1, 0);
+
+                if(water.transform.position.y < 0)
+                {
+                    water.transform.position = new Vector3(water.transform.position.x, 0, water.transform.position.z);
+                }
+            }
         }
     }
 
@@ -97,6 +114,8 @@ public class PlayerController : MonoBehaviour
         gameManager.nbJoueur++;
         idJoueur = gameManager.nbJoueur;
         gameObject.name = "Player" + idJoueur;
+
+        water = GameObject.FindGameObjectWithTag("Water");
 
         Debug.Log(idJoueur);
         //switch

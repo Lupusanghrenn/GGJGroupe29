@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
     private bool isOnEchelle = false;
     private GameObject currentInteraction;
 
+    public GameObject waterThrown;
     public bool isInWater;
     public bool isUnderWater;
     private GameObject water;
+    public bool hasBucket;
+    public bool bucketIsFull;
 
     public AudioClip piedBois;
     public AudioClip piedEau;
@@ -48,6 +51,12 @@ public class PlayerController : MonoBehaviour
                     water.transform.position = new Vector3(water.transform.position.x, 0, water.transform.position.z);
                 }
             }
+        }
+
+        if(hasBucket && bucketIsFull)
+        {
+            GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
+            waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
         }
     }
 

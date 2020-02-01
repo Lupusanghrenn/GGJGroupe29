@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private Animator animator;
     private Rigidbody rb;
+    private bool isInEchelle;
     public int idJoueur;
     public void OnAction(InputValue value)
     {
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         gameManager.nbJoueur++;
         idJoueur = gameManager.nbJoueur;
         gameObject.name = "Player" + idJoueur;
+        isInEchelle = false;
 
         Debug.Log(idJoueur);
         //switch
@@ -74,8 +76,42 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
             //rigidbody.MoveRotation(Quaternion.Euler(direction));
             //rigidbody.MoveRotation(Quaternion.AngleAxis(45, new Vector3(0, 1, 0)));
-            transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));
+            if (GetComponent<PlayerInput>().currentActionMap.name == "Player")
+            {
+                transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));
+            }
+            
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.tag);
+        if (other.tag == "Echelle")
+        {
+            if (!isInEchelle)
+            {
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
+                isInEchelle = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Echelle")
+        {
+            if (isInEchelle)
+            {
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+                isInEchelle = false;
+            }
+            else
+            {
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
+                isInEchelle = true;
+            }
+        }
     }
 }

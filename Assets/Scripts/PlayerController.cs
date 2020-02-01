@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         idJoueur = gameManager.nbJoueur;
         gameObject.name = "Player" + idJoueur;
 
+        Debug.Log(idJoueur);
         //switch
         switch (idJoueur)
         {
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
                 gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Red");
                 break;
             case 2:
-                gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Red");
+                gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;
             default:
                 Debug.LogError("Plus de 2 joueurs");

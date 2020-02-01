@@ -4,40 +4,36 @@ using UnityEngine;
 
 public class SpawnHeavyObjectEvent : MonoBehaviour
 {
-    public GameObject boat;
+    private GameObject boat;
 
-    public GameObject spawnLocationGameObject;
+    private GameObject spawnLocations;
     public GameObject[] heavyObjects;
 
-    private Transform[] spawnLocations;
-
-    public bool mustSpawn = false;
+    private Transform[] spawnLocationsArray;
 
     void Start()
     {
-        spawnLocations = new Transform[spawnLocationGameObject.transform.childCount];
+        boat = GameObject.FindGameObjectWithTag("Boat");
+        spawnLocations = boat.transform.GetChild(1).gameObject;
 
-        for (int i = 0; i < spawnLocationGameObject.transform.childCount; i++)
+        spawnLocationsArray = new Transform[spawnLocations.transform.childCount];
+
+        for (int i = 0; i < spawnLocations.transform.childCount; i++)
         {
-            spawnLocations[i] = spawnLocationGameObject.transform.GetChild(i);
+            spawnLocationsArray[i] = spawnLocations.transform.GetChild(i);
         }
+
+        SpawnObject();
+
+        Destroy(this.gameObject);
     }
 
     private void SpawnObject()
     {
         int rand1 = Random.Range(0, heavyObjects.Length);
-        int rand2 = Random.Range(0, spawnLocations.Length);
+        int rand2 = Random.Range(0, spawnLocationsArray.Length);
 
-        Vector3 spawnPosition = new Vector3(spawnLocations[rand2].position.x, 30f, spawnLocations[rand2].position.z);
+        Vector3 spawnPosition = new Vector3(spawnLocationsArray[rand2].position.x, 30f, spawnLocationsArray[rand2].position.z);
         Instantiate(heavyObjects[rand1], spawnPosition, Quaternion.identity, boat.transform);
-    }
-
-    void Update()
-    {
-        if(mustSpawn)
-        {
-            SpawnObject();
-            mustSpawn = false;
-        }
     }
 }

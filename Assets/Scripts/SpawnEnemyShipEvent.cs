@@ -9,7 +9,11 @@ public class SpawnEnemyShipEvent : MonoBehaviour
 
     public GameObject enemyShipPrefab;
 
-    public bool mustSpawn = false;
+    private void Start()
+    {
+        SpawnEnemyShip();
+        Destroy(this.gameObject);
+    }
 
     private void SpawnEnemyShip()
     {
@@ -31,15 +35,6 @@ public class SpawnEnemyShipEvent : MonoBehaviour
             enemyShip.direction = "Left";
             enemyShip.spawnPointLeft = this.spawnPointLeft;
             enemyShip.spawnPointRight = this.spawnPointRight;
-        }
-    }
-
-    void Update()
-    {
-        if(mustSpawn)
-        {
-            SpawnEnemyShip();
-            mustSpawn = false;
         }
     }
 }

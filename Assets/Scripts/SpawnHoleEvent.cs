@@ -4,43 +4,32 @@ using UnityEngine;
 
 public class SpawnHoleEvent : MonoBehaviour
 {
-    public GameObject boat;
-    public GameObject water;
+    private GameObject boat;
+    private GameObject water;
     public GameObject holePrefab;
 
-    public BoxCollider spawnArea;
+    private BoxCollider spawnArea;
 
     public bool mustSpawn = false;
 
     public float baseWaterSpeed;
 
+    private void Start()
+    {
+        boat = GameObject.FindGameObjectWithTag("Boat");
+        spawnArea = boat.transform.GetChild(0).GetChild(2).gameObject.GetComponent<BoxCollider>();
 
+        SpawnHole();
+        Destroy(this.gameObject);
+    }
     private void SpawnHole()
     {
         float randomX = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
         float randomZ = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
 
         Instantiate(holePrefab, new Vector3(randomX, spawnArea.bounds.max.y + 0.01f, randomZ),
-                                                        Quaternion.Euler(new Vector3(0, 90, 0)),
-                                                        boat.transform);
-    }
+                                                        Quaternion.Euler(new Vector3(boat.transform.rotation.x, boat.transform.rotation.y + 90, boat.transform.rotation.z)),
+                                                        boat.transform); // TODO : Get Spawn Area rotation to rotate the sprite
 
-    private int GetHolesNumber()
-    {
-        return FindObjectsOfType<Hole>().Length;
-    }
-
-    void Update()
-    {
-        if (mustSpawn)
-        {
-            SpawnHole();
-            mustSpawn = false;
-        }
-
-        if (GetHolesNumber() > 0)
-        {
-            water.transform.position += new Vector3(0, baseWaterSpeed * GetHolesNumber() * Time.deltaTime, 0);
-        }
     }
 }

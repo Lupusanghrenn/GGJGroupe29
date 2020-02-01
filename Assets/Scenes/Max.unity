@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 52262626}
   m_Layer: 0
   m_Name: BoatLevel
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,14 +234,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30.192001, y: -90.00001, z: 0}
---- !u!1 &105753261 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2394686380672014384, guid: 16ab1f83f1105b045a363510165515cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 2394686379372821415}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &206208860
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +495,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &498920665
 Rigidbody:
@@ -707,112 +701,6 @@ Transform:
   m_Father: {fileID: 52262626}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &944325992
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 944325996}
-  - component: {fileID: 944325995}
-  - component: {fileID: 944325994}
-  - component: {fileID: 944325993}
-  - component: {fileID: 944325997}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &944325993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944325992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66802a459b9b17048b6ad274763331ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boat: {fileID: 52262624}
-  rotateDirection: 0
-  maxAngle: 15
-  rotationSpeed: 12
-  timeToWaitOnAngle: 3
---- !u!114 &944325994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944325992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2e26f00bd9c374296ba6d9e1de64ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boat: {fileID: 52262624}
-  spawnLocationGameObject: {fileID: 912190559}
-  heavyObjects:
-  - {fileID: 3152709942623198010, guid: e74d039c10a4a224e9686bbf22813bef, type: 3}
-  - {fileID: 3152709942623198010, guid: cadc0ca30e210514290bea09c57b453b, type: 3}
-  - {fileID: 3152709942623198010, guid: 8c758452bb55d304f8efd8cbe2a61a54, type: 3}
-  mustSpawn: 0
---- !u!114 &944325995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944325992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577313768a71e114aa144a83975c29bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPointLeft: {x: -62, y: -5.35, z: -49.43}
-  spawnPointRight: {x: -52, y: -5.35, z: 64.14}
-  enemyShipPrefab: {fileID: 1326234916917225074, guid: 76f7652c7cd8cb34b8164fc4d680ca72,
-    type: 3}
-  mustSpawn: 0
---- !u!4 &944325996
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944325992}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.411324, y: -16.491865, z: 0.79822266}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &944325997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944325992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81217b9ad0582a24c9f6aa9c9d9f7cee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boat: {fileID: 52262624}
-  water: {fileID: 105753261}
-  holePrefab: {fileID: 4435454848201156171, guid: fb770a37d77f0ee449b70ddda6f15aae,
-    type: 3}
-  spawnArea: {fileID: 721879911}
-  mustSpawn: 0
-  baseWaterSpeed: 0.15
 --- !u!1 &1048998099
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +759,62 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 912190560}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1337411741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337411743}
+  - component: {fileID: 1337411742}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1337411742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337411741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2064bc43315bce4086a4387f2bf5433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
+  eventsProbable:
+  - {fileID: 5729013197197424350, guid: 7a0df708805fbad4ba1d19ab03604cf8, type: 3}
+  - {fileID: 2223558835966387908, guid: 3a3c01f6a4d7e1c4cad87a92bb158317, type: 3}
+  eventsPeuProbable:
+  - {fileID: 8281167460501250955, guid: c70bee103fc75c24ca47a853b795e28f, type: 3}
+  - {fileID: 2131616895378539560, guid: 9fe41c3449e58a44b8ca79c33239fb53, type: 3}
+  - {fileID: 3979553890298910263, guid: 55938e78800141c48a31ccc71e65bad4, type: 3}
+  spawnFire: {fileID: 0}
+  BaseTimeToWait: 0
+  baseTimeMin: 2
+  baseTimeMax: 15
+  nbJoueur: 2
+--- !u!4 &1337411743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337411741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 55.56418, y: -57.887268, z: -66.66036}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1701548501
@@ -1091,7 +1035,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1995101721
 GameObject:
@@ -1236,7 +1180,7 @@ PrefabInstance:
     - target: {fileID: 2394686380672014396, guid: 16ab1f83f1105b045a363510165515cd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2394686380672014396, guid: 16ab1f83f1105b045a363510165515cd,
         type: 3}

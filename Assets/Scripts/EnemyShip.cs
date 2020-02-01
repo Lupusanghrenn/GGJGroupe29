@@ -6,12 +6,18 @@ public class EnemyShip : MonoBehaviour
 {
     public GameObject canonBallPrefab;
 
+    private GameManager gameManager;
+
     public string direction = "";
     public float speed;
 
     public Vector3 spawnPointLeft;
     public Vector3 spawnPointRight;
 
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         Shoot();
@@ -21,14 +27,15 @@ public class EnemyShip : MonoBehaviour
     {
         GameObject canonBall = Instantiate(canonBallPrefab, this.transform.position, Quaternion.identity);
 
-        StartCoroutine(SpawnHole());
-        // Spawn un trou
+        StartCoroutine(CanonBallHit());
     }
 
-    IEnumerator SpawnHole()
+    IEnumerator CanonBallHit()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("Spawn Hole");
+        gameManager.life -= 10f;
+        Debug.Log("Boat life : " + gameManager.life);
+        // Spawn Hole
     }
 
     void Update()
@@ -39,9 +46,10 @@ public class EnemyShip : MonoBehaviour
             
             if(this.transform.position.z <= spawnPointLeft.z)
             {
-                direction = "Right";
-                this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-                this.transform.position = spawnPointLeft;
+                //direction = "Right";
+                //this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                //this.transform.position = spawnPointLeft;
+                Destroy(this.gameObject);
             }
         }
         if(direction == "Right")
@@ -50,9 +58,10 @@ public class EnemyShip : MonoBehaviour
 
             if (this.transform.position.z >= spawnPointRight.z)
             {
-                direction = "Left";
-                this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                this.transform.position = spawnPointRight;
+                //direction = "Left";
+                //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                //this.transform.position = spawnPointRight;
+                Destroy(this.gameObject);
             }
         }
     }

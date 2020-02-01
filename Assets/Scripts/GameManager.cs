@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public float life; //vie du bateau
+
     public List<GameObject> eventsProbable;
     public List<GameObject> eventsPeuProbable;
     public BoxCollider spawnFire;
@@ -25,8 +26,7 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {       
         timeElapsed += Time.deltaTime;
         if (timeElapsed >= timeToWait)
         {
@@ -43,12 +43,13 @@ public class GameManager : MonoBehaviour
                     Debug.Log("EVENT PROBABLE: Tanguage");
                     Instantiate(eventsProbable[rdmEvent], Vector3.zero, Quaternion.identity);
                 }
-                if (eventsProbable[rdmEvent].name == "Fire")
+                if (eventsProbable[rdmEvent].name == "FireTest") // EDITED : Fire -> FireTest
                 {
                     Debug.Log("EVENT PROBABLE: Fire");
-                    float rdmX = Random.Range(-spawnFire.size.x / 2, spawnFire.size.x / 2);
-                    float rdmZ = Random.Range(-spawnFire.size.z / 2, spawnFire.size.z / 2);
-                    Instantiate(eventsProbable[rdmEvent], new Vector3(rdmX, spawnFire.transform.position.y, rdmZ), Quaternion.identity);
+                    //float rdmX = Random.Range(-spawnFire.size.x / 2, spawnFire.size.x / 2);
+                    //float rdmZ = Random.Range(-spawnFire.size.z / 2, spawnFire.size.z / 2);
+                    //Instantiate(eventsProbable[rdmEvent], new Vector3(rdmX, spawnFire.transform.position.y, rdmZ), Quaternion.identity);
+                    Instantiate(eventsProbable[rdmEvent], Vector3.zero, Quaternion.identity);
                 }
             }
             else //événement peu probable
@@ -65,9 +66,17 @@ public class GameManager : MonoBehaviour
                     Debug.Log("EVENT PEU PROBABLE: Bateau Pirate");
                     Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
                 }
+                else if (eventsPeuProbable[rdmEvent].name == "Hole")
+                {
+                    Debug.Log("EVENT PEU PROBABLE: Hole");
+                    Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+                }
             }
 
-            baseTimeMax = baseTimeMax - (nbSpawn * 1.2f);
+            if(baseTimeMax >= 10)
+            {
+                baseTimeMax = baseTimeMax - (nbSpawn * 1.0f);
+            }
             timeToWait = Random.Range(baseTimeMin, baseTimeMax);
             timeElapsed = 0;
         }

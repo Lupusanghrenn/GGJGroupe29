@@ -16,6 +16,12 @@ public class Fire : MonoBehaviour
         InvokeRepeating("Propagate", timeToPropagate, timeToPropagate);
     }
 
+    private void Update()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManager>().life -= dot;
+        Debug.Log(GameObject.Find("GameManager").GetComponent<GameManager>().life);
+    }
+
     public void Propagate()
     {
         int rdm;

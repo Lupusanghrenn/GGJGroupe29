@@ -25,6 +25,7 @@ public class UIFloatingText : MonoBehaviour
         {
             if (displayWarning)
             {
+                GetComponent<AudioSource>().Play();
                 StaticObject.warningFireSpawned = true;
                 gameObject.GetComponent<Image>().enabled = true;
                 currentTime += Time.deltaTime;

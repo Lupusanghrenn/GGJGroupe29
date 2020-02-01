@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577313768a71e114aa144a83975c29bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointLeft: {x: -62, y: -3, z: 69}
-  spawnPointRight: {x: 83, y: -3, z: 69}
+  spawnPointLeft: {x: -121.6, y: -15, z: 138}
+  spawnPointRight: {x: 129, y: -15, z: 169}
   enemyShipPrefab: {fileID: 1326234916917225074, guid: 76f7652c7cd8cb34b8164fc4d680ca72,
     type: 3}

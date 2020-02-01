@@ -28,7 +28,7 @@ public class SpawnHoleEvent : MonoBehaviour
         float randomZ = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
 
         Instantiate(holePrefab, new Vector3(randomX, spawnArea.bounds.max.y + 0.01f, randomZ),
-                                                        Quaternion.Euler(new Vector3(boat.transform.rotation.x, 0, 0)),
+                                                        Quaternion.Euler(new Vector3(boat.transform.rotation.x, 180, 0)),
                                                         boat.transform); // TODO : Get Spawn Area rotation to rotate the sprite
 
     }

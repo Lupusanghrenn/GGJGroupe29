@@ -198,6 +198,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ActionLadder",
+                    "type": "Button",
+                    "id": "86662fd4-f9c9-45f0-bae0-53e22852b0dd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -277,6 +285,28 @@
                     "action": "MoveLadder",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f1fdd9d1-8740-4a97-b9ab-1d6b526ceb7e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ActionLadder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1723d4fe-0652-48fb-8082-6c423af75ccf",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ActionLadder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

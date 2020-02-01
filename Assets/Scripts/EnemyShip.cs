@@ -31,6 +31,7 @@ public class EnemyShip : MonoBehaviour
             if(this.transform.position.z <= spawnPointLeft.z)
             {
                 direction = "Right";
+                this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 this.transform.position = spawnPointLeft;
             }
         }
@@ -41,6 +42,7 @@ public class EnemyShip : MonoBehaviour
             if (this.transform.position.z >= spawnPointRight.z)
             {
                 direction = "Left";
+                this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 this.transform.position = spawnPointRight;
             }
         }

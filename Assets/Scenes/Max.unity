@@ -229,13 +229,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75183850}
-  m_LocalRotation: {x: 0.23708375, y: -0.6661766, z: 0.23708375, w: 0.6661766}
-  m_LocalPosition: {x: 10.21, y: 10.63, z: 8.72}
+  m_LocalRotation: {x: 0.18415892, y: -0.68270457, z: 0.18415892, w: 0.68270457}
+  m_LocalPosition: {x: 10.21, y: 9.92, z: 8.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 39.18, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.192001, y: -90.00001, z: 0}
 --- !u!1 &105753261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2394686380672014384, guid: 16ab1f83f1105b045a363510165515cd,
@@ -742,7 +742,7 @@ MonoBehaviour:
   boat: {fileID: 52262624}
   rotateDirection: 0
   maxAngle: 15
-  rotationSpeed: 20
+  rotationSpeed: 12
   timeToWaitOnAngle: 3
 --- !u!114 &944325994
 MonoBehaviour:

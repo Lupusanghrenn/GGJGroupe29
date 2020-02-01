@@ -163,7 +163,10 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Echelle")
         {
             isOnEchelle = false;
-
+            if (GetComponent<PlayerInput>().currentActionMap.name == "Ladder")
+            {
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            }
         }
     }
 

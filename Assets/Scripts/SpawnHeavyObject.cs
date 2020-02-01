@@ -16,15 +16,19 @@ public class SpawnHeavyObject : MonoBehaviour
 
     private void SpawnObject()
     {
-        int rand1 = Random.Range(0, heavyObjects.Length - 1);
-        int rand2 = Random.Range(0, spawnLocations.Length - 1);
+        int rand1 = Random.Range(0, heavyObjects.Length);
+        int rand2 = Random.Range(0, spawnLocations.Length);
 
-        Vector3 spawnPosition = new Vector3(spawnLocations[rand2].position.x, spawnLocations[rand2].position.y, 30f);
-        Instantiate(heavyObjects[rand1], spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(spawnLocations[rand2].position.x, 30f, spawnLocations[rand2].position.z);
+        Instantiate(heavyObjects[rand1], spawnPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Level").transform);
     }
 
     void Update()
     {
-
+        if(mustSpawn)
+        {
+            SpawnObject();
+            mustSpawn = false;
+        }
     }
 }

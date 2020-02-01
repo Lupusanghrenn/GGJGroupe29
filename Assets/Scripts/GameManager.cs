@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,15 +14,19 @@ public class GameManager : MonoBehaviour
     public float BaseTimeToWait;
     public float baseTimeMin;
     public float baseTimeMax;
+    public float gameTime;
+    public Text timerText;
 
     private float timeToWait;
     private float timeElapsed;
+    private float gameTimeLeft;
     private int nbSpawn = 0;
 
     public int nbJoueur = 0;
     // Start is called before the first frame update
     void Start()
     {
+        gameTimeLeft = gameTime;
         boat = GameObject.FindGameObjectWithTag("Boat");
         timeToWait = Random.Range(baseTimeMin, baseTimeMax);
     }
@@ -30,6 +35,33 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(life);
+        if (gameTimeLeft <= 0)
+        {
+            gameTimeLeft = 0;
+        }
+        else
+        {
+            gameTimeLeft -= Time.deltaTime;
+        }
+
+        int min = Mathf.RoundToInt(gameTimeLeft / 60 - 1);
+        if (min <= 0)
+        {
+            min = 0;
+        }
+        int sec = Mathf.RoundToInt(gameTimeLeft % 60 - 1);
+        if (sec <= 0)
+        {
+            sec = 0;
+        }
+
+
+        string str = min.ToString() + " : " + sec.ToString();
+        timerText.text = str;
+        if (gameTimeLeft >= gameTime)
+        {
+            //La game se termine
+        }
 
         timeElapsed += Time.deltaTime;
         if (timeElapsed >= timeToWait)

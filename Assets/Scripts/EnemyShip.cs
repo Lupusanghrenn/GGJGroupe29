@@ -16,7 +16,7 @@ public class EnemyShip : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -42,9 +42,9 @@ public class EnemyShip : MonoBehaviour
     {
         if(direction == "Left")
         {
-            this.transform.position += new Vector3(0, 0, -speed * Time.deltaTime);
+            this.transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
             
-            if(this.transform.position.z <= spawnPointLeft.z)
+            if(this.transform.position.x <= spawnPointLeft.x)
             {
                 //direction = "Right";
                 //this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
@@ -54,9 +54,9 @@ public class EnemyShip : MonoBehaviour
         }
         if(direction == "Right")
         {
-            this.transform.position += new Vector3(0, 0, speed * Time.deltaTime);
+            this.transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
 
-            if (this.transform.position.z >= spawnPointRight.z)
+            if (this.transform.position.x >= spawnPointRight.x)
             {
                 //direction = "Left";
                 //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));

@@ -10,6 +10,7 @@ TagManager:
   - EchelleExit
   - Boat
   - Water
+  - GameManager
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class SpawnEnemyShipEvent : MonoBehaviour
         // Spawn Left
         if (rand == 0)
         {
-            EnemyShip enemyShip = Instantiate(enemyShipPrefab, spawnPointLeft, Quaternion.Euler(new Vector3(0, 180, 0))).GetComponent<EnemyShip>();
+            EnemyShip enemyShip = Instantiate(enemyShipPrefab, spawnPointLeft, Quaternion.Euler(new Vector3(0, -90, 0))).GetComponent<EnemyShip>();
             enemyShip.direction = "Right";
             enemyShip.spawnPointLeft = this.spawnPointLeft;
             enemyShip.spawnPointRight = this.spawnPointRight;
@@ -31,7 +31,7 @@ public class SpawnEnemyShipEvent : MonoBehaviour
         // Spawn Right
         if (rand == 1)
         {
-            EnemyShip enemyShip = Instantiate(enemyShipPrefab, spawnPointRight, Quaternion.Euler(new Vector3(0, 0, 0))).GetComponent<EnemyShip>();
+            EnemyShip enemyShip = Instantiate(enemyShipPrefab, spawnPointRight, Quaternion.Euler(new Vector3(0, 90, 0))).GetComponent<EnemyShip>();
             enemyShip.direction = "Left";
             enemyShip.spawnPointLeft = this.spawnPointLeft;
             enemyShip.spawnPointRight = this.spawnPointRight;

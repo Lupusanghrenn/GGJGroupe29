@@ -74,7 +74,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   dot: 1
-  timeToPropagate: 1
+  timeToPropagate: 3
 --- !u!198 &3962862131544438737
 ParticleSystem:
   m_ObjectHideFlags: 0

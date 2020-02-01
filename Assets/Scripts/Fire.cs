@@ -8,18 +8,21 @@ public class Fire : MonoBehaviour
     public GameObject firePrefab;
     public LayerMask layer;
 
+    private GameObject boat;
+
     public float dot;
     public float timeToPropagate;
 
     // Start is called before the first frame update
     void Start()
     {
+        boat = GameObject.FindGameObjectWithTag("Boat");
         InvokeRepeating("Propagate", timeToPropagate, timeToPropagate);
     }
 
     private void Update()
     {
-        //GameObject.Find("GameManager").GetComponent<GameManager>().life -= dot;
+        GameObject.Find("GameManager").GetComponent<GameManager>().life -= dot * Time.deltaTime;
     }
 
     public void Propagate()
@@ -27,7 +30,7 @@ public class Fire : MonoBehaviour
         if (spawns.Count > 0)
         {
             int rdm = Random.Range(0, spawns.Count);
-            GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity);
+            GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity, boat.transform);
         }
     }
 

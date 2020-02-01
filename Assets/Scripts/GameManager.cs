@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
             timeElapsed = 0;
         }
         //update de l'affichage de la vie
-        Debug.Log(currentLife + ", " + maxLife);
+        //Debug.Log(currentLife + ", " + maxLife);
         lifeFill.fillAmount = currentLife / maxLife;
     }
 }

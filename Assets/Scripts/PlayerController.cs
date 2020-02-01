@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour
     //ActionMap Player
     public void OnAction(InputValue value)
     {
-        Debug.Log("Action");
-
         if (isOnEchelle)
         {
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
@@ -85,15 +83,12 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(value.Get<Vector2>());
         var value = inputValue.Get<Vector2>();
-        //direction = new Vector3(value.x, 0, value.y);
         direction = new Vector3(value.x, 0, value.y);
     }
 
     //ActionMap Ladder
     public void OnActionLadder(InputValue value)
     {
-        Debug.Log("Action");
-
         if (isOnEchelle)
         {
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
@@ -121,7 +116,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnFireCanon(InputValue inputValue)
     {
-        Debug.Log("OnFireCannon");
         GameObject boulet = Resources.Load<GameObject>("Prefabs/FriendlyCanonBall");
         
         GameObject go = Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * -2), Quaternion.Euler(currentInteraction.transform.rotation.eulerAngles + new Vector3(0, 180, 0)), null);

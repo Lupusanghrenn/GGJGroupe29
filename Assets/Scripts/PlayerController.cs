@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
             rb.useGravity = false;
+            animator.SetBool("Ladder",true);
             //switch entre actionmap ladder et player
         }
 
@@ -96,6 +97,7 @@ public class PlayerController : MonoBehaviour
         if (isOnEchelle)
         {
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            animator.SetBool("Ladder",false);
             rb.useGravity = true;
 
         }

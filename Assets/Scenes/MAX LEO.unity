@@ -1320,7 +1320,7 @@ MonoBehaviour:
   BaseTimeToWait: 0
   baseTimeMin: 4
   baseTimeMax: 15
-  gameTime: 0
+  gameTime: 180
   timerText: {fileID: 1157937804}
   lifeFill: {fileID: 404246876}
   nbJoueur: 0

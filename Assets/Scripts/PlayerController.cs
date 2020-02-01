@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public int idJoueur;
     public void OnAction(InputValue value)
     {
-        Debug.Log(value.Get()); 
+        Debug.Log("Action"); 
     }
 
     public void OnMove(InputValue inputValue)

@@ -33,16 +33,17 @@ public class PlayerHealthManager : MonoBehaviour
     public IEnumerator Die()
     {
         //on desactive tout
+        Debug.Log("Player dead");
         animator.SetBool("Dead", true);
         GetComponent<PlayerController>().enabled = false;
-        GetComponent<CapsuleCollider>().enabled = false;
 
         yield return new WaitForSeconds(timeToRespawn);
 
         int rdm = Random.Range(0, spawnPoints.Count);
-        transform.position = spawnPoints[rdm].position;
+        currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
         GetComponent<PlayerController>().enabled = true;
-        GetComponent<CapsuleCollider>().enabled = true;
+        transform.position = spawnPoints[rdm].position;
         animator.SetBool("Dead", false);
     }
 }

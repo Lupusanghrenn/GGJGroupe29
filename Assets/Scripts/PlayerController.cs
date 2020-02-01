@@ -87,31 +87,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.tag == "Echelle")
         {
-            if (!isInEchelle)
-            {
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
-                isInEchelle = true;
-            }
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
+
+        }
+
+        if (other.tag == "EchelleExit")
+        {
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Echelle")
-        {
-            if (isInEchelle)
-            {
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
-                isInEchelle = false;
-            }
-            else
-            {
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
-                isInEchelle = true;
-            }
-        }
+        
     }
 }

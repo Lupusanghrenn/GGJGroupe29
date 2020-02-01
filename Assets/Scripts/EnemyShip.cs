@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyShip : MonoBehaviour
 {
+    public GameObject canonBallPrefab;
+
     public string direction = "";
     public float speed;
 
@@ -17,9 +19,16 @@ public class EnemyShip : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
-        // Damage boat
+        GameObject canonBall = Instantiate(canonBallPrefab, this.transform.position, Quaternion.identity);
+
+        StartCoroutine(SpawnHole());
         // Spawn un trou
+    }
+
+    IEnumerator SpawnHole()
+    {
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Spawn Hole");
     }
 
     void Update()

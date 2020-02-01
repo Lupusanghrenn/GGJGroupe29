@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
                     float rdmX = Random.Range(spawnFire.bounds.min.x, spawnFire.bounds.max.x);
                     float rdmZ = Random.Range(spawnFire.bounds.min.z, spawnFire.bounds.max.z);
-                    Instantiate(eventsProbable[rdmEvent], new Vector3(rdmX, spawnFire.transform.position.y + 1.5f, rdmZ), Quaternion.identity);
+                    Instantiate(eventsProbable[rdmEvent], new Vector3(rdmX, spawnFire.transform.position.y + 1.5f, rdmZ), Quaternion.identity, boat.transform);
                 }
             }
             else //événement peu probable

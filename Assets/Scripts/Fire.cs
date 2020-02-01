@@ -30,7 +30,8 @@ public class Fire : MonoBehaviour
         if (spawns.Count > 0)
         {
             int rdm = Random.Range(0, spawns.Count);
-            GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity, boat.transform);
+            GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity, transform);
+            spawnedFire.transform.Find("Canvas").GetChild(0).GetComponent<UIFloatingText>().displayWarning = false;
         }
     }
 

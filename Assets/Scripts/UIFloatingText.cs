@@ -10,6 +10,7 @@ public class UIFloatingText : MonoBehaviour
     private float currentTime = 0;
     private float timeActivate = 0;
     bool sens = false;
+    public bool displayWarning = true;
 
 
     private void Start()
@@ -22,21 +23,25 @@ public class UIFloatingText : MonoBehaviour
         timeActivate += Time.deltaTime;
         if (timeActivate >= 10)
         {
-            gameObject.GetComponent<Image>().enabled = true;
-            currentTime += Time.deltaTime;
-            if (currentTime >= timeToWait)
+            if (displayWarning)
             {
-                sens = !sens;
-                currentTime = 0;
-            }
+                StaticObject.warningFireSpawned = true;
+                gameObject.GetComponent<Image>().enabled = true;
+                currentTime += Time.deltaTime;
+                if (currentTime >= timeToWait)
+                {
+                    sens = !sens;
+                    currentTime = 0;
+                }
 
-            if (sens)
-            {
-                transform.position += new Vector3(0, -speed, 0);
-            }
-            else
-            {
-                transform.position += new Vector3(0, speed, 0);
+                if (sens)
+                {
+                    transform.position += new Vector3(0, -speed, 0);
+                }
+                else
+                {
+                    transform.position += new Vector3(0, speed, 0);
+                }
             }
         }
     }

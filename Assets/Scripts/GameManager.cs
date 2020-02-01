@@ -5,11 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int life; //vie du bateau
-    public GameObject problems;
+    public List<GameObject> problems;
     public float BaseTimeToWait;
 
     private float timeToWait;
     private float timeElapsed;
+
+    public int nbJoueur = 0;
     // Start is called before the first frame update
     void Start()
     {

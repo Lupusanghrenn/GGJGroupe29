@@ -74,16 +74,8 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("OnFireCannon");
         GameObject boulet = Resources.Load<GameObject>("Prefabs/FriendlyCanonBall");
-        //Instantiate(boulet, transform.position + (transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
-        Debug.Log(currentInteraction.transform.forward);
-        //transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));
         
         GameObject go = Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * -2), Quaternion.Euler(currentInteraction.transform.rotation.eulerAngles + new Vector3(0, 180, 0)), null);
-        //GameObject ennemy = FindObjectOfType<EnemyShip>().gameObject;
-        //if (ennemy != null)
-        //{
-        //    Destroy(ennemy);
-        //}
         
         currentInteraction.GetComponent<AudioSource>().Play();
         //TODO musique
@@ -130,10 +122,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("MoveVectorMagnitude", direction.magnitude);
         if (direction.magnitude > 0f)
         {
-            //gameObject.transform.position +=  * Time.deltaTime * speed;
             rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
-            //rigidbody.MoveRotation(Quaternion.Euler(direction));
-            //rigidbody.MoveRotation(Quaternion.AngleAxis(45, new Vector3(0, 1, 0)));
             if (GetComponent<PlayerInput>().currentActionMap.name == "Player")
             {
                 transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));

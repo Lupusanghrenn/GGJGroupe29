@@ -7,12 +7,11 @@ public class PlayerHealthManager : MonoBehaviour
     public float maxHealth;
 
     private float currentHealth;
-    private PlayerHealthBar healthBar;
+    public PlayerHealthBar healthBar;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar = GetComponent<PlayerHealthBar>();
     }
 
     public void TakeDamage(float amount)

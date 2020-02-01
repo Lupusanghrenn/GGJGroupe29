@@ -49,6 +49,8 @@ public class TiltBoatEvent : MonoBehaviour
 
         if (rotateDirection == RotateDirection.Right)
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
             if (boatAngleX <= maxAngle)
             {
                 boat.transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
@@ -61,8 +63,10 @@ public class TiltBoatEvent : MonoBehaviour
             }
         }
 
-        if (rotateDirection == RotateDirection.Left)
+        else if (rotateDirection == RotateDirection.Left)
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
             if (boatAngleX >= -maxAngle)
             {
                 boat.transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
@@ -73,6 +77,11 @@ public class TiltBoatEvent : MonoBehaviour
                 previousDirection = rotateDirection;
                 rotateDirection = RotateDirection.None;
             }
+        }
+        else
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Rigidbody>().velocity = new Vector3(0, player.GetComponent<Rigidbody>().velocity.y, 0);
         }
 
         if (rotateDirection == RotateDirection.Front)
@@ -103,12 +112,26 @@ public class TiltBoatEvent : MonoBehaviour
             }
         }
 
+        if (rotateDirection == RotateDirection.None && !mustResetRotation)
+        {
+            if (previousDirection == RotateDirection.Right)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
+            }
 
+            if (previousDirection == RotateDirection.Left)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
+            }
+        }
 
         if (rotateDirection == RotateDirection.None && mustResetRotation)
-        {
-            if(previousDirection == RotateDirection.Right)
+            if (previousDirection == RotateDirection.Right)
             {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
                 if (Mathf.RoundToInt(boatAngleX) != 0)
                 {
                     boat.transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
@@ -122,6 +145,8 @@ public class TiltBoatEvent : MonoBehaviour
             }
             if (previousDirection == RotateDirection.Left)
             {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
                 if (Mathf.RoundToInt(boatAngleX) != 0)
                 {
                     boat.transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
@@ -160,6 +185,5 @@ public class TiltBoatEvent : MonoBehaviour
                     mustResetRotation = false;
                 }
             }
-        }
     }
 }

@@ -145,6 +145,10 @@ public class PlayerController : MonoBehaviour
             currentInteraction = other.gameObject;
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
         }
+
+        if (other.tag == "WoodBarrel") { }
+
+        Debug.Log(other.tag);
     }
 
     public void OnTriggerExit(Collider other)

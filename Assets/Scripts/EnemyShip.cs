@@ -14,17 +14,11 @@ public class EnemyShip : MonoBehaviour
     public string direction = "";
     public float speed;
 
-    private float basePositionY;
-    private float baseWaterPositionY;
-
     public Vector3 spawnPointLeft;
     public Vector3 spawnPointRight;
 
     private void Start()
     {
-        basePositionY = this.transform.position.y;
-        water = GameObject.FindGameObjectWithTag("Water");
-        baseWaterPositionY = water.transform.position.y;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         StartCoroutine(ShootDelay());
     }
@@ -76,9 +70,6 @@ public class EnemyShip : MonoBehaviour
                     Destroy(this.gameObject);
                 }
             }
-            this.transform.position = new Vector3(this.transform.position.x,
-                water.transform.position.y + basePositionY - baseWaterPositionY,
-                this.transform.position.z);
         }
         else
         {

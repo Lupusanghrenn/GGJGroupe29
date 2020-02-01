@@ -220,13 +220,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2064bc43315bce4086a4387f2bf5433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
+  maxLife: 0
+  currentLife: 0
   eventsProbable: []
   eventsPeuProbable: []
   spawnFire: {fileID: 0}
   BaseTimeToWait: 0
   baseTimeMin: 0
   baseTimeMax: 0
+  gameTime: 0
+  timerText: {fileID: 0}
+  lifeFill: {fileID: 0}
   nbJoueur: 0
 --- !u!114 &767942244
 MonoBehaviour:
@@ -394,7 +398,7 @@ PrefabInstance:
     - target: {fileID: 8348121651555170675, guid: f9e7d66bc8b708f499a3782d432658fa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.21
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 8348121651555170675, guid: f9e7d66bc8b708f499a3782d432658fa,
         type: 3}
@@ -693,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 8348121651555170675, guid: f9e7d66bc8b708f499a3782d432658fa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.33
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 8348121651555170675, guid: f9e7d66bc8b708f499a3782d432658fa,
         type: 3}

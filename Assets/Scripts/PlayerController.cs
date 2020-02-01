@@ -42,12 +42,20 @@ public class PlayerController : MonoBehaviour
             //switch entre actionmap ladder et player
         }
 
-        // Remove water logic
-        if(isInWater)
+
+        if (hasBucket && bucketIsFull)
+        {
+            GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
+            waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
+            bucketIsFull = false;
+        }
+
+        if (isInWater && hasBucket)
         {
             if(water.transform.position.y > 0)
             {
                 water.transform.position -= new Vector3(0, 1, 0);
+                bucketIsFull = true;
 
                 if(water.transform.position.y < 0)
                 {
@@ -56,11 +64,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(hasBucket && bucketIsFull)
-        {
-            GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
-            waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
-        }
 
         if (isOnWaterHole)
         {

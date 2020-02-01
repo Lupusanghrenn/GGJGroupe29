@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealBaril : MonoBehaviour
+public class Canon : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && other.GetComponent<PlayerInteract>().interacting == false)
         {
             other.GetComponent<PlayerInteract>().interacting = true;
-            other.GetComponent<PlayerInteract>().interactBaril = true;
+            other.GetComponent<PlayerInteract>().interactCanon = true;
         }
     }
 
@@ -18,7 +18,7 @@ public class HealBaril : MonoBehaviour
         if (other.tag == "Player" && other.GetComponent<PlayerInteract>().interacting == false)
         {
             other.GetComponent<PlayerInteract>().interacting = true;
-            other.GetComponent<PlayerInteract>().interactBaril = false;
+            other.GetComponent<PlayerInteract>().interactCanon = false;
         }
     }
 }

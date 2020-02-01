@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerInteract : MonoBehaviour
 {
     public float healAmount;
+    public bool interacting = false;
     public bool interactBaril = false;
+    public bool interactCanon;
 
     public void OnAction(InputValue value)
     {
@@ -14,5 +16,9 @@ public class PlayerInteract : MonoBehaviour
         {
             GetComponent<PlayerHealthManager>().Heal(healAmount);
         }
+        if (interactCanon)
+        {
+        }
+
     }
 }

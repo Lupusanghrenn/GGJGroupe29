@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8350406949367356162}
   - component: {fileID: 6860989216266862970}
   - component: {fileID: 5380552463409792064}
+  - component: {fileID: 1532773672488671326}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -156,6 +157,19 @@ MonoBehaviour:
   spawnPoints: []
   timeToRespawn: 4
   healthBar: {fileID: 4937109761450024906}
+--- !u!114 &1532773672488671326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497319218836100153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1795a16a543c46444b5cdbdedb06a884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactCanon: 0
 --- !u!1001 &4069353347360700394
 PrefabInstance:
   m_ObjectHideFlags: 0

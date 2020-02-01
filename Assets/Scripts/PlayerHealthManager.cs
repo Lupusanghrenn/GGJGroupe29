@@ -30,6 +30,16 @@ public class PlayerHealthManager : MonoBehaviour
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
+    public void Heal(float value)
+    {
+        currentHealth += value;
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
+
     public IEnumerator Die()
     {
         //on desactive tout

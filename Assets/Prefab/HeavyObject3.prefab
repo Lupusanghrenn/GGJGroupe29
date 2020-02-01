@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3152709942623192263}
   - component: {fileID: 3152709942623192260}
   m_Layer: 0
-  m_Name: ObjetLourd
+  m_Name: HeavyObject3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,4 +10,9 @@ public class PlayerHealthBar : MonoBehaviour
     {
         transform.Find("fill").GetComponent<Image>().fillAmount = currentHealth / maxHealth;
     }
+
+    private void Update()
+    {
+        transform.LookAt(transform.position + Vector3.forward);
+    }
 }

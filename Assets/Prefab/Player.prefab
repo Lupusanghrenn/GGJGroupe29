@@ -33,7 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9008197068512206064}
-  - {fileID: 1170613588854162689}
+  - {fileID: 4348601715409214510}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,7 +235,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4069353347360700394}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &9118542075756862422
+--- !u!1001 &5975183067638907641
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -305,22 +305,22 @@ PrefabInstance:
     - target: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23.9
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 92
+      value: 22.19
       objectReference: {fileID: 0}
     - target: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 19.4
+      value: 1.93
       objectReference: {fileID: 0}
     - target: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
         type: 3}
@@ -354,9 +354,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a, type: 3}
---- !u!224 &1170613588854162689 stripped
+--- !u!224 &4348601715409214510 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
     type: 3}
-  m_PrefabInstance: {fileID: 9118542075756862422}
+  m_PrefabInstance: {fileID: 5975183067638907641}
   m_PrefabAsset: {fileID: 0}

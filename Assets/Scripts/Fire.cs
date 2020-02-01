@@ -42,4 +42,12 @@ public class Fire : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerHealthManager>().TakeDamage(0.5f);
+        }
+    }
 }

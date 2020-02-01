@@ -53,6 +53,8 @@ public class PlayerHealthManager : MonoBehaviour
 
         yield return new WaitForSeconds(timeToRespawn);
 
+
+        respawnCircle.Reset();
         respawnCircle.gameObject.SetActive(false);
         int rdm = Random.Range(0, spawnPoints.Count);
         currentHealth = maxHealth;

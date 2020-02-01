@@ -16,4 +16,9 @@ public class RespawnCircle : MonoBehaviour
         time += Time.deltaTime;
         transform.GetChild(0).GetComponent<Image>().fillAmount = time / timeTimeToRespawn;
     }
+
+    public void Reset()
+    {
+        transform.GetChild(0).GetComponent<Image>().fillAmount = 0;
+    }
 }

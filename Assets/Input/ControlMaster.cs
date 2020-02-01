@@ -322,6 +322,151 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Canon"",
+            ""id"": ""1b441abd-983e-437e-b437-e9f2121ed072"",
+            ""actions"": [
+                {
+                    ""name"": ""FireCanon"",
+                    ""type"": ""Button"",
+                    ""id"": ""975ed8b5-e921-4970-ae79-ec1db4fc9221"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveCanon"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e95570e-c906-4014-93af-0917a981d8d1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""49a2213e-48ea-45cf-974b-70f1ebd344e0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""FireCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5d02a70-a587-4924-b493-612b8ff025ff"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""FireCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""9fbf1f55-40a9-4ec7-9320-49d44d47948d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""9f2159ce-29e1-4a9d-8591-09461968ec9b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8815b234-5de5-4691-8d29-ceeaa88e7181"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""0637546b-6661-45bb-8be4-997fba5c7c5a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a5a248ac-3b87-4179-ae60-09e79263d4f2"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""56a9c2c8-3d04-4485-b829-de1559647564"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""33920113-fe15-4385-b853-2a803a1bf29d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8ce5ed57-6467-49f6-9161-c757602b05e2"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""bca45f87-8964-4b58-ba79-d5903bd49412"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCanon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -358,6 +503,10 @@ public class @ControlMaster : IInputActionCollection, IDisposable
         m_Ladder = asset.FindActionMap("Ladder", throwIfNotFound: true);
         m_Ladder_MoveLadder = m_Ladder.FindAction("MoveLadder", throwIfNotFound: true);
         m_Ladder_ActionLadder = m_Ladder.FindAction("ActionLadder", throwIfNotFound: true);
+        // Canon
+        m_Canon = asset.FindActionMap("Canon", throwIfNotFound: true);
+        m_Canon_FireCanon = m_Canon.FindAction("FireCanon", throwIfNotFound: true);
+        m_Canon_MoveCanon = m_Canon.FindAction("MoveCanon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -493,6 +642,47 @@ public class @ControlMaster : IInputActionCollection, IDisposable
         }
     }
     public LadderActions @Ladder => new LadderActions(this);
+
+    // Canon
+    private readonly InputActionMap m_Canon;
+    private ICanonActions m_CanonActionsCallbackInterface;
+    private readonly InputAction m_Canon_FireCanon;
+    private readonly InputAction m_Canon_MoveCanon;
+    public struct CanonActions
+    {
+        private @ControlMaster m_Wrapper;
+        public CanonActions(@ControlMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @FireCanon => m_Wrapper.m_Canon_FireCanon;
+        public InputAction @MoveCanon => m_Wrapper.m_Canon_MoveCanon;
+        public InputActionMap Get() { return m_Wrapper.m_Canon; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CanonActions set) { return set.Get(); }
+        public void SetCallbacks(ICanonActions instance)
+        {
+            if (m_Wrapper.m_CanonActionsCallbackInterface != null)
+            {
+                @FireCanon.started -= m_Wrapper.m_CanonActionsCallbackInterface.OnFireCanon;
+                @FireCanon.performed -= m_Wrapper.m_CanonActionsCallbackInterface.OnFireCanon;
+                @FireCanon.canceled -= m_Wrapper.m_CanonActionsCallbackInterface.OnFireCanon;
+                @MoveCanon.started -= m_Wrapper.m_CanonActionsCallbackInterface.OnMoveCanon;
+                @MoveCanon.performed -= m_Wrapper.m_CanonActionsCallbackInterface.OnMoveCanon;
+                @MoveCanon.canceled -= m_Wrapper.m_CanonActionsCallbackInterface.OnMoveCanon;
+            }
+            m_Wrapper.m_CanonActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @FireCanon.started += instance.OnFireCanon;
+                @FireCanon.performed += instance.OnFireCanon;
+                @FireCanon.canceled += instance.OnFireCanon;
+                @MoveCanon.started += instance.OnMoveCanon;
+                @MoveCanon.performed += instance.OnMoveCanon;
+                @MoveCanon.canceled += instance.OnMoveCanon;
+            }
+        }
+    }
+    public CanonActions @Canon => new CanonActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -521,5 +711,10 @@ public class @ControlMaster : IInputActionCollection, IDisposable
     {
         void OnMoveLadder(InputAction.CallbackContext context);
         void OnActionLadder(InputAction.CallbackContext context);
+    }
+    public interface ICanonActions
+    {
+        void OnFireCanon(InputAction.CallbackContext context);
+        void OnMoveCanon(InputAction.CallbackContext context);
     }
 }

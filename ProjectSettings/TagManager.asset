@@ -10,6 +10,7 @@ TagManager:
   - EchelleExit
   - Boat
   - Water
+  - Canon
   - GameManager
   layers:
   - Default

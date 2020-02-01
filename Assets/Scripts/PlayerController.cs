@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public int idJoueur;
     private bool isOnEchelle = false;
+    private GameObject currentInteraction;
 
+
+    //ActionMap Player
     public void OnAction(InputValue value)
     {
         Debug.Log("Action");
@@ -22,18 +25,6 @@ public class PlayerController : MonoBehaviour
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
             rb.useGravity = false;
             //switch entre actionmap ladder et player
-
-        }
-    }
-
-    public void OnActionLadder(InputValue value)
-    {
-        Debug.Log("Action");
-
-        if (isOnEchelle)
-        {
-            GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
-            rb.useGravity = true;
 
         }
     }
@@ -50,10 +41,42 @@ public class PlayerController : MonoBehaviour
         direction = new Vector3(value.x, 0, value.y);
     }
 
+    //ActionMap Ladder
+    public void OnActionLadder(InputValue value)
+    {
+        Debug.Log("Action");
+
+        if (isOnEchelle)
+        {
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            rb.useGravity = true;
+
+        }
+    }
+
     public void OnMoveLadder(InputValue inputValue)
     {
         var value = inputValue.Get<float>();
         direction = new Vector3(0,value,0);
+    }
+
+    //ActionMap Canon
+    public void OnMoveCanon(InputValue inputValue)
+    {
+        Debug.Log("MoveCanon");
+        var value = inputValue.Get<float>();
+        Debug.Log(value);
+    }
+
+    public void OnFireCanon(InputValue inputValue)
+    {
+        Debug.Log("OnFireCannon");
+        GameObject boulet = Resources.Load<GameObject>("Prefabs/FriendlyCanonBall");
+        //Instantiate(boulet, transform.position + (transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
+        //Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
+        Destroy(FindObjectOfType<EnemyShip>().gameObject);
+        //TODO musique
+        GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
     }
 
     // Start is called before the first frame update
@@ -109,21 +132,32 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Echelle")
         {
             isOnEchelle = true;
 
         }
+
+        if (other.tag == "Canon")
+        {
+            currentInteraction = other.gameObject;
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.tag == "Echelle")
         {
             isOnEchelle = false;
 
         }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }

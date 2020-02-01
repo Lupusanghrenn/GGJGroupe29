@@ -32,6 +32,7 @@ public class Fire : MonoBehaviour
             int rdm = Random.Range(0, spawns.Count);
             GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity, transform);
             spawnedFire.transform.Find("Canvas").GetChild(0).GetComponent<UIFloatingText>().displayWarning = false;
+            spawnedFire.transform.localScale = transform.localScale;
         }
     }
 

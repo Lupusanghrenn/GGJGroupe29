@@ -26,15 +26,14 @@ public class EnemyShip : MonoBehaviour
     private void Shoot()
     {
         GameObject canonBall = Instantiate(canonBallPrefab, this.transform.position, Quaternion.identity);
-
+        Debug.Log("Shoot");
         StartCoroutine(CanonBallHit());
     }
 
     IEnumerator CanonBallHit()
     {
         yield return new WaitForSeconds(1f);
-        gameManager.currentLife -= 10f;
-        Debug.Log("Boat life : " + gameManager.currentLife);
+        gameManager.life -= 10f;
         // Spawn Hole
     }
 

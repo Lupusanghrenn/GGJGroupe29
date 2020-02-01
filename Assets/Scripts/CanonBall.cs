@@ -10,6 +10,6 @@ public class CanonBall : MonoBehaviour
     }
     void Update()
     {
-        this.transform.position += new Vector3(35 * Time.deltaTime, 0, 0);
+        this.transform.position += new Vector3(0, 0, -35 * Time.deltaTime);
     }
 }

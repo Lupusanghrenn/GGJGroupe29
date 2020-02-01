@@ -6,7 +6,7 @@ public class WaterThrownScript : MonoBehaviour
 {
     private void Start()
     {
-        
+        Destroy(this.gameObject, 1f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +14,6 @@ public class WaterThrownScript : MonoBehaviour
         if (other.tag == "Fire")
         {
             Destroy(other.gameObject);
-            Destroy(this.gameObject);
         }
     }
 }

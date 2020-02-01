@@ -14,6 +14,7 @@ TagManager:
   - GameManager
   - BouletBarrel
   - WoodBarrel
+  - WaterHole
   layers:
   - Default
   - TransparentFX

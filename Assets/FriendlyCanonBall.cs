@@ -9,19 +9,19 @@ public class FriendlyCanonBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this, 30);
+        Destroy(this.gameObject, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += new Vector3(0, -5f * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("bateau touche");
-        Destroy(collision.gameObject);
-        Destroy(this);
+        Destroy(other.gameObject);
+        Destroy(this.gameObject);
     }
 }

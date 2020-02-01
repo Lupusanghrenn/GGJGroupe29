@@ -236,6 +236,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 39.18, y: -90, z: 0}
+--- !u!1 &105753261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2394686380672014384, guid: 16ab1f83f1105b045a363510165515cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2394686379372821415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &206208860
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,11 +807,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boat: {fileID: 52262624}
-  water: {fileID: 2394686380672014384, guid: 16ab1f83f1105b045a363510165515cd, type: 3}
-  mustSpawn: 0
+  water: {fileID: 105753261}
   holePrefab: {fileID: 4435454848201156171, guid: fb770a37d77f0ee449b70ddda6f15aae,
     type: 3}
   spawnArea: {fileID: 721879911}
+  mustSpawn: 0
+  baseWaterSpeed: 0.15
 --- !u!1 &1048998099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 2394686380672014396, guid: 16ab1f83f1105b045a363510165515cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.9
+      value: -11.11
       objectReference: {fileID: 0}
     - target: {fileID: 2394686380672014396, guid: 16ab1f83f1105b045a363510165515cd,
         type: 3}

@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(value.Get<Vector2>());
         var value = inputValue.Get<Vector2>();
+        //direction = new Vector3(value.x, 0, value.y);
         direction = new Vector3(value.x, 0, value.y);
     }
 

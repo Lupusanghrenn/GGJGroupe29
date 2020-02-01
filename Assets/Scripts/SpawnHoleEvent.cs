@@ -5,15 +5,18 @@ using UnityEngine;
 public class SpawnHoleEvent : MonoBehaviour
 {
     public GameObject boat;
-    public bool mustSpawn = false;
-
+    public GameObject water;
     public GameObject holePrefab;
 
     public BoxCollider spawnArea;
 
+    public bool mustSpawn = false;
+
+    public float baseWaterSpeed;
+
+
     private void SpawnHole()
     {
-        Debug.Log(spawnArea.bounds.max.y);
         float randomX = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
         float randomZ = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
 
@@ -22,12 +25,22 @@ public class SpawnHoleEvent : MonoBehaviour
                                                         boat.transform);
     }
 
+    private int GetHolesNumber()
+    {
+        return FindObjectsOfType<Hole>().Length;
+    }
+
     void Update()
     {
-        if(mustSpawn)
+        if (mustSpawn)
         {
             SpawnHole();
             mustSpawn = false;
+        }
+
+        if (GetHolesNumber() > 0)
+        {
+            water.transform.position += new Vector3(0, baseWaterSpeed * GetHolesNumber() * Time.deltaTime, 0);
         }
     }
 }

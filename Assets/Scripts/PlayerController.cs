@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        transform.position = gameManager.transform.position;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         gameManager.nbJoueur++;
@@ -46,9 +47,11 @@ public class PlayerController : MonoBehaviour
         {
             case 1:
                 gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/Red");
+                transform.position += new Vector3(1, 0, 0);
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Red");
                 break;
             case 2:
+                transform.position += new Vector3(-1, 0, 0);
                 gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;

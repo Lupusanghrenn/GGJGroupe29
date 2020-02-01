@@ -140,7 +140,7 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                     ""id"": ""aef31b83-4e06-4433-ac9c-5beb500a0cd9"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,

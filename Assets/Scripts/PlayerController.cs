@@ -63,9 +63,11 @@ public class PlayerController : MonoBehaviour
     //ActionMap Canon
     public void OnMoveCanon(InputValue inputValue)
     {
-        Debug.Log("MoveCanon");
         var value = inputValue.Get<float>();
-        Debug.Log(value);
+        Debug.Log(currentInteraction.name);
+        Vector3 rot = currentInteraction.gameObject.transform.rotation.eulerAngles;
+        rot.y += (value * 3);
+        currentInteraction.gameObject.transform.rotation = Quaternion.Euler(rot);
     }
 
     public void OnFireCanon(InputValue inputValue)
@@ -73,8 +75,16 @@ public class PlayerController : MonoBehaviour
         Debug.Log("OnFireCannon");
         GameObject boulet = Resources.Load<GameObject>("Prefabs/FriendlyCanonBall");
         //Instantiate(boulet, transform.position + (transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
-        //Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
-        //Destroy(FindObjectOfType<EnemyShip>().gameObject);
+        Debug.Log(currentInteraction.transform.forward);
+        //transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));
+        
+        GameObject go = Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * -2), Quaternion.Euler(currentInteraction.transform.rotation.eulerAngles + new Vector3(0, 180, 0)), null);
+        //GameObject ennemy = FindObjectOfType<EnemyShip>().gameObject;
+        //if (ennemy != null)
+        //{
+        //    Destroy(ennemy);
+        //}
+        
         currentInteraction.GetComponent<AudioSource>().Play();
         //TODO musique
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");

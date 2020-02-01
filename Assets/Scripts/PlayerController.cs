@@ -167,10 +167,15 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("MoveVectorMagnitude", direction.magnitude);
         if (direction.magnitude > 0f)
         {
-            rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
+            
             if (GetComponent<PlayerInput>().currentActionMap.name == "Player")
             {
+                rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
                 transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));
+            }
+            else if (GetComponent<PlayerInput>().currentActionMap.name == "Ladder")
+            {
+                rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
             }
             
         }
@@ -225,11 +230,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Echelle")
         {
-            isOnEchelle = false;
-            if (GetComponent<PlayerInput>().currentActionMap.name == "Ladder")
-            {
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
-            }
+            //isOnEchelle = false;
+            //if (GetComponent<PlayerInput>().currentActionMap.name == "Ladder")
+            //{
+            //    GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            //}
         }
 
         if (other.tag == "WaterHole")

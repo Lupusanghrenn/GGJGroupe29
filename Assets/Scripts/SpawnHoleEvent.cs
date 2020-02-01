@@ -17,7 +17,7 @@ public class SpawnHoleEvent : MonoBehaviour
     private void Start()
     {
         boat = GameObject.FindGameObjectWithTag("Boat");
-        spawnArea = boat.transform.GetChild(0).GetChild(2).gameObject.GetComponent<BoxCollider>();
+        spawnArea = boat.transform.GetChild(3).gameObject.GetComponent<BoxCollider>();
 
         SpawnHole();
         Destroy(this.gameObject);

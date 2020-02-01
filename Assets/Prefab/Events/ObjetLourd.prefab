@@ -43,10 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2e26f00bd9c374296ba6d9e1de64ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boat: {fileID: 0}
-  spawnLocationGameObject: {fileID: 0}
   heavyObjects:
-  - {fileID: 3152709942623198010, guid: e74d039c10a4a224e9686bbf22813bef, type: 3}
-  - {fileID: 3152709942623198010, guid: cadc0ca30e210514290bea09c57b453b, type: 3}
-  - {fileID: 3152709942623198010, guid: 8c758452bb55d304f8efd8cbe2a61a54, type: 3}
-  mustSpawn: 0
+  - {fileID: 1540655690704813980, guid: fe11050a155380144ae7b38efd55a881, type: 3}
+  - {fileID: 1540655690704813980, guid: fe11050a155380144ae7b38efd55a881, type: 3}
+  - {fileID: 1540655690704813980, guid: fe11050a155380144ae7b38efd55a881, type: 3}

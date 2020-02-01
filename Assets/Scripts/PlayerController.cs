@@ -6,8 +6,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    private Vector2 direction;
+    private Vector3 direction;
     private GameManager gameManager;
+    private Animator animator;
+    private Rigidbody rb;
     public int idJoueur;
     public void OnAction(InputValue value)
     {
@@ -17,14 +19,23 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue inputValue)
     {
         //Debug.Log(value.Get<Vector2>());
-        direction = inputValue.Get<Vector2>();
-        
+        var value = inputValue.Get<Vector2>();
+        direction = new Vector3(value.x, 0, value.y);
+    }
+
+    public void OnMoveLadder(InputValue inputValue)
+    {
+        Debug.Log("MoveLadder");
+        var value = inputValue.Get<float>();
+        direction = new Vector3(0,value,0);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
         gameManager.nbJoueur++;
         idJoueur = gameManager.nbJoueur;
         gameObject.name = "Player" + idJoueur;
@@ -34,23 +45,32 @@ public class PlayerController : MonoBehaviour
         switch (idJoueur)
         {
             case 1:
-                gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Red");
+                gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/Red");
+                //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Red");
                 break;
             case 2:
-                gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
+                gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
+                //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;
             default:
                 Debug.LogError("Plus de 2 joueurs");
                 break;
         }
+
+        //GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("MoveVectorMagnitude", direction.magnitude);
         if (direction.magnitude > 0f)
         {
-            gameObject.transform.position += new Vector3(direction.x, 0, direction.y) * Time.deltaTime * speed;
+            //gameObject.transform.position +=  * Time.deltaTime * speed;
+            rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
+            //rigidbody.MoveRotation(Quaternion.Euler(direction));
+            //rigidbody.MoveRotation(Quaternion.AngleAxis(45, new Vector3(0, 1, 0)));
+            transform.LookAt(rb.transform.position + direction, new Vector3(0, 1, 0));
         }
         
     }

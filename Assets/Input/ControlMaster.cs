@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/ControlMaster.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Input/ControlMaster.inputactions'
 
 using System;
 using System.Collections;
@@ -15,14 +15,14 @@ public class @ControlMaster : IInputActionCollection, IDisposable
     ""name"": ""ControlMaster"",
     ""maps"": [
         {
-            ""name"": ""Player1"",
+            ""name"": ""Player"",
             ""id"": ""5ee48ad7-2dad-474d-ab3f-9bbc54e3daad"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""ecf6b624-1f09-44f3-9d27-8e3ab972341f"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -136,59 +136,15 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""MoveVector"",
-                    ""id"": ""a537cc4b-a4e6-4c47-bdb5-01a27352508d"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""aef31b83-4e06-4433-ac9c-5beb500a0cd9"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""3460cfd4-5e76-434e-886c-cfbeed866776"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""60d7a67c-0f5b-4b62-b596-2fa4729b4354"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""31e19309-178a-4cb9-81c5-35f11767de20"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""4ae8eaa1-0bc1-46f6-883c-a381cde3c454"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -211,6 +167,99 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                     ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Ladder"",
+            ""id"": ""acc0f819-ea71-4c16-a492-2fcdfab75165"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveLadder"",
+                    ""type"": ""Value"",
+                    ""id"": ""cbea6e99-fafc-4882-82ef-1cb964830f6e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""MoveLadder"",
+                    ""id"": ""aaf9f5d2-42aa-49fd-9b02-7ae0b6f6f3d1"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLadder"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3a259a76-e2f0-4213-84f5-d0d86a5fcad4"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e27e96e4-6e8d-4a22-9664-8d0c9e13763e"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""979023c2-cfee-438a-b7c7-30f4d8cea3d3"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""3a4385b9-e564-40b6-930d-5fee00ef6ff5"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""beb73ed1-a579-4599-9687-d97e20a311a7"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4b206de4-1f9d-44c9-b3e4-6f9279bd1d9f"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -240,10 +289,13 @@ public class @ControlMaster : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Player1
-        m_Player1 = asset.FindActionMap("Player1", throwIfNotFound: true);
-        m_Player1_Move = m_Player1.FindAction("Move", throwIfNotFound: true);
-        m_Player1_Action = m_Player1.FindAction("Action", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
+        // Ladder
+        m_Ladder = asset.FindActionMap("Ladder", throwIfNotFound: true);
+        m_Ladder_MoveLadder = m_Ladder.FindAction("MoveLadder", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -290,34 +342,34 @@ public class @ControlMaster : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player1
-    private readonly InputActionMap m_Player1;
-    private IPlayer1Actions m_Player1ActionsCallbackInterface;
-    private readonly InputAction m_Player1_Move;
-    private readonly InputAction m_Player1_Action;
-    public struct Player1Actions
+    // Player
+    private readonly InputActionMap m_Player;
+    private IPlayerActions m_PlayerActionsCallbackInterface;
+    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Action;
+    public struct PlayerActions
     {
         private @ControlMaster m_Wrapper;
-        public Player1Actions(@ControlMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player1_Move;
-        public InputAction @Action => m_Wrapper.m_Player1_Action;
-        public InputActionMap Get() { return m_Wrapper.m_Player1; }
+        public PlayerActions(@ControlMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Action => m_Wrapper.m_Player_Action;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Player1Actions set) { return set.Get(); }
-        public void SetCallbacks(IPlayer1Actions instance)
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_Player1ActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnMove;
-                @Action.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnAction;
-                @Action.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnAction;
-                @Action.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnAction;
+                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Action.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
+                @Action.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
+                @Action.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
             }
-            m_Wrapper.m_Player1ActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
@@ -329,7 +381,40 @@ public class @ControlMaster : IInputActionCollection, IDisposable
             }
         }
     }
-    public Player1Actions @Player1 => new Player1Actions(this);
+    public PlayerActions @Player => new PlayerActions(this);
+
+    // Ladder
+    private readonly InputActionMap m_Ladder;
+    private ILadderActions m_LadderActionsCallbackInterface;
+    private readonly InputAction m_Ladder_MoveLadder;
+    public struct LadderActions
+    {
+        private @ControlMaster m_Wrapper;
+        public LadderActions(@ControlMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveLadder => m_Wrapper.m_Ladder_MoveLadder;
+        public InputActionMap Get() { return m_Wrapper.m_Ladder; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(LadderActions set) { return set.Get(); }
+        public void SetCallbacks(ILadderActions instance)
+        {
+            if (m_Wrapper.m_LadderActionsCallbackInterface != null)
+            {
+                @MoveLadder.started -= m_Wrapper.m_LadderActionsCallbackInterface.OnMoveLadder;
+                @MoveLadder.performed -= m_Wrapper.m_LadderActionsCallbackInterface.OnMoveLadder;
+                @MoveLadder.canceled -= m_Wrapper.m_LadderActionsCallbackInterface.OnMoveLadder;
+            }
+            m_Wrapper.m_LadderActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MoveLadder.started += instance.OnMoveLadder;
+                @MoveLadder.performed += instance.OnMoveLadder;
+                @MoveLadder.canceled += instance.OnMoveLadder;
+            }
+        }
+    }
+    public LadderActions @Ladder => new LadderActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -348,9 +433,13 @@ public class @ControlMaster : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    public interface IPlayer1Actions
+    public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);
+    }
+    public interface ILadderActions
+    {
+        void OnMoveLadder(InputAction.CallbackContext context);
     }
 }

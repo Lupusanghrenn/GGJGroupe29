@@ -10,6 +10,18 @@ public class EnemyShip : MonoBehaviour
     public Vector3 spawnPointLeft;
     public Vector3 spawnPointRight;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Shoot();
+    }
+
+    private void Shoot()
+    {
+        Debug.Log("Shoot");
+        // Damage boat
+        // Spawn un trou
+    }
+
     void Update()
     {
         if(direction == "Left")

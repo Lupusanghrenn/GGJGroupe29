@@ -12,6 +12,8 @@ TagManager:
   - Water
   - Canon
   - GameManager
+  - BouletBarrel
+  - WoodBarrel
   layers:
   - Default
   - TransparentFX

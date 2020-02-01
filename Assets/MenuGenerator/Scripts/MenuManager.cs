@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEngine.InputSystem;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
@@ -12,10 +14,18 @@ public class MenuManager : MonoBehaviour
     private int currentIndex;
     private int maxIndex;
     private AudioSource audioSource;
+    private bool waiting;
+    public List<GameObject> disactivateButtons;
+    public GameObject prenoms;
+    private float currentTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        foreach (GameObject go in disactivateButtons)
+        {
+            go.SetActive(false);
+        }
         audioSource = GetComponent<AudioSource>();
 
 
@@ -32,27 +42,6 @@ public class MenuManager : MonoBehaviour
         maxIndex = buttons.Count - 1;
 
         buttons[currentIndex].GetComponent<Animator>().SetBool("selected", true);   
-    }
-
-    //regarde si la souris est sur un bouton. Si oui elle renvoie true et change l'index.
-    public bool CheckMouseHoverButtons()
-    {
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-        pointerEventData.position = Input.mousePosition;
-
-        List<RaycastResult> raycastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(pointerEventData, raycastResults);
-
-        for (int i = 0; i < raycastResults.Count; i++)
-        {
-            ButtonManager button = raycastResults[i].gameObject.transform.parent.GetComponent<ButtonManager>();
-            if (button != null && button.GetButtonIndex() != currentIndex)
-            {
-                currentIndex = button.GetButtonIndex();
-                return true;
-            }
-        }
-        return false;
     }
 
     public void SetSelected(int index)
@@ -81,49 +70,71 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
      {
-
-         if (Input.GetKeyDown(KeyCode.S)) //BAS
-         {
-             //incrémentation
-             currentIndex++;
-             if (currentIndex > maxIndex)
-             {
-                 currentIndex = 0;
-             }
-
-            SetSelected(currentIndex);
-         }
-         if(Input.GetKeyDown(KeyCode.Z))//HAUT
-         {
-             //décrémentation
-             currentIndex--;
-             if (currentIndex < 0)
-             {
-                 currentIndex = maxIndex;
-             }
-
-            SetSelected(currentIndex);
-         }
-
-         if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
-         {
-            ButtonManager btn = buttons[currentIndex].GetComponent<ButtonManager>();
-            if (btn.GetAction() == ButtonManager.ACTIONS.LoadScene)
-            {
-                Debug.Log("load scene");
-                SceneManager.LoadScene(btn.GetSceneName());
-            }
-            else if (btn.GetAction() == ButtonManager.ACTIONS.Quit)
-            {
-                Application.Quit();
-                Debug.Log("quit");
-            }
-         }
-
-        if (CheckMouseHoverButtons())
+        currentTime += Time.deltaTime;
+        if (currentTime >= 5f)
         {
-            SetSelected(currentIndex);
+            prenoms.SetActive(false);
+            foreach (GameObject go in disactivateButtons)
+            {
+                go.SetActive(true);
+            }
         }
      }
+
+    public void OnMove(InputValue value)
+    {
+        Vector2 vec = value.Get<Vector2>();
+        if (vec.y <= -0.9f)
+        {
+            if (!waiting)
+            {
+                currentIndex--;
+                if (currentIndex < 0)
+                {
+                    currentIndex = maxIndex;
+                }
+
+                SetSelected(currentIndex);
+                StartCoroutine(Wait());
+            }
+
+        }
+        else if (vec.y >= 0.9f)
+        {
+            if (!waiting)
+            {
+                //incrémentation
+                currentIndex++;
+                if (currentIndex > maxIndex)
+                {
+                    currentIndex = 0;
+                }
+
+                SetSelected(currentIndex);
+                StartCoroutine(Wait());
+            }
+
+        }
+    }
+
+    public void OnAction(InputValue value)
+    {
+        if (currentIndex == 0)
+        {
+            SceneManager.LoadScene("Max");
+        }
+        else
+        {
+            Application.Quit();
+        }
+    }
+
+    public IEnumerator Wait()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(0.5f);
+        waiting = false;
+    }
+
 
 }

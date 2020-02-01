@@ -26,12 +26,13 @@ public class EnemyShip : MonoBehaviour
     private void Shoot()
     {
         GameObject canonBall = Instantiate(canonBallPrefab, this.transform.position, Quaternion.identity);
+        Debug.Log("BoatShoot");
         StartCoroutine(CanonBallHit());
     }
 
     IEnumerator ShootDelay()
     {
-        yield return new WaitForSeconds(27f);
+        yield return new WaitForSeconds(25f);
         Shoot();
     }
 

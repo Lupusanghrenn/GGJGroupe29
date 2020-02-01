@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Action"); 
     }
 
+    public void OnRelease(InputValue value)
+    {
+        Debug.Log("Release");
+    }
+
     public void OnMove(InputValue inputValue)
     {
         //Debug.Log(value.Get<Vector2>());
@@ -101,6 +106,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        
+
     }
 }

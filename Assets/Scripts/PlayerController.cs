@@ -74,7 +74,8 @@ public class PlayerController : MonoBehaviour
         GameObject boulet = Resources.Load<GameObject>("Prefabs/FriendlyCanonBall");
         //Instantiate(boulet, transform.position + (transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
         //Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * 4), Quaternion.Euler(0, 0, 0), null);
-        Destroy(FindObjectOfType<EnemyShip>().gameObject);
+        //Destroy(FindObjectOfType<EnemyShip>().gameObject);
+        currentInteraction.GetComponent<AudioSource>().Play();
         //TODO musique
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
     }

@@ -226,8 +226,8 @@ MonoBehaviour:
   eventsPeuProbable: []
   spawnFire: {fileID: 0}
   BaseTimeToWait: 0
-  baseTimeMin: 0
-  baseTimeMax: 0
+  baseTimeMin: 4
+  baseTimeMax: 15
   gameTime: 0
   timerText: {fileID: 0}
   lifeFill: {fileID: 0}
@@ -995,6 +995,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 63980762417028324, guid: b95064ba2ecea0547b018c9785a043be,
+        type: 3}
+      propertyPath: m_TagString
+      value: Boat
       objectReference: {fileID: 0}
     - target: {fileID: 3942927806069321463, guid: b95064ba2ecea0547b018c9785a043be,
         type: 3}

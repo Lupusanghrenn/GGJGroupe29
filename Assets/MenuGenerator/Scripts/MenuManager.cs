@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -15,17 +16,12 @@ public class MenuManager : MonoBehaviour
     private int maxIndex;
     private AudioSource audioSource;
     private bool waiting;
-    public List<GameObject> disactivateButtons;
     public GameObject prenoms;
     private float currentTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach (GameObject go in disactivateButtons)
-        {
-            go.SetActive(false);
-        }
         audioSource = GetComponent<AudioSource>();
 
 
@@ -73,11 +69,10 @@ public class MenuManager : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime >= 5f)
         {
-            prenoms.SetActive(false);
-            foreach (GameObject go in disactivateButtons)
-            {
-                go.SetActive(true);
-            }
+            prenoms.GetComponent<Image>().color = new Color(prenoms.GetComponent<Image>().color.r,
+                prenoms.GetComponent<Image>().color.g,
+                prenoms.GetComponent<Image>().color.b,
+                prenoms.GetComponent<Image>().color.a - 0.05f) ;
         }
      }
 
@@ -121,11 +116,22 @@ public class MenuManager : MonoBehaviour
     {
         if (currentIndex == 0)
         {
-            SceneManager.LoadScene("Max");
+            buttons[0].GetComponent<Animator>().SetBool("pressed", true);
+            StartCoroutine(AsyncLoad());
         }
         else
         {
+            buttons[1].GetComponent<Animator>().SetBool("pressed", true);
             Application.Quit();
+        }
+    }
+
+    public IEnumerator AsyncLoad()
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync("Max");
+        while (!async.isDone)
+        {
+            yield return null;
         }
     }
 

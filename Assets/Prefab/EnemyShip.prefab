@@ -61,7 +61,7 @@ MonoBehaviour:
   canonBallPrefab: {fileID: 5512330816746338086, guid: 3a18887344e5f8a4ba68d79071a92462,
     type: 3}
   direction: 
-  speed: 15
+  speed: 5
   spawnPointLeft: {x: 0, y: 0, z: 0}
   spawnPointRight: {x: 0, y: 0, z: 0}
 --- !u!65 &6096642196059915038

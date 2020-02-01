@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TiltBoatEvent : MonoBehaviour
 {
-    public GameObject boat;
+    private GameObject boat;
 
     public enum RotateDirection { None, Left, Right, Front, Back };
     public RotateDirection rotateDirection;
@@ -19,6 +19,20 @@ public class TiltBoatEvent : MonoBehaviour
 
     private float boatAngleX;
     private float boatAngleZ;
+
+    private void Start()
+    {
+        boat = GameObject.FindGameObjectWithTag("Boat");
+
+        int rand = Random.Range(0, 2);
+
+        if (rand == 0)
+            rotateDirection = RotateDirection.Left;
+        if (rand == 1)
+            rotateDirection = RotateDirection.Right;
+
+        Destroy(this.gameObject, 10f);
+    }
 
 
     IEnumerator ResetBoatAngleTimer()

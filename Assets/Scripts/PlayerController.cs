@@ -10,11 +10,32 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private Animator animator;
     private Rigidbody rb;
-    private bool isInEchelle;
     public int idJoueur;
+    private bool isOnEchelle = false;
+
     public void OnAction(InputValue value)
     {
-        Debug.Log("Action"); 
+        Debug.Log("Action");
+
+        if (isOnEchelle)
+        {
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
+            rb.useGravity = false;
+            //switch entre actionmap ladder et player
+
+        }
+    }
+
+    public void OnActionLadder(InputValue value)
+    {
+        Debug.Log("Action");
+
+        if (isOnEchelle)
+        {
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            rb.useGravity = true;
+
+        }
     }
 
     public void OnRelease(InputValue value)
@@ -31,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnMoveLadder(InputValue inputValue)
     {
-        Debug.Log("MoveLadder");
         var value = inputValue.Get<float>();
         direction = new Vector3(0,value,0);
     }
@@ -46,7 +66,6 @@ public class PlayerController : MonoBehaviour
         gameManager.nbJoueur++;
         idJoueur = gameManager.nbJoueur;
         gameObject.name = "Player" + idJoueur;
-        isInEchelle = false;
 
         Debug.Log(idJoueur);
         //switch
@@ -94,18 +113,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Echelle")
         {
-            GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
+            isOnEchelle = true;
 
-        }
-
-        if (other.tag == "EchelleExit")
-        {
-            GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.tag == "Echelle")
+        {
+            isOnEchelle = false;
 
+        }
     }
 }

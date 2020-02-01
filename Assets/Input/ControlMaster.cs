@@ -211,6 +211,14 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ActionLadder"",
+                    ""type"": ""Button"",
+                    ""id"": ""86662fd4-f9c9-45f0-bae0-53e22852b0dd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -290,6 +298,28 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                     ""action"": ""MoveLadder"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1fdd9d1-8740-4a97-b9ab-1d6b526ceb7e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ActionLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1723d4fe-0652-48fb-8082-6c423af75ccf"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ActionLadder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -327,6 +357,7 @@ public class @ControlMaster : IInputActionCollection, IDisposable
         // Ladder
         m_Ladder = asset.FindActionMap("Ladder", throwIfNotFound: true);
         m_Ladder_MoveLadder = m_Ladder.FindAction("MoveLadder", throwIfNotFound: true);
+        m_Ladder_ActionLadder = m_Ladder.FindAction("ActionLadder", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -426,11 +457,13 @@ public class @ControlMaster : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Ladder;
     private ILadderActions m_LadderActionsCallbackInterface;
     private readonly InputAction m_Ladder_MoveLadder;
+    private readonly InputAction m_Ladder_ActionLadder;
     public struct LadderActions
     {
         private @ControlMaster m_Wrapper;
         public LadderActions(@ControlMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveLadder => m_Wrapper.m_Ladder_MoveLadder;
+        public InputAction @ActionLadder => m_Wrapper.m_Ladder_ActionLadder;
         public InputActionMap Get() { return m_Wrapper.m_Ladder; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,6 +476,9 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                 @MoveLadder.started -= m_Wrapper.m_LadderActionsCallbackInterface.OnMoveLadder;
                 @MoveLadder.performed -= m_Wrapper.m_LadderActionsCallbackInterface.OnMoveLadder;
                 @MoveLadder.canceled -= m_Wrapper.m_LadderActionsCallbackInterface.OnMoveLadder;
+                @ActionLadder.started -= m_Wrapper.m_LadderActionsCallbackInterface.OnActionLadder;
+                @ActionLadder.performed -= m_Wrapper.m_LadderActionsCallbackInterface.OnActionLadder;
+                @ActionLadder.canceled -= m_Wrapper.m_LadderActionsCallbackInterface.OnActionLadder;
             }
             m_Wrapper.m_LadderActionsCallbackInterface = instance;
             if (instance != null)
@@ -450,6 +486,9 @@ public class @ControlMaster : IInputActionCollection, IDisposable
                 @MoveLadder.started += instance.OnMoveLadder;
                 @MoveLadder.performed += instance.OnMoveLadder;
                 @MoveLadder.canceled += instance.OnMoveLadder;
+                @ActionLadder.started += instance.OnActionLadder;
+                @ActionLadder.performed += instance.OnActionLadder;
+                @ActionLadder.canceled += instance.OnActionLadder;
             }
         }
     }
@@ -481,5 +520,6 @@ public class @ControlMaster : IInputActionCollection, IDisposable
     public interface ILadderActions
     {
         void OnMoveLadder(InputAction.CallbackContext context);
+        void OnActionLadder(InputAction.CallbackContext context);
     }
 }

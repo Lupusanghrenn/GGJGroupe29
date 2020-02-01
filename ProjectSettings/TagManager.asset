@@ -8,6 +8,8 @@ TagManager:
   - Echelle
   - Fire
   - EchelleExit
+  - Boat
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Fire
   - Ladder
   - LadderExit
-  - 
+  - InvisibleWall
   - 
   - 
   - 

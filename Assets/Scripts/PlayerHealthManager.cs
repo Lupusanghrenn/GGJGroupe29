@@ -9,10 +9,12 @@ public class PlayerHealthManager : MonoBehaviour
     public float timeToRespawn;
     private float currentHealth;
     public PlayerHealthBar healthBar;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(float amount)
@@ -22,7 +24,7 @@ public class PlayerHealthManager : MonoBehaviour
         if (currentHealth <= 0) //le player est mort
         {
             currentHealth = 0;
-            Die();
+            StartCoroutine(Die());
         }
         //on update la barre de vie
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
@@ -31,6 +33,7 @@ public class PlayerHealthManager : MonoBehaviour
     public IEnumerator Die()
     {
         //on desactive tout
+        animator.SetBool("Dead", true);
         GetComponent<PlayerController>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
 
@@ -40,5 +43,6 @@ public class PlayerHealthManager : MonoBehaviour
         transform.position = spawnPoints[rdm].position;
         GetComponent<PlayerController>().enabled = true;
         GetComponent<CapsuleCollider>().enabled = true;
+        animator.SetBool("Dead", false);
     }
 }

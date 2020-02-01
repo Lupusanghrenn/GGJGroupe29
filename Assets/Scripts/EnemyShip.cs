@@ -6,6 +6,8 @@ public class EnemyShip : MonoBehaviour
 {
     public GameObject canonBallPrefab;
 
+    public bool couler = false;
+
     private GameManager gameManager;
 
     public string direction = "";
@@ -41,29 +43,38 @@ public class EnemyShip : MonoBehaviour
 
     void Update()
     {
-        if(direction == "Left")
+        if(!couler)
         {
-            this.transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
-            
-            if(this.transform.position.x <= spawnPointLeft.x)
+            if (direction == "Left")
             {
-                //direction = "Right";
-                //this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-                //this.transform.position = spawnPointLeft;
-                Destroy(this.gameObject);
-            }
-        }
-        if(direction == "Right")
-        {
-            this.transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+                this.transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
 
-            if (this.transform.position.x >= spawnPointRight.x)
+                if (this.transform.position.x <= spawnPointLeft.x)
+                {
+                    //direction = "Right";
+                    //this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                    //this.transform.position = spawnPointLeft;
+                    Destroy(this.gameObject);
+                }
+            }
+            if (direction == "Right")
             {
-                //direction = "Left";
-                //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                //this.transform.position = spawnPointRight;
-                Destroy(this.gameObject);
+                this.transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+
+                if (this.transform.position.x >= spawnPointRight.x)
+                {
+                    //direction = "Left";
+                    //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    //this.transform.position = spawnPointRight;
+                    Destroy(this.gameObject);
+                }
             }
         }
+        else
+        {
+            this.transform.position -= new Vector3(0, 5 * Time.deltaTime, 0);
+            this.transform.eulerAngles += new Vector3(0, 0, 5 * Time.deltaTime);
+        }
+
     }
 }

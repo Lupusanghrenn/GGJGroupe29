@@ -21,7 +21,11 @@ public class FriendlyCanonBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
-        Destroy(this.gameObject);
+        if(other.GetComponent<EnemyShip>() != null)
+        {
+            other.GetComponent<EnemyShip>().couler = true; // Coules batard
+            Destroy(other.gameObject, 30f);
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4837516169539761696}
   - component: {fileID: 2874171935736123236}
   - component: {fileID: -5335015249129373437}
+  - component: {fileID: 4575137635096305863}
+  - component: {fileID: 376714869846458211}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -136,8 +138,34 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.852184, y: 11.13933, z: 8.42844}
-  m_Center: {x: -17.099913, y: -8.310267, z: -7.1913395}
+  m_Size: {x: 14.7603035, y: 13.672262, z: 8.42844}
+  m_Center: {x: -14.145853, y: -7.0438013, z: -7.1913395}
+--- !u!65 &4575137635096305863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63980762417028324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4532986, y: 13.833633, z: 12.005932}
+  m_Center: {x: -6.575718, y: -6.4168167, z: -3.8570995}
+--- !u!65 &376714869846458211
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63980762417028324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.8062, y: 1.0866013, z: 11.820872}
+  m_Center: {x: -14.174075, y: -13.936043, z: -3.981255}
 --- !u!1 &720627211517943345
 GameObject:
   m_ObjectHideFlags: 0

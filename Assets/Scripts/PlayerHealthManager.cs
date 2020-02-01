@@ -9,12 +9,14 @@ public class PlayerHealthManager : MonoBehaviour
     public float timeToRespawn;
     private float currentHealth;
     public PlayerHealthBar healthBar;
+    public RespawnCircle respawnCircle;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        //respawnCircle.enabled = false;
     }
 
     public void TakeDamage(float amount)
@@ -46,9 +48,11 @@ public class PlayerHealthManager : MonoBehaviour
         Debug.Log("Player dead");
         animator.SetBool("Dead", true);
         GetComponent<PlayerController>().enabled = false;
+        respawnCircle.enabled = true;
 
         yield return new WaitForSeconds(timeToRespawn);
 
+        respawnCircle.enabled = false;
         int rdm = Random.Range(0, spawnPoints.Count);
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);

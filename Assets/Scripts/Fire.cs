@@ -24,22 +24,10 @@ public class Fire : MonoBehaviour
 
     public void Propagate()
     {
-        int rdm;
-        bool ok = false;
-        while(!ok && spawns.Count > 0)
+        if (spawns.Count > 0)
         {
-            rdm = Random.Range(0, spawns.Count);
-            Collider[] colliders = Physics.OverlapSphere(transform.position + spawns[rdm].position, 0.005f, layer);
-            ok = true;
-            if (colliders.Length > 0)
-            {
-                spawns.RemoveAt(rdm);
-            }
-            else
-            {
-                ok = true;
-                GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity);
-            }
+            int rdm = Random.Range(0, spawns.Count);
+            GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity);
         }
     }
 

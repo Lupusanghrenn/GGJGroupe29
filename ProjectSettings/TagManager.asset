@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Level
   - Echelle
+  - Fire
   layers:
   - Default
   - TransparentFX

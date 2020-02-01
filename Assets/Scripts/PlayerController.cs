@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case 2:
                 transform.position += new Vector3(-1, 0, 0);
+                rb.
                 gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;

@@ -11,6 +11,8 @@ public class PlayerHealthManager : MonoBehaviour
     public PlayerHealthBar healthBar;
     public RespawnCircle respawnCircle;
     private Animator animator;
+
+    public AudioClip degatPerso;
     // Start is called before the first frame update
     void Start()
     {

@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour
     private bool isOnEchelle = false;
     private GameObject currentInteraction;
 
+    public AudioClip piedBois;
+    public AudioClip piedEau;
+    public AudioClip repairTrou;
+    public AudioClip moveEchelle;
+
 
     //ActionMap Player
     public void OnAction(InputValue value)

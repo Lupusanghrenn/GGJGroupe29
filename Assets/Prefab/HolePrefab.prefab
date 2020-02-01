@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterFountain: {fileID: 208992744994334428, guid: 75b5472096806de409a554e24fc086d9,
     type: 3}
+  maxWaterHeight: -18
 --- !u!82 &3374862866794263701
 AudioSource:
   m_ObjectHideFlags: 0
@@ -206,4 +207,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxWaterHeight: -18.7

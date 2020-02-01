@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4435454848201156279}
   - component: {fileID: 4435454848201156278}
   - component: {fileID: 4435454848201156277}
-  - component: {fileID: 4435454848201156276}
   - component: {fileID: 6607706168096464881}
   - component: {fileID: 3374862866794263701}
+  - component: {fileID: 5990619434409839080}
   m_Layer: 0
   m_Name: HolePrefab
-  m_TagString: Untagged
+  m_TagString: WaterHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4435454848201156276
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4435454848201156171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &6607706168096464881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,3 +193,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &5990619434409839080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4435454848201156171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.911909, y: 9.48, z: 13.098307}
+  m_Center: {x: -0.44960946, y: 3.8199997, z: 0.40596485}

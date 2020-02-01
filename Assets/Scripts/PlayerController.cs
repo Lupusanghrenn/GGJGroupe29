@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip repairTrou;
     public AudioClip moveEchelle;
 
+    private bool isOnWaterHole = false;
+    private GameObject waterHole;
+
 
     //ActionMap Player
     public void OnAction(InputValue value)
@@ -57,6 +60,15 @@ public class PlayerController : MonoBehaviour
         {
             GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
+        }
+
+        if (isOnWaterHole)
+        {
+            if(currentInteraction!=null && currentInteraction.name == "WoodPlank")
+            {
+                Destroy(waterHole);
+                waterHole = null;
+            }
         }
     }
 
@@ -186,7 +198,10 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "WoodBarrel")
         {
-
+            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            currentInteraction.SetActive(false);
+            currentInteraction.name = "WoodPlank";
+            Debug.Log(currentInteraction);
         }
 
         if (other.tag == "BouletBarrel")
@@ -195,6 +210,12 @@ public class PlayerController : MonoBehaviour
             currentInteraction.SetActive(false);
             currentInteraction.name = "CanonBall";
             Debug.Log(currentInteraction);
+        }
+
+        if (other.tag == "WaterHole")
+        {
+            isOnWaterHole=true;
+            waterHole = other.gameObject;
         }
 
         Debug.Log(other.tag);
@@ -209,6 +230,11 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
             }
+        }
+
+        if (other.tag == "WaterHole")
+        {
+            isOnWaterHole = false;
         }
     }
 

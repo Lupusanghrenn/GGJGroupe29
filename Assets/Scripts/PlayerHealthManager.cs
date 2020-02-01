@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
     public float maxHealth;
-
+    public List<Transform> spawnPoints;
+    public float timeToRespawn;
     private float currentHealth;
     public PlayerHealthBar healthBar;
     // Start is called before the first frame update
@@ -27,8 +28,17 @@ public class PlayerHealthManager : MonoBehaviour
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
-    public void Die()
+    public IEnumerator Die()
     {
-        //TODO : remplir cetrte fonction  pour la mort du joueur
+        //on desactive tout
+        GetComponent<PlayerController>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+
+        yield return new WaitForSeconds(timeToRespawn);
+
+        int rdm = Random.Range(0, spawnPoints.Count);
+        transform.position = spawnPoints[rdm].position;
+        GetComponent<PlayerController>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
     }
 }

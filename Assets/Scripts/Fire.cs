@@ -17,7 +17,7 @@ public class Fire : MonoBehaviour
     void Start()
     {
         boat = GameObject.FindGameObjectWithTag("Boat");
-        InvokeRepeating("Propagate", timeToPropagate, timeToPropagate);
+        Invoke("Propagate", timeToPropagate);
     }
 
     private void Update()
@@ -40,7 +40,7 @@ public class Fire : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerHealthManager>().TakeDamage(0.5f);
+            other.GetComponent<PlayerHealthManager>().TakeDamage(dot);
         }
     }
 }

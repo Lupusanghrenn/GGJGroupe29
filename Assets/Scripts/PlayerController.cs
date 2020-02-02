@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         currentInteraction.GetComponent<AudioSource>().Play();
         //TODO musique
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
-        currentInteraction.name = "None";
+        currentInteraction=null;
     }
 
     // Start is called before the first frame update

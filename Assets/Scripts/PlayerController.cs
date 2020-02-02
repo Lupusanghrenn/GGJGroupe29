@@ -14,12 +14,11 @@ public class PlayerController : MonoBehaviour
     private bool isOnEchelle = false;
     private GameObject currentInteraction;
 
+    private ItenInHandScript itemInHandHUD;
     public GameObject waterThrown;
     public bool isInWater;
     public bool isUnderWater;
     private GameObject water;
-    public bool hasBucket;
-    public bool bucketIsFull;
 
     public AudioClip piedBois;
     public AudioClip piedEau;
@@ -29,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private bool isOnWaterHole = false;
     private GameObject waterHole;
 
+    public string itemInHand;
 
     //ActionMap Player
     public void OnAction(InputValue value)
@@ -41,22 +41,21 @@ public class PlayerController : MonoBehaviour
             //switch entre actionmap ladder et player
         }
 
-
-        if (hasBucket && bucketIsFull)
+        if (currentInteraction.name == "FullBucket")
         {
             GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
-            bucketIsFull = false;
+            currentInteraction.name = "EmptyBucket";
         }
 
-        if (isInWater && hasBucket)
+        if (isInWater && currentInteraction.name == "EmptyBucket")
         {
             if(water.transform.position.y > 0)
             {
                 water.transform.position -= new Vector3(0, 1, 0);
-                bucketIsFull = true;
+                currentInteraction.name = "FullBucket";
 
-                if(water.transform.position.y < 0)
+                if (water.transform.position.y < 0)
                 {
                     water.transform.position = new Vector3(water.transform.position.x, 0, water.transform.position.z);
                 }
@@ -70,6 +69,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(waterHole);
                 waterHole = null;
+                currentInteraction.name = "None";
             }
         }
     }
@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour
         currentInteraction.GetComponent<AudioSource>().Play();
         //TODO musique
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+        currentInteraction.name = "None";
     }
 
     // Start is called before the first frame update
@@ -136,6 +137,8 @@ public class PlayerController : MonoBehaviour
         idJoueur = gameManager.nbJoueur;
         gameObject.name = "Player" + idJoueur;
 
+        itemInHandHUD = GameObject.Find("ItemInHandIcon").GetComponent<ItenInHandScript>();
+        Debug.Log(itemInHandHUD);
         water = GameObject.FindGameObjectWithTag("Water");
 
         Debug.Log(idJoueur);
@@ -164,6 +167,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(currentInteraction != null)
+        {
+            itemInHand = currentInteraction.name;
+            itemInHandHUD.UpdateItemInHand(itemInHand);
+        }
+
         animator.SetFloat("MoveVectorMagnitude", direction.magnitude);
         if (direction.magnitude > 0f)
         {
@@ -178,8 +187,7 @@ public class PlayerController : MonoBehaviour
                 rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
             }
             
-        }
-        
+        }        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -199,6 +207,25 @@ public class PlayerController : MonoBehaviour
                 currentInteraction = other.gameObject;
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
             }            
+        }
+
+        if (other.tag == "Bucket")
+        {
+            if(currentInteraction == null || currentInteraction.name != "FullBucket")
+            {
+                currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                currentInteraction.SetActive(false);
+                currentInteraction.name = "EmptyBucket";
+                Debug.Log(currentInteraction);
+            }
+        }
+
+        if (other.tag == "WaterBarrel" && currentInteraction != null && currentInteraction.name == "EmptyBucket")
+        {
+            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            currentInteraction.SetActive(false);
+            currentInteraction.name = "FullBucket";
+            Debug.Log(currentInteraction);
         }
 
         if (other.tag == "WoodBarrel")

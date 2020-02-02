@@ -15,6 +15,9 @@ TagManager:
   - BouletBarrel
   - WoodBarrel
   - WaterHole
+  - Bucket
+  - WaterBerrel
+  - WaterBarrel
   layers:
   - Default
   - TransparentFX

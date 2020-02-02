@@ -25,7 +25,8 @@ public class EnemyShip : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject canonBall = Instantiate(canonBallPrefab, this.transform.position, Quaternion.identity);
+        GameObject canonBall = Instantiate(canonBallPrefab, new Vector3(this.transform.position.x, this.transform.position.y + 10f, this.transform.position.z),
+                                                                        Quaternion.identity);
         Debug.Log("BoatShoot");
         StartCoroutine(CanonBallHit());
     }

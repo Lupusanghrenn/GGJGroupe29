@@ -226,6 +226,11 @@ public class PlayerController : MonoBehaviour
                 gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/MaterialPirate2");
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;
+            case 3:
+                transform.position += new Vector3(0, 0, 1);
+                gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/MaterialPirate3");
+                //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
+                break;
             default:
                 Debug.LogError("Plus de 2 joueurs");
                 break;

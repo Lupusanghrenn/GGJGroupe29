@@ -297,11 +297,9 @@ MonoBehaviour:
   jeterEau: {fileID: 8300000, guid: 820b13832da914442aea0cb8adf1e188, type: 3}
   recupererEau: {fileID: 8300000, guid: 2351dc7765ef8415aa08aa47a21f0448, type: 3}
   boireRhum: {fileID: 0}
-=======
   jeterEau: {fileID: 8300000, guid: 820b13832da914442aea0cb8adf1e188, type: 3}
   recupererEau: {fileID: 8300000, guid: 26b24c84475ec4fcabf9c2c4acb2d34f, type: 3}
   boireRhum: {fileID: 8300000, guid: e8ac4bfe6064c4b428eaedcada15f6fa, type: 3}
->>>>>>> Stashed changes
   drunk: {fileID: 0}
   audioPlayer: {fileID: 3752933772807548687, guid: 11c4dbafbe637d640b4bec4fd84ad37c,
     type: 3}

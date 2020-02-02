@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        currentLife -= water.transform.position.y * Time.deltaTime;
+        currentLife -= water.transform.position.y * Time.deltaTime * 1.5f;
         //Debug.Log(life);
         if (gameTimeLeft <= 0)
         {
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
             gameTimeLeft -= Time.deltaTime;
         }
 
-        int min = Mathf.RoundToInt(gameTimeLeft / 60 - 1);
+        int min = Mathf.CeilToInt(gameTimeLeft / 60 - 1);
         if (min <= 0)
         {
             min = 0;

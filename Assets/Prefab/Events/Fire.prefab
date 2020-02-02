@@ -78,8 +78,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   parent: 0
-  dot: 0.2
-  timeToPropagate: 10
+  dot: 0.4
+  timeToPropagate: 15
 --- !u!198 &3962862131544438737
 ParticleSystem:
   m_ObjectHideFlags: 0

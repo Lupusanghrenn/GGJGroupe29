@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WaterThrownScript : MonoBehaviour
 {
+    public SoundPlayer soundPlayer;
+    public AudioClip feuEteint;
+
     private void Start()
     {
         Destroy(this.gameObject, 1f);
@@ -21,6 +24,9 @@ public class WaterThrownScript : MonoBehaviour
             {
                 Destroy(other.transform.parent.gameObject);
             }
+            SoundPlayer sp = Instantiate(soundPlayer, other.gameObject.transform.position, Quaternion.identity);
+            sp.PlaySound(feuEteint, 1f);
         }
+
     }
 }

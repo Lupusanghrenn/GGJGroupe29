@@ -75,6 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f0e51501a7adb4099469889378eb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundPlayer: {fileID: 3752933772807548687, guid: 11c4dbafbe637d640b4bec4fd84ad37c,
+    type: 3}
+  feuEteint: {fileID: 8300000, guid: 4e0edb52d1a174f6696c51247e77b2ac, type: 3}
 --- !u!1 &2841702250125854283
 GameObject:
   m_ObjectHideFlags: 0

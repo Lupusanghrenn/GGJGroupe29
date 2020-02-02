@@ -131,6 +131,9 @@ public class PlayerController : MonoBehaviour
                                                                 Quaternion.Euler(-90, 0, 0), transform);
             Destroy(healingParticles.gameObject, 3f);
             isDrunk = true;
+
+            SoundPlayer soundPlayer = Instantiate(audioPlayer, transform.position, Quaternion.identity);
+            soundPlayer.PlaySound(drunk, 1f);
             drunkImage.enabled = true;
 
             Invoke("RemoveDrunkingEffect", drunkTime);

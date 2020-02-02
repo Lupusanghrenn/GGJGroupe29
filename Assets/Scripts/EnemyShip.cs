@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyShip : MonoBehaviour
 {
+    public SoundPlayer soundPlayer;
+    public AudioClip bouletCanon;
+
+    public GameObject canonBall;
+
     public GameObject canonBallPrefab;
 
     private GameObject water;
@@ -25,7 +30,7 @@ public class EnemyShip : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject canonBall = Instantiate(canonBallPrefab, new Vector3(this.transform.position.x, this.transform.position.y + 10f, this.transform.position.z),
+        canonBall = Instantiate(canonBallPrefab, new Vector3(this.transform.position.x, this.transform.position.y + 10f, this.transform.position.z),
                                                                         Quaternion.identity);
         Debug.Log("BoatShoot");
         StartCoroutine(CanonBallHit());
@@ -39,8 +44,11 @@ public class EnemyShip : MonoBehaviour
 
     IEnumerator CanonBallHit()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.9f);
         gameManager.currentLife -= 100f;
+
+        SoundPlayer sp = Instantiate(soundPlayer, canonBall.transform.position, Quaternion.identity);
+        sp.PlaySound(bouletCanon, 1f);
         // Spawn Hole
     }
 

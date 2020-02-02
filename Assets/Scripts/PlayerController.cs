@@ -29,16 +29,19 @@ public class PlayerController : MonoBehaviour
     private GameObject waterHole;
 
     public string itemInHand;
+    private Vector3 posToTP;
 
     //ActionMap Player
     public void OnAction(InputValue value)
     {
         if (isOnEchelle)
         {
-            GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
-            rb.useGravity = false;
-            animator.SetBool("Ladder",true);
+            //GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
+            //rb.useGravity = false;
+            //animator.SetBool("Ladder",true);
             //switch entre actionmap ladder et player
+            rb.MovePosition(posToTP);
+            isOnEchelle = false;
         }
 
         if (currentInteraction.name == "FullBucket")
@@ -195,7 +198,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Echelle")
         {
             isOnEchelle = true;
-
+            posToTP = other.gameObject.GetComponent<EchelleTP>().tpPos;
         }
 
         if (other.tag == "Canon")

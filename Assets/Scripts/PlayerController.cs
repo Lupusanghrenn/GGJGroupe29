@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody rb;
     public int idJoueur;
-    private bool isOnEchelle = false;
+    public bool isOnEchelle = false;
     private GameObject currentInteraction;
 
     private ItenInHandScript itemInHandHUD;

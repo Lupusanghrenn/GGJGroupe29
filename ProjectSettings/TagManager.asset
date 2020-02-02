@@ -20,6 +20,7 @@ TagManager:
   - WaterBarrel
   - CaleColliderDetection
   - EcoutilleColliderDetection
+  - RhumerieColliderDetection
   layers:
   - Default
   - TransparentFX

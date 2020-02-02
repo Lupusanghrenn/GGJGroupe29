@@ -26,12 +26,15 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audio;
 
-    public AudioClip prendreItem;
     public AudioClip piedBois;
     public AudioClip piedEau;
+
+    public AudioClip prendreItem;
     public AudioClip repairTrou;
     public AudioClip jeterEau;
     public AudioClip recupererEau;
+    public AudioClip boireRhum;
+    public AudioClip drunk;
 
 
     private bool isOnWaterHole = false;
@@ -43,6 +46,8 @@ public class PlayerController : MonoBehaviour
     public bool isInCale;
     public bool isAtEcoutille;
     public bool isDrunk=false;
+
+    public float drunkTime = 3;
 
     public Canvas canvasPause;
 
@@ -268,6 +273,11 @@ public class PlayerController : MonoBehaviour
         audio.Play();
     }
 
+    private void RemoveDrunkingEffect()
+    {
+        isDrunk = false;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Echelle")
@@ -327,6 +337,14 @@ public class PlayerController : MonoBehaviour
             PlayClip(prendreItem);
 
             Debug.Log(currentInteraction);
+        }
+
+        if (other.tag == "RhumerieColliderDetection")
+        {
+            CancelInvoke();
+            GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth / 2);
+            isDrunk = true;
+            Invoke("RemoveDrunkingEffect", drunkTime);
         }
 
         if (other.tag == "CaleColliderDetection")

@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public float maxSpeed;
+    public float waterSpeed;
+    public float underWaterSpeed;
+
     public float speed;
     private Vector3 direction;
     private GameManager gameManager;
@@ -139,6 +143,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed = maxSpeed;
         gameManager = FindObjectOfType<GameManager>();
         transform.position = gameManager.transform.position;
         animator = GetComponent<Animator>();
@@ -186,6 +191,15 @@ public class PlayerController : MonoBehaviour
         if(isUnderWater)
         {
             GetComponent<PlayerHealthManager>().TakeDamage(5 * Time.deltaTime);
+            speed = underWaterSpeed;
+        } 
+        else if(isInWater && !isUnderWater)
+        {
+            speed = waterSpeed;
+        }
+        else
+        {
+            speed = maxSpeed;
         }
 
         animator.SetFloat("MoveVectorMagnitude", direction.magnitude);

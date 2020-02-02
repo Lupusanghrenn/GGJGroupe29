@@ -108,6 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575cb6b975f139f4d813aadb29d923c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 50
+  waterSpeed: 30
+  underWaterSpeed: 15
   speed: 50
   idJoueur: 0
   waterThrown: {fileID: 2547274094781219036, guid: 90ca3a73375d6754d82950f60b833e3c,

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4575137635096305863}
   - component: {fileID: 376714869846458211}
   - component: {fileID: 1996471927921073584}
+  - component: {fileID: 4695553874957610016}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -187,6 +188,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.923832, y: 13.778154, z: 16.56298}
   m_Center: {x: -25.227621, y: 6.389077, z: -9.879099}
+--- !u!65 &4695553874957610016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63980762417028324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &432333010354053116
 GameObject:
   m_ObjectHideFlags: 0

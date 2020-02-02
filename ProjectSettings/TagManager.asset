@@ -18,6 +18,7 @@ TagManager:
   - Bucket
   - WaterBerrel
   - WaterBarrel
+  - CaleColliderDetection
   layers:
   - Default
   - TransparentFX

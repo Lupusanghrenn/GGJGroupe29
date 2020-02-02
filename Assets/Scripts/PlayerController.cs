@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public string itemInHand;
     private Vector3 posToTP;
 
+    public bool isInCale;
 
     //ActionMap Player
     public void OnAction(InputValue value)
@@ -50,6 +51,11 @@ public class PlayerController : MonoBehaviour
             GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
             currentInteraction.name = "EmptyBucket";
+
+            if(isInCale)
+            {
+                water.transform.position += new Vector3(0, 1, 0);
+            }
         }
 
         else if (isInWater && currentInteraction.name == "EmptyBucket")
@@ -179,8 +185,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("MoveVectorMagnitude", direction.magnitude);
         if (direction.magnitude > 0f)
-        {
-            
+        {     
             if (GetComponent<PlayerInput>().currentActionMap.name == "Player")
             {
                 rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
@@ -247,6 +252,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log(currentInteraction);
         }
 
+        if(other.tag == "CaleColliderDetection")
+        {
+            isInCale = true;
+        }
         if (other.tag == "WaterHole")
         {
             isOnWaterHole=true;
@@ -272,6 +281,12 @@ public class PlayerController : MonoBehaviour
         {
             isOnWaterHole = false;
         }
+
+        if (other.tag == "CaleColliderDetection")
+        {
+            isInCale = false;
+        }
+
     }
 
     public void OnCollisionEnter(Collision collision)

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float maxSpeed;
     public float waterSpeed;
     public float underWaterSpeed;
+
+    public Image drunkImage;
+
+    private bool canHeal = false;
 
     public float speed;
     private Vector3 direction;
@@ -59,7 +64,7 @@ public class PlayerController : MonoBehaviour
     //ActionMap Player
     public void OnAction(InputValue value)
     {
-        if (isOnEchelle)
+        if (isOnEchelle && currentInteraction.name != "FullBucket")
         {
             //GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
             //rb.useGravity = false;
@@ -114,6 +119,20 @@ public class PlayerController : MonoBehaviour
                 SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
                 sp.PlaySound(repairTrou, 1);
             }
+        }
+
+        else if(canHeal)
+        {
+            CancelInvoke();
+            GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth);
+
+            GameObject healingParticles = Instantiate(healingParticle, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z),
+                                                                Quaternion.Euler(-90, 0, 0), transform);
+            Destroy(healingParticles.gameObject, 3f);
+            isDrunk = true;
+            drunkImage.enabled = true;
+
+            Invoke("RemoveDrunkingEffect", drunkTime);
         }
     }
 
@@ -190,6 +209,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        drunkImage.enabled = false;
         canvasPause.enabled = false;
         audio = GetComponent<AudioSource>();
         speed = maxSpeed;
@@ -311,6 +331,7 @@ public class PlayerController : MonoBehaviour
 
     private void RemoveDrunkingEffect()
     {
+        drunkImage.enabled = false;
         isDrunk = false;
     }
 
@@ -387,14 +408,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "RhumerieColliderDetection")
         {
-            CancelInvoke();
-            GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth);
-
-            GameObject healingParticles = Instantiate(healingParticle, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z),
-                                                                Quaternion.Euler(-90, 0, 0), transform);
-            Destroy(healingParticles.gameObject, 3f);
-            isDrunk = true;
-            Invoke("RemoveDrunkingEffect", drunkTime);
+            canHeal = true;
         }
 
         if (other.tag == "CaleColliderDetection")
@@ -439,6 +453,11 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "CaleColliderDetection")
         {
             isInCale = false;
+        }
+
+        if (other.tag == "RhumerieColliderDetection")
+        {
+            canHeal = false;
         }
 
     }

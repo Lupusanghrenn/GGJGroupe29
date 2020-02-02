@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 30
-  waterSpeed: 30
-  underWaterSpeed: 15
+  waterSpeed: 20
+  underWaterSpeed: 12
   speed: 30
   idJoueur: 0
   isOnEchelle: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   posToTP: {x: 0, y: 0, z: 0}
   isInCale: 0
   isAtEcoutille: 0
+  isDrunk: 0
   canvasPause: {fileID: 3851786263045525144}
 --- !u!54 &8350406949367356162
 Rigidbody:

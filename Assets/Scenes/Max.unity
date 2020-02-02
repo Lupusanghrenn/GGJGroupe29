@@ -1453,6 +1453,10 @@ MonoBehaviour:
   gameTime: 0
   timerText: {fileID: 1157937804}
   lifeFill: {fileID: 404246876}
+  canvasLoss: {fileID: 0}
+  canvasWin: {fileID: 0}
+  sonWin: {fileID: 0}
+  sonLose: {fileID: 0}
   nbJoueur: 0
 --- !u!4 &1337411743
 Transform:
@@ -2086,6 +2090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d61a891f07b7742a6839b985dbed36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drunkTime: 3
 --- !u!65 &1783700380
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2097,8 +2102,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.42377952, y: 1, z: 0.8699274}
+  m_Center: {x: 0.18300635, y: 0, z: 0.06503632}
 --- !u!1 &1841345077
 GameObject:
   m_ObjectHideFlags: 0

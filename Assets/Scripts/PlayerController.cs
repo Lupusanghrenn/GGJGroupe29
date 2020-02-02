@@ -24,19 +24,25 @@ public class PlayerController : MonoBehaviour
     public bool isUnderWater;
     private GameObject water;
 
+    private AudioSource audio;
+
+    public AudioClip prendreItem;
     public AudioClip piedBois;
     public AudioClip piedEau;
     public AudioClip repairTrou;
-    public AudioClip moveEchelle;
+    public AudioClip jeterEau;
+    public AudioClip recupererEau;
+
 
     private bool isOnWaterHole = false;
     private GameObject waterHole;
 
     public string itemInHand;
-    private Vector3 posToTP;
+    public Vector3 posToTP;
 
     public bool isInCale;
     public bool isAtEcoutille;
+    public bool isDrunk=false;
 
     public Canvas canvasPause;
 
@@ -53,11 +59,13 @@ public class PlayerController : MonoBehaviour
             isOnEchelle = false;
         }
 
-        else if (currentInteraction.name == "FullBucket")
+        else if (currentInteraction != null && currentInteraction.name == "FullBucket")
         {
             GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
             currentInteraction.name = "EmptyBucket";
+
+            PlayClip(jeterEau);
 
             if(isInCale && !isAtEcoutille)
             {
@@ -71,6 +79,7 @@ public class PlayerController : MonoBehaviour
             {
                 water.transform.position -= new Vector3(0, 1, 0);
                 currentInteraction.name = "FullBucket";
+                PlayClip(recupererEau);
 
                 if (water.transform.position.y < 0)
                 {
@@ -87,6 +96,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(waterHole);
                 waterHole = null;
                 currentInteraction.name = "None";
+                PlayClip(repairTrou);
             }
         }
     }
@@ -100,6 +110,11 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(value.Get<Vector2>());
         var value = inputValue.Get<Vector2>();
+        if (isDrunk)
+        {
+            value.x = -value.x;
+            //value.y = -value.y;
+        }
         direction = new Vector3(value.x, 0, value.y);
     }
 
@@ -160,6 +175,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         canvasPause.enabled = false;
+        audio = GetComponent<AudioSource>();
         speed = maxSpeed;
         gameManager = FindObjectOfType<GameManager>();
         transform.position = gameManager.transform.position;
@@ -236,8 +252,15 @@ public class PlayerController : MonoBehaviour
             {
                 rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
             }
+
             
         }        
+    }
+
+    private void PlayClip(AudioClip clip)
+    {
+        audio.clip = clip;
+        audio.Play();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -255,6 +278,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(currentInteraction);
                 currentInteraction = other.gameObject;
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
+                PlayClip(prendreItem);
             }            
         }
 
@@ -265,6 +289,8 @@ public class PlayerController : MonoBehaviour
                 currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 currentInteraction.SetActive(false);
                 currentInteraction.name = "EmptyBucket";
+                PlayClip(prendreItem);
+
                 Debug.Log(currentInteraction);
             }
         }
@@ -274,6 +300,8 @@ public class PlayerController : MonoBehaviour
             currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             currentInteraction.SetActive(false);
             currentInteraction.name = "FullBucket";
+            PlayClip(recupererEau);
+
             Debug.Log(currentInteraction);
         }
 
@@ -282,6 +310,7 @@ public class PlayerController : MonoBehaviour
             currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             currentInteraction.SetActive(false);
             currentInteraction.name = "WoodPlank";
+            PlayClip(prendreItem);
             Debug.Log(currentInteraction);
         }
 
@@ -290,6 +319,8 @@ public class PlayerController : MonoBehaviour
             currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             currentInteraction.SetActive(false);
             currentInteraction.name = "CanonBall";
+            PlayClip(prendreItem);
+
             Debug.Log(currentInteraction);
         }
 
@@ -339,7 +370,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   
     public void OnCollisionEnter(Collision collision)
     {
         

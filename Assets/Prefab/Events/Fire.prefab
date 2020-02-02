@@ -78,7 +78,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   parent: 0
-  dot: 0.5
+  dot: 0.2
   timeToPropagate: 10
 --- !u!198 &3962862131544438737
 ParticleSystem:

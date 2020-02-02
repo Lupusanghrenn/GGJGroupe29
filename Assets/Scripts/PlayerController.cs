@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
             //PlayClip(jeterEau);
             SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(jeterEau);
+            sp.PlaySound(jeterEau, 1);
 
             if ((isInCale && !isAtEcoutille) || (isAtEcoutille && transform.right.z < 0.5f))
             {
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 currentInteraction.name = "FullBucket";
                 //PlayClip(recupererEau);
                 SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-                sp.PlaySound(recupererEau);
+                sp.PlaySound(recupererEau, 0.7f);
 
                 if (water.transform.position.y < 0)
                 {
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 currentInteraction.name = "None";
                 //PlayClip(repairTrou);
                 SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-                sp.PlaySound(repairTrou);
+                sp.PlaySound(repairTrou, 1);
             }
         }
     }
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         if (time >= 0.5f)
         {
             SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(piedBois);
+            sp.PlaySound(piedBois, 0.5f);
             time = 0;
         }
         //Debug.Log(value.Get<Vector2>());
@@ -318,7 +318,7 @@ public class PlayerController : MonoBehaviour
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
                 //PlayClip(prendreItem);
                 SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-                sp.PlaySound(prendreItem);
+                sp.PlaySound(prendreItem, 0.7f);
             }            
         }
 
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour
                 currentInteraction.name = "EmptyBucket";
                 //PlayClip(prendreItem);
                 SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-                sp.PlaySound(prendreItem);
+                sp.PlaySound(prendreItem, 0.7f);
 
                 Debug.Log(currentInteraction);
             }
@@ -344,7 +344,7 @@ public class PlayerController : MonoBehaviour
             currentInteraction.name = "FullBucket";
             //PlayClip(recupererEau);
             SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(recupererEau);
+            sp.PlaySound(recupererEau, 1f);
 
             Debug.Log(currentInteraction);
         }
@@ -356,7 +356,7 @@ public class PlayerController : MonoBehaviour
             currentInteraction.name = "WoodPlank";
             //PlayClip(prendreItem);
             SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(prendreItem);
+            sp.PlaySound(prendreItem, 0.7f);
             Debug.Log(currentInteraction);
         }
 
@@ -367,7 +367,7 @@ public class PlayerController : MonoBehaviour
             currentInteraction.name = "CanonBall";
             //PlayClip(prendreItem);
             SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(prendreItem);
+            sp.PlaySound(prendreItem, 0.7f);
 
             Debug.Log(currentInteraction);
         }

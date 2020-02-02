@@ -5,8 +5,9 @@ using UnityEngine;
 public class SoundPlayer : MonoBehaviour
 {
     private float time;
-    public void PlaySound(AudioClip audio)
+    public void PlaySound(AudioClip audio, float vol)
     {
+        GetComponent<AudioSource>().volume = vol;
         GetComponent<AudioSource>().PlayOneShot(audio);
     }
 

@@ -144,15 +144,13 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        GetComponent<AudioSource>().clip = sonWin;
-        GetComponent<AudioSource>().Play();
         canvasWin.gameObject.SetActive(true);
+        GetComponent<AudioSource>().PlayOneShot(sonWin);
     }
     
     public void Lose()
     {
-        GetComponent<AudioSource>().clip = sonLose;
-        GetComponent<AudioSource>().Play();
         canvasLoss.gameObject.SetActive(true);
+        GetComponent<AudioSource>().PlayOneShot(sonLose);
     }
 }

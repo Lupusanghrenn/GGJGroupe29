@@ -49,8 +49,6 @@ public class TiltBoatEvent : MonoBehaviour
 
         if (rotateDirection == RotateDirection.Right)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
             if (boatAngleX <= maxAngle)
             {
                 boat.transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
@@ -65,8 +63,6 @@ public class TiltBoatEvent : MonoBehaviour
 
         else if (rotateDirection == RotateDirection.Left)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
             if (boatAngleX >= -maxAngle)
             {
                 boat.transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
@@ -117,13 +113,13 @@ public class TiltBoatEvent : MonoBehaviour
             if (previousDirection == RotateDirection.Right)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
+                //player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
             }
 
             if (previousDirection == RotateDirection.Left)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
+                //player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
             }
         }
 
@@ -131,7 +127,7 @@ public class TiltBoatEvent : MonoBehaviour
             if (previousDirection == RotateDirection.Right)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
+                //player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.right * 0.05f);
                 if (Mathf.RoundToInt(boatAngleX) != 0)
                 {
                     boat.transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
@@ -146,7 +142,7 @@ public class TiltBoatEvent : MonoBehaviour
             if (previousDirection == RotateDirection.Left)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
+                //player.GetComponent<Rigidbody>().MovePosition(player.transform.position + Vector3.left * 0.05f);
                 if (Mathf.RoundToInt(boatAngleX) != 0)
                 {
                     boat.transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);

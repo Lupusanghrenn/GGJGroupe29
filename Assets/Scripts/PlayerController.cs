@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isInCale;
     public bool isAtEcoutille;
+    public bool isDrunk=false;
 
     //ActionMap Player
     public void OnAction(InputValue value)
@@ -107,6 +108,11 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(value.Get<Vector2>());
         var value = inputValue.Get<Vector2>();
+        if (isDrunk)
+        {
+            value.x = -value.x;
+            //value.y = -value.y;
+        }
         direction = new Vector3(value.x, 0, value.y);
     }
 

@@ -108,11 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575cb6b975f139f4d813aadb29d923c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 50
+  maxSpeed: 30
   waterSpeed: 30
   underWaterSpeed: 15
-  speed: 50
+  speed: 30
   idJoueur: 0
+  isOnEchelle: 0
   waterThrown: {fileID: 2547274094781219036, guid: 90ca3a73375d6754d82950f60b833e3c,
     type: 3}
   isInWater: 0
@@ -122,6 +123,7 @@ MonoBehaviour:
   repairTrou: {fileID: 8300000, guid: d98aaadeda4014cb3bcbc179e84e6522, type: 3}
   moveEchelle: {fileID: 8300000, guid: 49da72ce7d7ab443fa528365478b2db4, type: 3}
   itemInHand: 
+  posToTP: {x: 0, y: 0, z: 0}
   isInCale: 0
 --- !u!54 &8350406949367356162
 Rigidbody:

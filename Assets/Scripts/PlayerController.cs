@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private GameObject waterHole;
 
     public string itemInHand;
-    private Vector3 posToTP;
+    public Vector3 posToTP;
 
     public bool isInCale;
     public bool isAtEcoutille;
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             isOnEchelle = false;
         }
 
-        else if (currentInteraction.name == "FullBucket")
+        else if (currentInteraction != null && currentInteraction.name == "FullBucket")
         {
             GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);

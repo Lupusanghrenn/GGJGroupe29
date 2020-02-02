@@ -378,8 +378,8 @@ MonoBehaviour:
   repairTrou: {fileID: 8300000, guid: d98aaadeda4014cb3bcbc179e84e6522, type: 3}
   jeterEau: {fileID: 8300000, guid: 820b13832da914442aea0cb8adf1e188, type: 3}
   recupererEau: {fileID: 8300000, guid: 2351dc7765ef8415aa08aa47a21f0448, type: 3}
-  boireRhum: {fileID: 0}
-  drunk: {fileID: 0}
+  boireRhum: {fileID: 8300000, guid: e8ac4bfe6064c4b428eaedcada15f6fa, type: 3}
+  drunk: {fileID: 8300000, guid: e8ac4bfe6064c4b428eaedcada15f6fa, type: 3}
   audioPlayer: {fileID: 3752933772807548687, guid: 11c4dbafbe637d640b4bec4fd84ad37c,
     type: 3}
   healingParticle: {fileID: 208992744994334428, guid: 97b368bba12193d4283aa3a74d88afb2,
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  spawnPoints: []
+  spawnPoints: {fileID: 0}
   timeToRespawn: 4
   healthBar: {fileID: 4937109761450024906}
   respawnCircle: {fileID: 8698919796733616781}
@@ -1201,12 +1201,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a, type: 3}
---- !u!224 &4348601715409214510 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5975183067638907641}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4937109761450024906 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1614609169159839027, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
@@ -1219,6 +1213,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac2c70686e1d8848a2970ba0bcf325c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &4348601715409214510 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7977365259131625175, guid: 172f8dd3ca1725d42ade9aefd1ddaa7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5975183067638907641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6107807420799565693
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public string itemInHand;
     private Vector3 posToTP;
 
+
     //ActionMap Player
     public void OnAction(InputValue value)
     {
@@ -44,14 +45,14 @@ public class PlayerController : MonoBehaviour
             isOnEchelle = false;
         }
 
-        if (currentInteraction.name == "FullBucket")
+        else if (currentInteraction.name == "FullBucket")
         {
             GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
             currentInteraction.name = "EmptyBucket";
         }
 
-        if (isInWater && currentInteraction.name == "EmptyBucket")
+        else if (isInWater && currentInteraction.name == "EmptyBucket")
         {
             if(water.transform.position.y > 0)
             {
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (isOnWaterHole)
+        else if (isOnWaterHole)
         {
             if(currentInteraction!=null && currentInteraction.name == "WoodPlank")
             {
@@ -140,7 +141,7 @@ public class PlayerController : MonoBehaviour
         idJoueur = gameManager.nbJoueur;
         gameObject.name = "Player" + idJoueur;
 
-        itemInHandHUD = GameObject.Find("ItemInHandIcon").GetComponent<ItenInHandScript>();
+        itemInHandHUD = GetComponentInChildren<ItenInHandScript>();
         Debug.Log(itemInHandHUD);
         water = GameObject.FindGameObjectWithTag("Water");
 
@@ -203,7 +204,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Canon")
         {
-            Debug.Log(currentInteraction.name);
             if (currentInteraction.name == "CanonBall")
             {
                 Destroy(currentInteraction);

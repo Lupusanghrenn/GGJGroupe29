@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     public Canvas canvasPause;
 
+    public float time;
+
     //ActionMap Player
     public void OnAction(InputValue value)
     {
@@ -122,6 +124,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputValue inputValue)
     {
+        time += Time.deltaTime;
+        if (time >= 0.5f)
+        {
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(piedBois);
+            time = 0;
+        }
         //Debug.Log(value.Get<Vector2>());
         var value = inputValue.Get<Vector2>();
         if (isDrunk)
@@ -228,6 +237,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         if(!isInCale && transform.position.y >= 8.2f)
         {
             transform.position = new Vector3(transform.position.x, 8.2f, transform.position.z);
@@ -361,6 +371,10 @@ public class PlayerController : MonoBehaviour
         {
             CancelInvoke();
             GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth / 2);
+
+            GameObject healingParticles = Instantiate(healingParticle, new Vector3(transform.position.x, transform.position.y - 1.5f, transform.position.z),
+                                                                Quaternion.identity, transform);
+            Destroy(healingParticles.gameObject, 4f);
             isDrunk = true;
             Invoke("RemoveDrunkingEffect", drunkTime);
         }

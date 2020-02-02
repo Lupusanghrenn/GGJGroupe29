@@ -361,6 +361,10 @@ public class PlayerController : MonoBehaviour
         {
             CancelInvoke();
             GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth / 2);
+
+            GameObject healingParticles = Instantiate(healingParticle, new Vector3(transform.position.x, transform.position.y - 1.5f, transform.position.z),
+                                                                Quaternion.identity, transform);
+            Destroy(healingParticles.gameObject, 4f);
             isDrunk = true;
             Invoke("RemoveDrunkingEffect", drunkTime);
         }

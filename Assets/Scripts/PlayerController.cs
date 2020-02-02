@@ -124,13 +124,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputValue inputValue)
     {
-        time += Time.deltaTime;
-        if (time >= 0.5f)
-        {
-            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(piedBois, 0.5f);
-            time = 0;
-        }
         //Debug.Log(value.Get<Vector2>());
         var value = inputValue.Get<Vector2>();
         if (isDrunk)
@@ -243,6 +236,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        if (animator.GetFloat("MoveVectorMagnitude") >= 0.1f && time >= 0.3f)
+        {
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(piedBois, 0.5f);
+            time = 0;
+        }
+
         if(!isInCale && transform.position.y >= 8.2f)
         {
             transform.position = new Vector3(transform.position.x, 8.2f, transform.position.z);

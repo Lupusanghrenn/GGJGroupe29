@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public Image lifeFill;
     public Canvas canvasLoss;
     public Canvas canvasWin;
+    public AudioClip sonWin;
+    public AudioClip sonLose;
 
     private float timeToWait;
     private float timeElapsed;

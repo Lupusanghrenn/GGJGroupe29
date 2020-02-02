@@ -10,8 +10,16 @@ public class ItenInHandScript : MonoBehaviour
     public Sprite canonBallSprite;
     public Sprite plankSprite;
 
+    private void Start()
+    {
+        transform.GetChild(0).GetComponent<Image>().sprite = null;
+        transform.GetChild(0).GetComponent<Image>().enabled = false;
+    }
     public void UpdateItemInHand(string itemInHand)
     {
+        if(itemInHand != "None")
+            transform.GetChild(0).GetComponent<Image>().enabled = true;
+
         if (itemInHand == "EmptyBucket")
             transform.GetChild(0).GetComponent<Image>().sprite = bucketEmptySprite;
         if (itemInHand == "FullBucket")
@@ -21,7 +29,10 @@ public class ItenInHandScript : MonoBehaviour
         if (itemInHand == "CanonBall")
             transform.GetChild(0).GetComponent<Image>().sprite = canonBallSprite;
         if (itemInHand == "None")
+        {
             transform.GetChild(0).GetComponent<Image>().sprite = null;
+            transform.GetChild(0).GetComponent<Image>().enabled = false;
+        }
     }
 
     private void Update()

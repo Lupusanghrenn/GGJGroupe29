@@ -294,10 +294,12 @@ MonoBehaviour:
   piedEau: {fileID: 8300000, guid: 3af26fb98833f49799229e9cc3b12c84, type: 3}
   prendreItem: {fileID: 8300000, guid: 2351dc7765ef8415aa08aa47a21f0448, type: 3}
   repairTrou: {fileID: 8300000, guid: d98aaadeda4014cb3bcbc179e84e6522, type: 3}
-  jeterEau: {fileID: 8300000, guid: 2351dc7765ef8415aa08aa47a21f0448, type: 3}
+  jeterEau: {fileID: 8300000, guid: d5624ce2c8bfb4b0690943c9e66e1d51, type: 3}
   recupererEau: {fileID: 8300000, guid: 2351dc7765ef8415aa08aa47a21f0448, type: 3}
   boireRhum: {fileID: 0}
   drunk: {fileID: 0}
+  audioPlayer: {fileID: 3752933772807548687, guid: 11c4dbafbe637d640b4bec4fd84ad37c,
+    type: 3}
   itemInHand: 
   posToTP: {x: 0, y: 0, z: 0}
   isInCale: 0

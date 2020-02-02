@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
+    private float time;
     public void PlaySound(AudioClip audio)
     {
         GetComponent<AudioSource>().PlayOneShot(audio);
+    }
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if (time >= 10f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

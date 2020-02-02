@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip boireRhum;
     public AudioClip drunk;
 
+    public SoundPlayer audioPlayer;
+
 
     private bool isOnWaterHole = false;
     private GameObject waterHole;
@@ -70,9 +72,11 @@ public class PlayerController : MonoBehaviour
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
             currentInteraction.name = "EmptyBucket";
 
-            PlayClip(jeterEau);
+            //PlayClip(jeterEau);
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(jeterEau);
 
-            if((isInCale && !isAtEcoutille) || (isAtEcoutille && transform.right.z < 0.5f))
+            if ((isInCale && !isAtEcoutille) || (isAtEcoutille && transform.right.z < 0.5f))
             {
                 water.transform.position += new Vector3(0, 1, 0);
             }
@@ -84,7 +88,9 @@ public class PlayerController : MonoBehaviour
             {
                 water.transform.position -= new Vector3(0, 1, 0);
                 currentInteraction.name = "FullBucket";
-                PlayClip(recupererEau);
+                //PlayClip(recupererEau);
+                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                sp.PlaySound(recupererEau);
 
                 if (water.transform.position.y < 0)
                 {
@@ -101,7 +107,9 @@ public class PlayerController : MonoBehaviour
                 Destroy(waterHole);
                 waterHole = null;
                 currentInteraction.name = "None";
-                PlayClip(repairTrou);
+                //PlayClip(repairTrou);
+                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                sp.PlaySound(repairTrou);
             }
         }
     }
@@ -169,7 +177,7 @@ public class PlayerController : MonoBehaviour
         GameObject boulet = Resources.Load<GameObject>("Prefabs/FriendlyCanonBall");
         
         GameObject go = Instantiate(boulet, currentInteraction.transform.position + (currentInteraction.transform.forward * -2), Quaternion.Euler(currentInteraction.transform.rotation.eulerAngles + new Vector3(0, 180, 0)), null);
-        
+
         currentInteraction.GetComponent<AudioSource>().Play();
         //TODO musique
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
@@ -292,7 +300,9 @@ public class PlayerController : MonoBehaviour
                 Destroy(currentInteraction);
                 currentInteraction = other.gameObject;
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
-                PlayClip(prendreItem);
+                //PlayClip(prendreItem);
+                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                sp.PlaySound(prendreItem);
             }            
         }
 
@@ -303,7 +313,9 @@ public class PlayerController : MonoBehaviour
                 currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 currentInteraction.SetActive(false);
                 currentInteraction.name = "EmptyBucket";
-                PlayClip(prendreItem);
+                //PlayClip(prendreItem);
+                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                sp.PlaySound(prendreItem);
 
                 Debug.Log(currentInteraction);
             }
@@ -314,7 +326,9 @@ public class PlayerController : MonoBehaviour
             currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             currentInteraction.SetActive(false);
             currentInteraction.name = "FullBucket";
-            PlayClip(recupererEau);
+            //PlayClip(recupererEau);
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(recupererEau);
 
             Debug.Log(currentInteraction);
         }
@@ -324,7 +338,9 @@ public class PlayerController : MonoBehaviour
             currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             currentInteraction.SetActive(false);
             currentInteraction.name = "WoodPlank";
-            PlayClip(prendreItem);
+            //PlayClip(prendreItem);
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(prendreItem);
             Debug.Log(currentInteraction);
         }
 
@@ -333,7 +349,9 @@ public class PlayerController : MonoBehaviour
             currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             currentInteraction.SetActive(false);
             currentInteraction.name = "CanonBall";
-            PlayClip(prendreItem);
+            //PlayClip(prendreItem);
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(prendreItem);
 
             Debug.Log(currentInteraction);
         }

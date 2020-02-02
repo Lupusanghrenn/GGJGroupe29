@@ -77,7 +77,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
-  dot: 1
+  parent: 0
+  dot: 0.5
   timeToPropagate: 10
 --- !u!198 &3962862131544438737
 ParticleSystem:
@@ -4951,7 +4952,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.80211496
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

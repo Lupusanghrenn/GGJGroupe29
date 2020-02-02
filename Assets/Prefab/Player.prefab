@@ -281,10 +281,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575cb6b975f139f4d813aadb29d923c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   maxSpeed: 30
   waterSpeed: 20
   underWaterSpeed: 12
   speed: 30
+=======
+  maxSpeed: 45
+  waterSpeed: 30
+  underWaterSpeed: 15
+  speed: 45
+>>>>>>> Stashed changes
   idJoueur: 0
   isOnEchelle: 0
   waterThrown: {fileID: 2547274094781219036, guid: 90ca3a73375d6754d82950f60b833e3c,
@@ -302,7 +309,10 @@ MonoBehaviour:
   isInCale: 0
   isAtEcoutille: 0
   isDrunk: 0
+<<<<<<< Updated upstream
   canvasPause: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!54 &8350406949367356162
 Rigidbody:
   m_ObjectHideFlags: 0

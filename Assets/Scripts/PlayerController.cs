@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     public bool isInCale;
     public bool isAtEcoutille;
 
+    public Canvas canvasPause;
+
     //ActionMap Player
     public void OnAction(InputValue value)
     {
@@ -109,8 +111,21 @@ public class PlayerController : MonoBehaviour
             GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
             animator.SetBool("Ladder",false);
             rb.useGravity = true;
-
         }
+    }
+
+    public void OnPause(InputValue value)
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
+        canvasPause.enabled = !canvasPause.enabled;
+
     }
 
     public void OnMoveLadder(InputValue inputValue)
@@ -144,6 +159,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvasPause.enabled = false;
         speed = maxSpeed;
         gameManager = FindObjectOfType<GameManager>();
         transform.position = gameManager.transform.position;

@@ -191,7 +191,6 @@ public class PlayerController : MonoBehaviour
         gameObject.name = "Player" + idJoueur;
 
         itemInHandHUD = GetComponentInChildren<ItenInHandScript>();
-        Debug.Log(itemInHandHUD);
         water = GameObject.FindGameObjectWithTag("Water");
 
         Debug.Log(idJoueur);

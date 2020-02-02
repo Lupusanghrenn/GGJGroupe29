@@ -298,6 +298,8 @@ MonoBehaviour:
   recupererEau: {fileID: 8300000, guid: 2351dc7765ef8415aa08aa47a21f0448, type: 3}
   boireRhum: {fileID: 0}
   drunk: {fileID: 0}
+  healingParticle: {fileID: 208992744994334428, guid: 97b368bba12193d4283aa3a74d88afb2,
+    type: 3}
   itemInHand: 
   posToTP: {x: 0, y: 0, z: 0}
   isInCale: 0

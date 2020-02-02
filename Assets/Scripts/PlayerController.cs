@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip boireRhum;
     public AudioClip drunk;
 
+    public GameObject healingParticle;
 
     private bool isOnWaterHole = false;
     private GameObject waterHole;
@@ -237,7 +238,7 @@ public class PlayerController : MonoBehaviour
 
         if(isUnderWater)
         {
-            GetComponent<PlayerHealthManager>().TakeDamage(5 * Time.deltaTime);
+            GetComponent<PlayerHealthManager>().TakeDamage(3 * Time.deltaTime);
             speed = underWaterSpeed;
         } 
         else if(isInWater && !isUnderWater)

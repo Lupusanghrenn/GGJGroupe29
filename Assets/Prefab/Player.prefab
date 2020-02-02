@@ -310,7 +310,7 @@ MonoBehaviour:
   isInCale: 0
   isAtEcoutille: 0
   isDrunk: 0
-  drunkTime: 3
+  drunkTime: 10
   canvasPause: {fileID: 2721550341015374871}
 --- !u!54 &8350406949367356162
 Rigidbody:

@@ -183,6 +183,11 @@ public class PlayerController : MonoBehaviour
             itemInHandHUD.UpdateItemInHand(itemInHand);
         }
 
+        if(isUnderWater)
+        {
+            GetComponent<PlayerHealthManager>().TakeDamage(5 * Time.deltaTime);
+        }
+
         animator.SetFloat("MoveVectorMagnitude", direction.magnitude);
         if (direction.magnitude > 0f)
         {     

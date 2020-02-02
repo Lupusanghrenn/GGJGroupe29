@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
             nbSpawn++;
 
             int rdmEventPool = Random.Range(0, 101);
-            if (rdmEventPool < 65) //événement probable
+            if (rdmEventPool < 50) //événement probable
             {
                 int rdmEvent = Random.Range(0, eventsProbable.Count);
 

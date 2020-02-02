@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public string itemInHand;
     private Vector3 posToTP;
 
+    private bool actionTaken = false;
+
     //ActionMap Player
     public void OnAction(InputValue value)
     {
@@ -44,14 +46,15 @@ public class PlayerController : MonoBehaviour
             isOnEchelle = false;
         }
 
-        if (currentInteraction.name == "FullBucket")
+        if (currentInteraction.name == "FullBucket" && !actionTaken)
         {
             GameObject waterFromBucket = Instantiate(waterThrown, transform.position, Quaternion.Euler(transform.eulerAngles));
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
             currentInteraction.name = "EmptyBucket";
+            actionTaken = true;
         }
 
-        if (isInWater && currentInteraction.name == "EmptyBucket")
+        if (isInWater && currentInteraction.name == "EmptyBucket" && !actionTaken)
         {
             if(water.transform.position.y > 0)
             {
@@ -75,6 +78,7 @@ public class PlayerController : MonoBehaviour
                 currentInteraction.name = "None";
             }
         }
+        actionTaken = true;
     }
 
     public void OnRelease(InputValue value)
@@ -203,7 +207,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Canon")
         {
-            Debug.Log(currentInteraction.name);
             if (currentInteraction.name == "CanonBall")
             {
                 Destroy(currentInteraction);

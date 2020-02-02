@@ -41,8 +41,8 @@ Transform:
   - {fileID: 6410514169157902435}
   - {fileID: 5997001694498695947}
   - {fileID: 8963690159688666138}
-  - {fileID: 4983937175119587780}
   - {fileID: 2303965626234207529}
+  - {fileID: 5901873839183844695}
   - {fileID: 7533303685069871423}
   - {fileID: 3156564027259917039}
   - {fileID: 1469776604745173236}
@@ -53,6 +53,7 @@ Transform:
   - {fileID: 7529767700992527432}
   - {fileID: 508464691293121629}
   - {fileID: 4569623014172604764}
+  - {fileID: 3792756133616026905}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -80,8 +81,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0800018, y: 4.68363, z: 30.175}
-  m_Center: {x: -32.85, y: 1.7985315, z: 1.479723}
+  m_Size: {x: 2.0800018, y: 12.818111, z: 30.175}
+  m_Center: {x: -32.85, y: 5.8657722, z: 1.479723}
 --- !u!65 &7807207159381073794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -672,7 +673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3942927806069321463}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7632992868956192628
 BoxCollider:

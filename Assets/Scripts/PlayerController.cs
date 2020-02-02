@@ -86,7 +86,8 @@ public class PlayerController : MonoBehaviour
 
             if ((isInCale && !isAtEcoutille) || (isAtEcoutille && transform.right.z < 0.5f))
             {
-                water.transform.position += new Vector3(0, 1, 0);
+                if(water.transform.position.y < 13)
+                    water.transform.position += new Vector3(0, 1, 0);
             }
         }
 

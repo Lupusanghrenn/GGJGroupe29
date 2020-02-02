@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public float maxLife; //vie du bateau
 
+    public GameObject water;
+
     public float currentLife;
     private GameObject boat;
     public List<GameObject> eventsProbable;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        water = GameObject.Find("WaterPrefab");
         canvasWin.gameObject.SetActive(false);
         canvasLoss.gameObject.SetActive(false);
         currentLife = maxLife;
@@ -44,6 +47,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        currentLife -= water.transform.position.y * Time.deltaTime;
         //Debug.Log(life);
         if (gameTimeLeft <= 0)
         {

@@ -18,7 +18,7 @@ public class ItenInHandScript : MonoBehaviour
     public void UpdateItemInHand(string itemInHand)
     {
         if(itemInHand != "None")
-            transform.GetChild(0).GetComponent<Image>().enabled = true;
+            transform.Find("ItemImage").GetComponent<Image>().enabled = true;
 
         if (itemInHand == "EmptyBucket")
             transform.GetChild(0).GetComponent<Image>().sprite = bucketEmptySprite;

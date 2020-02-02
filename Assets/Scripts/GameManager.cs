@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public Canvas canvasLoss;
     public Canvas canvasWin;
     public AudioClip sonWin;
-    public AudioClip sonLose;
+    public AudioClip sonLose;   
 
     private float timeToWait;
     private float timeElapsed;
@@ -144,11 +144,15 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        GetComponent<AudioSource>().clip = sonWin;
+        GetComponent<AudioSource>().Play();
         canvasWin.gameObject.SetActive(true);
     }
     
     public void Lose()
     {
+        GetComponent<AudioSource>().clip = sonLose;
+        GetComponent<AudioSource>().Play();
         canvasLoss.gameObject.SetActive(true);
     }
 }

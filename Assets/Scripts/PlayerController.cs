@@ -382,7 +382,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "RhumerieColliderDetection")
         {
             CancelInvoke();
-            GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth / 2);
+            GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth);
 
             GameObject healingParticles = Instantiate(healingParticle, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z),
                                                                 Quaternion.Euler(-90, 0, 0), transform);

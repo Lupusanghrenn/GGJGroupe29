@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3e954eff121e44290fe6bcdc078fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bucketEmptySprite: {fileID: 21300000, guid: dec9c78c061afd44183ef6a27a31d63f, type: 3}
-  bucketFullSprite: {fileID: 21300000, guid: f958f057101a07e4fa79c10df37294d1, type: 3}
+  bucketEmptySprite: {fileID: 21300000, guid: ec17f6a38f4d08248b34b88e08b0e7f9, type: 3}
+  bucketFullSprite: {fileID: 21300000, guid: 18878c5b89a93204a834b5879e14a72a, type: 3}
   canonBallSprite: {fileID: 21300000, guid: ef5406b54e420aa418c036503249d07b, type: 3}
   plankSprite: {fileID: 21300000, guid: 90eb08686d4d8d74d981a12fa83ca868, type: 3}

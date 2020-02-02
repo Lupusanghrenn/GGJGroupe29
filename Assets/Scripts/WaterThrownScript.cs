@@ -13,7 +13,14 @@ public class WaterThrownScript : MonoBehaviour
     {
         if (other.tag == "Fire")
         {
-            Destroy(other.gameObject);
+            if (other.gameObject.name.Contains("Fire"))
+            {
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                Destroy(other.transform.parent.gameObject);
+            }
         }
     }
 }

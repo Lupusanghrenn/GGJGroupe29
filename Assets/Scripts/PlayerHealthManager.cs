@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
     public float maxHealth;
-    public List<Transform> spawnPoints;
+    public Transform spawnPoints;
     public float timeToRespawn;
     private float currentHealth;
     public PlayerHealthBar healthBar;
@@ -16,7 +16,7 @@ public class PlayerHealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnPoints.Add(GameObject.Find("PlayerSpawnPoint").transform);
+        spawnPoints = GameObject.Find("PlayerSpawnPoint").transform;
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         respawnCircle.gameObject.SetActive(false);
@@ -59,11 +59,11 @@ public class PlayerHealthManager : MonoBehaviour
 
         respawnCircle.Reset();
         respawnCircle.gameObject.SetActive(false);
-        int rdm = Random.Range(0, spawnPoints.Count);
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         GetComponent<PlayerController>().enabled = true;
-        transform.position = spawnPoints[rdm].position;
+        transform.position = spawnPoints.position;
+        Debug.Log("aaaaaa");
         animator.SetBool("Dead", false);
     }
 }

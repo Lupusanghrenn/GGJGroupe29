@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 posToTP;
 
     public bool isInCale;
+    public bool isAtEcoutille;
 
     //ActionMap Player
     public void OnAction(InputValue value)
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
             waterFromBucket.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
             currentInteraction.name = "EmptyBucket";
 
-            if(isInCale)
+            if(isInCale && !isAtEcoutille)
             {
                 water.transform.position += new Vector3(0, 1, 0);
             }
@@ -182,6 +183,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isInCale && transform.position.y >= 8.2f)
+        {
+            transform.position = new Vector3(transform.position.x, 8.2f, transform.position.z);
+        }
+
         if(currentInteraction != null)
         {
             itemInHand = currentInteraction.name;
@@ -271,9 +277,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log(currentInteraction);
         }
 
-        if(other.tag == "CaleColliderDetection")
+        if (other.tag == "CaleColliderDetection")
         {
             isInCale = true;
+        }
+        if (other.tag == "EcoutilleColliderDetection")
+        {
+            isAtEcoutille = true;
         }
         if (other.tag == "WaterHole")
         {
@@ -301,6 +311,11 @@ public class PlayerController : MonoBehaviour
             isOnWaterHole = false;
         }
 
+        if (other.tag == "EcoutilleColliderDetection")
+        {
+            isAtEcoutille = false;
+        }
+
         if (other.tag == "CaleColliderDetection")
         {
             isInCale = false;
@@ -308,6 +323,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+   
     public void OnCollisionEnter(Collision collision)
     {
         

@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 934644992}
   m_Layer: 0
   m_Name: EcoutilleCollisionDetection
-  m_TagString: CaleColliderDetection
+  m_TagString: EcoutilleColliderDetection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

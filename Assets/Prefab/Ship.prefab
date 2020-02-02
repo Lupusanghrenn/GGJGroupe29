@@ -1281,6 +1281,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5935973376047733920, guid: 948c6990d874ea44d92c265a3fa2d4b5,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5282876915247479997, guid: 045670d8224e0fc49817b7a7ff976d54,
+        type: 3}
     - target: {fileID: 6669592340043991636, guid: 948c6990d874ea44d92c265a3fa2d4b5,
         type: 3}
       propertyPath: m_LocalPosition.x

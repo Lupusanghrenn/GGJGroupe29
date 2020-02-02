@@ -21,7 +21,7 @@ public class UIFloatingText : MonoBehaviour
     void Update()
     {
         timeActivate += Time.deltaTime;
-        if (timeActivate >= 10)
+        if (timeActivate >= 20)
         {
             if (displayWarning)
             {

@@ -7,6 +7,7 @@ public class Fire : MonoBehaviour
     public List<Transform> spawns;
     public GameObject firePrefab;
     public LayerMask layer;
+    public bool parent;
 
     private GameObject boat;
 
@@ -30,7 +31,7 @@ public class Fire : MonoBehaviour
         if (spawns.Count > 0)
         {
             int rdm = Random.Range(0, spawns.Count);
-            GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity, transform);
+            GameObject spawnedFire = Instantiate(firePrefab, spawns[rdm].position, Quaternion.identity, boat.transform);
             spawnedFire.transform.Find("Canvas").GetChild(0).GetComponent<UIFloatingText>().displayWarning = false;
             spawnedFire.transform.localScale = transform.localScale;
         }

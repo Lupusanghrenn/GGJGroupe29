@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
             PlayClip(jeterEau);
 
-            if(isInCale && !isAtEcoutille)
+            if((isInCale && !isAtEcoutille) || (isAtEcoutille && transform.right.z < 0.5f))
             {
                 water.transform.position += new Vector3(0, 1, 0);
             }
@@ -220,7 +220,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 8.2f, transform.position.z);
         }
 
-        if(currentInteraction != null)
+        if(isInCale && transform.position.y >= 6.25f)
+        {
+            transform.position = new Vector3(transform.position.x, 6.25f, transform.position.z);
+        }
+
+        if (currentInteraction != null)
         {
             itemInHand = currentInteraction.name;
             itemInHandHUD.UpdateItemInHand(itemInHand);

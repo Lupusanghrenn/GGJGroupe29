@@ -227,6 +227,12 @@ public class PlayerController : MonoBehaviour
                 gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(0, 255, 0);
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;
+            case 4:
+                transform.position += new Vector3(0, 0, 1);
+                gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/MaterialPirate4");
+                gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 0);
+                //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
+                break;
             default:
                 Debug.LogError("Plus de 2 joueurs");
                 break;

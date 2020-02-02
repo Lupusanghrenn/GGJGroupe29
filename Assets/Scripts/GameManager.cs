@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public Canvas canvasLoss;
     public Canvas canvasWin;
     public AudioClip sonWin;
-    public AudioClip sonLose;   
+    public AudioClip sonLose;
+    private bool done = false;
 
     private float timeToWait;
     private float timeElapsed;
@@ -66,7 +67,12 @@ public class GameManager : MonoBehaviour
 
         if (gameTimeLeft <= 0)
         {
-            Win();
+            if (!done)
+            {
+
+                Win();
+                done = true;
+            }
         }
 
 
@@ -135,7 +141,11 @@ public class GameManager : MonoBehaviour
 
         if (currentLife <= 0)
         {
-            Lose();
+            if (!done)
+            {
+                Lose();
+                done = true;
+            }
         }
         //update de l'affichage de la vie
         //Debug.Log(currentLife + ", " + maxLife);
@@ -144,13 +154,17 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        Time.timeScale = 0;
         canvasWin.gameObject.SetActive(true);
+        GetComponent<AudioSource>().clip = null;
         GetComponent<AudioSource>().PlayOneShot(sonWin);
     }
     
     public void Lose()
     {
+        Time.timeScale = 0;
         canvasLoss.gameObject.SetActive(true);
+        GetComponent<AudioSource>().clip = null;
         GetComponent<AudioSource>().PlayOneShot(sonLose);
     }
 }

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public Text timerText;
     public Image lifeFill;
+    public Canvas canvasLoss;
+    public Canvas canvasWin;
 
     private float timeToWait;
     private float timeElapsed;
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvasWin.gameObject.SetActive(false);
+        canvasLoss.gameObject.SetActive(false);
         currentLife = maxLife;
         gameTimeLeft = gameTime;
         boat = GameObject.FindGameObjectWithTag("Boat");
@@ -56,6 +60,11 @@ public class GameManager : MonoBehaviour
         if (sec <= 0)
         {
             sec = 0;
+        }
+
+        if (gameTimeLeft <= 0)
+        {
+            Win();
         }
 
 
@@ -121,8 +130,23 @@ public class GameManager : MonoBehaviour
             timeToWait = Random.Range(baseTimeMin, baseTimeMax);
             timeElapsed = 0;
         }
+
+        if (currentLife <= 0)
+        {
+            Lose();
+        }
         //update de l'affichage de la vie
         //Debug.Log(currentLife + ", " + maxLife);
         lifeFill.fillAmount = currentLife / maxLife;
+    }
+
+    public void Win()
+    {
+        canvasWin.gameObject.SetActive(true);
+    }
+    
+    public void Lose()
+    {
+        canvasLoss.gameObject.SetActive(true);
     }
 }

@@ -678,6 +678,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMenuGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 7916655377812927644, guid: a8ae7e3b7de58cc4ca4bcd116dedf9c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9204346984153444031, guid: a8ae7e3b7de58cc4ca4bcd116dedf9c4,
         type: 3}
       propertyPath: m_FirstSelected

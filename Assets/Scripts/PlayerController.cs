@@ -258,8 +258,12 @@ public class PlayerController : MonoBehaviour
             itemInHand = currentInteraction.name;
             itemInHandHUD.UpdateItemInHand(itemInHand);
         }
+        if(currentInteraction == null)
+        {
+            itemInHandHUD.UpdateItemInHand("None");
+        }
 
-        if(isUnderWater)
+        if (isUnderWater)
         {
             GetComponent<PlayerHealthManager>().TakeDamage(3 * Time.deltaTime);
             speed = underWaterSpeed;
@@ -377,9 +381,9 @@ public class PlayerController : MonoBehaviour
             CancelInvoke();
             GetComponent<PlayerHealthManager>().Heal(GetComponent<PlayerHealthManager>().maxHealth / 2);
 
-            GameObject healingParticles = Instantiate(healingParticle, new Vector3(transform.position.x, transform.position.y - 1.5f, transform.position.z),
-                                                                Quaternion.identity, transform);
-            Destroy(healingParticles.gameObject, 4f);
+            GameObject healingParticles = Instantiate(healingParticle, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z),
+                                                                Quaternion.Euler(-90, 0, 0), transform);
+            Destroy(healingParticles.gameObject, 3f);
             isDrunk = true;
             Invoke("RemoveDrunkingEffect", drunkTime);
         }

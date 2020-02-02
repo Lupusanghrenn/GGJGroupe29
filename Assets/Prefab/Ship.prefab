@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: -5335015249129373437}
   - component: {fileID: 4575137635096305863}
   - component: {fileID: 376714869846458211}
+  - component: {fileID: 4544383438184049441}
+  - component: {fileID: 6045491069313734346}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -67,8 +69,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 65.81885, y: 4.6090584, z: 1.5701332}
-  m_Center: {x: -3.2482452, y: 1.8045292, z: 15.804041}
+  m_Size: {x: 65.81885, y: 9.100607, z: 1.5701332}
+  m_Center: {x: -3.2482452, y: 4.0503035, z: 15.804041}
 --- !u!65 &6130641524139440465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,50 +175,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14.8062, y: 1.0866013, z: 11.820872}
   m_Center: {x: -14.174075, y: -13.936043, z: -3.981255}
---- !u!1 &432333010354053116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4983937175119587780}
-  - component: {fileID: 1404247005469156698}
-  m_Layer: 9
-  m_Name: echelleBas
-  m_TagString: Echelle
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4983937175119587780
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432333010354053116}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -12.04, y: 1.3986664, z: 0.85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3942927806069321463}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1404247005469156698
+--- !u!65 &4544383438184049441
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432333010354053116}
+  m_GameObject: {fileID: 63980762417028324}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.7541323, y: 15.759602, z: 4.1497674}
-  m_Center: {x: -0.10357714, y: -4.3273735, z: 0.40522742}
+  m_Size: {x: 76.78235, y: 17.862474, z: 3.5156708}
+  m_Center: {x: -4.586815, y: -0.6539717, z: -15.438221}
+--- !u!65 &6045491069313734346
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63980762417028324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 65.2953, y: 3.100708, z: 33.580845}
+  m_Center: {x: -3.2567062, y: 8.87528, z: -0.32581902}
 --- !u!1 &1176055725228010479
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +426,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8980384375475095225
+--- !u!64 &8438909180820748329
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

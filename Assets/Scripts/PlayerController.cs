@@ -211,17 +211,20 @@ public class PlayerController : MonoBehaviour
             case 1:
                 //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/Red");
                 gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/MaterialPirate1");
+                gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(0, 0, 255);//bgr et pas rgb
                 transform.position += new Vector3(1, 0, 0);
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Red");
                 break;
             case 2:
                 transform.position += new Vector3(-1, 0, 0);
                 gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/MaterialPirate2");
+                gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(255, 0, 0);
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;
             case 3:
                 transform.position += new Vector3(0, 0, 1);
                 gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load<Material>("Materials/MaterialPirate3");
+                gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(0, 255, 0);
                 //gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Blue");
                 break;
             default:

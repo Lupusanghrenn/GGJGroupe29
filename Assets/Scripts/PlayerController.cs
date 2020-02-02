@@ -265,6 +265,7 @@ public class PlayerController : MonoBehaviour
             //{
             //    GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
             //}
+            isOnEchelle = false;
         }
 
         if (other.tag == "WaterHole")

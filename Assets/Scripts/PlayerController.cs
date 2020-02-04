@@ -87,12 +87,8 @@ public class PlayerController : MonoBehaviour
 
         else if (isOnEchelle && (currentInteraction == null || currentInteraction.name != "FullBucket"))
         {
-            //GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
-            //rb.useGravity = false;
-            //animator.SetBool("Ladder",true);
-            //switch entre actionmap ladder et player
-            rb.MovePosition(posToTP);
-            //isOnEchelle = false;
+            //rb.MovePosition(posToTP);
+            rb.transform.position = posToTP;
         }
 
         else if (currentInteraction != null && currentInteraction.name == "FullBucket")
@@ -324,6 +320,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y <= -10)
+        {
+            GetComponent<PlayerHealthManager>().Die();
+        }
+
         time += Time.deltaTime;
         if (animator.GetFloat("MoveVectorMagnitude") >= 0.1f && time >= 0.3f)
         {
@@ -405,7 +406,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Canon")
         {
-            if (currentInteraction.name == "CanonBall")
+            if (currentInteraction != null && currentInteraction.name == "CanonBall")
             {
                 if(!mustClickToPickup)
                 {

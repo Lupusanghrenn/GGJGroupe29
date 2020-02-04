@@ -39,7 +39,9 @@ public class EnemyShip : MonoBehaviour
     IEnumerator ShootDelay()
     {
         yield return new WaitForSeconds(25f);
-        Shoot();
+
+        if(!couler)
+            Shoot();
     }
 
     IEnumerator CanonBallHit()

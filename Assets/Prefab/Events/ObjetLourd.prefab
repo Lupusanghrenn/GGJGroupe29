@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heavyObjects:
-  - {fileID: 1540655690704813980, guid: fe11050a155380144ae7b38efd55a881, type: 3}
-  - {fileID: 1540655690704813980, guid: fe11050a155380144ae7b38efd55a881, type: 3}
-  - {fileID: 1540655690704813980, guid: fe11050a155380144ae7b38efd55a881, type: 3}
+  - {fileID: 4828153321121941186, guid: bc1e1258ced056c46aaa0661c98d8a94, type: 3}
+  - {fileID: 4828153321121941186, guid: bc1e1258ced056c46aaa0661c98d8a94, type: 3}
+  - {fileID: 4828153321121941186, guid: bc1e1258ced056c46aaa0661c98d8a94, type: 3}
 --- !u!82 &-4414332023443170457
 AudioSource:
   m_ObjectHideFlags: 0

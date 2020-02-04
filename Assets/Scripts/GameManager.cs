@@ -47,7 +47,12 @@ public class GameManager : MonoBehaviour
         currentLife = maxLife;
         gameTimeLeft = gameTime;
         boat = GameObject.FindGameObjectWithTag("Boat");
+
+        baseTimeMax += (8 - (nbJoueur * 2));
+        baseTimeMin += (4 - nbJoueur);
+
         timeToWait = Random.Range(baseTimeMin, baseTimeMax);
+
 
         StartCoroutine(SpawnFireRoutine());
     }
@@ -58,7 +63,7 @@ public class GameManager : MonoBehaviour
 
         int random = Random.Range(0, 101);
 
-        if(random <= chanceToSpawnFire)
+        if(random <= (chanceToSpawnFire - (4-nbJoueur)))
         {
             Debug.Log("EVENT PROBABLE: Fire");
             float rdmX = Random.Range(spawnFire.bounds.min.x, spawnFire.bounds.max.x);

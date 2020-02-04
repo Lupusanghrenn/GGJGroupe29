@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 1000
+  water: {fileID: 0}
   currentLife: 0
   eventsProbable:
   - {fileID: 3962862130589109717, guid: 0383c6cc1ddaeaf4eb32a2fd1d60e907, type: 3}
@@ -59,15 +60,17 @@ MonoBehaviour:
   BaseTimeToWait: 0
   baseTimeMin: 4
   baseTimeMax: 15
-  gameTime: 0
+  reductionPerSpawn: 1
+  chanceToSpawnFire: 7
+  gameTime: 180
   timerText: {fileID: 0}
   lifeFill: {fileID: 0}
-  canvasLoss: {fileID: 8037228821363711450, guid: 03a8b142a3af50349907da8571a40f9c,
-    type: 3}
-  canvasWin: {fileID: 8037228821363711450, guid: f0ce22aff85978443802da6c478ed148,
-    type: 3}
-  sonWin: {fileID: 0}
-  sonLose: {fileID: 0}
+  canvasLoss: {fileID: 4500704126049494765}
+  canvasWin: {fileID: 6231776631855253144}
+  sonWin: {fileID: 8300000, guid: 5941d5a3e7ace42bd8d5dd7b1b1b2a9c, type: 3}
+  sonLose: {fileID: 8300000, guid: 3266c0d41b05a4cecb1bc6e4c6bdc133, type: 3}
+  canSpawnRight: 1
+  canSpawnLeft: 1
   nbJoueur: 0
 --- !u!114 &3008786710240468600
 MonoBehaviour:
@@ -82,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 1
-  m_MaxPlayerCount: 3
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
@@ -326,11 +329,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasWin
       objectReference: {fileID: 0}
+    - target: {fileID: 8037228821363711449, guid: f0ce22aff85978443802da6c478ed148,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0ce22aff85978443802da6c478ed148, type: 3}
 --- !u!224 &6231776631855253127 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8037228821363711429, guid: f0ce22aff85978443802da6c478ed148,
+    type: 3}
+  m_PrefabInstance: {fileID: 4175486476541909826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &6231776631855253144 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8037228821363711450, guid: f0ce22aff85978443802da6c478ed148,
     type: 3}
   m_PrefabInstance: {fileID: 4175486476541909826}
   m_PrefabAsset: {fileID: 0}
@@ -456,6 +470,12 @@ PrefabInstance:
 --- !u!224 &4500704126049494770 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8037228821363711429, guid: 03a8b142a3af50349907da8571a40f9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5907684262034471735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &4500704126049494765 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8037228821363711450, guid: 03a8b142a3af50349907da8571a40f9c,
     type: 3}
   m_PrefabInstance: {fileID: 5907684262034471735}
   m_PrefabAsset: {fileID: 0}

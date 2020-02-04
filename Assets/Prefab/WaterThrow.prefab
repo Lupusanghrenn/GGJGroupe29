@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7131755, y: 1.5188459, z: 3.7268999}
-  m_Center: {x: 0.119675, y: -0.2, z: 1.6669763}
+  m_Size: {x: 2.1602688, y: 1.5188459, z: 3.7268999}
+  m_Center: {x: 0.021328172, y: 0, z: 1.6669763}
 --- !u!54 &4199998198770775775
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -738,7 +738,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 15.055803
+    angle: 23.75669
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1

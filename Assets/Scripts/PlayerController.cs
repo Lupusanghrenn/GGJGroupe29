@@ -10,6 +10,16 @@ public class PlayerController : MonoBehaviour
     public float waterSpeed;
     public float underWaterSpeed;
 
+    public bool mustClickToPickup = false;
+
+    private GameObject canon;
+
+    private bool canTakeWood;
+    private bool canTakeBoulet;
+    private bool canTakeBucket;
+    private bool canTakeFullBucket;
+    private bool canEnterCanon;
+
     public Image drunkImage;
 
     private bool canHeal = false;
@@ -64,14 +74,25 @@ public class PlayerController : MonoBehaviour
     //ActionMap Player
     public void OnAction(InputValue value)
     {
-        if (isOnEchelle && currentInteraction.name != "FullBucket")
+        if (isOnWaterHole && currentInteraction != null && currentInteraction.name == "WoodPlank")
+        {
+            Destroy(waterHole);
+            waterHole = null;
+            currentInteraction.name = "None";
+            //PlayClip(repairTrou);
+            isOnWaterHole = false;
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(repairTrou, 1);
+        }
+
+        else if (isOnEchelle && (currentInteraction == null || currentInteraction.name != "FullBucket"))
         {
             //GetComponent<PlayerInput>().SwitchCurrentActionMap("Ladder");
             //rb.useGravity = false;
             //animator.SetBool("Ladder",true);
             //switch entre actionmap ladder et player
             rb.MovePosition(posToTP);
-            isOnEchelle = false;
+            //isOnEchelle = false;
         }
 
         else if (currentInteraction != null && currentInteraction.name == "FullBucket")
@@ -91,6 +112,53 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        else if(canEnterCanon && mustClickToPickup)
+        {
+            Destroy(currentInteraction);
+            currentInteraction = canon.gameObject;
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
+
+            canEnterCanon = false;
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(prendreItem, 0.7f);
+        }
+        else if(canTakeBucket && mustClickToPickup)
+        {
+            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            currentInteraction.SetActive(false);
+            currentInteraction.name = "EmptyBucket";
+            //PlayClip(prendreItem);
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(prendreItem, 0.7f);
+
+        }
+        else if(canTakeFullBucket && mustClickToPickup)
+        {
+            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            currentInteraction.SetActive(false);
+            currentInteraction.name = "FullBucket";
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(recupererEau, 1f);
+
+        }
+        else if(canTakeBoulet && mustClickToPickup)
+        {
+            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            currentInteraction.SetActive(false);
+            currentInteraction.name = "CanonBall";
+            //PlayClip(prendreItem);
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(prendreItem, 0.7f);
+
+        }
+        else if(canTakeWood && mustClickToPickup)
+        {
+            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            currentInteraction.SetActive(false);
+            currentInteraction.name = "WoodPlank";
+            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+            sp.PlaySound(prendreItem, 0.7f);
+        }
         else if (isInWater && currentInteraction.name == "EmptyBucket")
         {
             if(water.transform.position.y > 0)
@@ -109,18 +177,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        else if (isOnWaterHole)
-        {
-            if(currentInteraction!=null && currentInteraction.name == "WoodPlank")
-            {
-                Destroy(waterHole);
-                waterHole = null;
-                currentInteraction.name = "None";
-                //PlayClip(repairTrou);
-                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-                sp.PlaySound(repairTrou, 1);
-            }
-        }
 
         else if(canHeal)
         {
@@ -158,15 +214,15 @@ public class PlayerController : MonoBehaviour
     }
 
     //ActionMap Ladder
-    public void OnActionLadder(InputValue value)
-    {
-        if (isOnEchelle)
-        {
-            GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
-            animator.SetBool("Ladder",false);
-            rb.useGravity = true;
-        }
-    }
+    //public void OnActionLadder(InputValue value)
+    //{
+    //    if (isOnEchelle)
+    //    {
+    //        GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+    //        animator.SetBool("Ladder", false);
+    //        rb.useGravity = true;
+    //    }
+    //}
 
     public void OnPause(InputValue value)
     {
@@ -228,7 +284,7 @@ public class PlayerController : MonoBehaviour
         itemInHandHUD = GetComponentInChildren<ItenInHandScript>();
         water = GameObject.FindGameObjectWithTag("Water");
 
-        Debug.Log(idJoueur);
+
         //switch
         switch (idJoueur)
         {
@@ -351,12 +407,20 @@ public class PlayerController : MonoBehaviour
         {
             if (currentInteraction.name == "CanonBall")
             {
-                Destroy(currentInteraction);
-                currentInteraction = other.gameObject;
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
-                //PlayClip(prendreItem);
-                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-                sp.PlaySound(prendreItem, 0.7f);
+                if(!mustClickToPickup)
+                {
+                    Destroy(currentInteraction);
+                    currentInteraction = other.gameObject;
+                    GetComponent<PlayerInput>().SwitchCurrentActionMap("Canon");
+
+                    SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                    sp.PlaySound(prendreItem, 0.7f);
+                }
+                else
+                {
+                    canon = other.gameObject;
+                    canEnterCanon = true;
+                }
             }            
         }
 
@@ -364,50 +428,70 @@ public class PlayerController : MonoBehaviour
         {
             if(currentInteraction == null || currentInteraction.name != "FullBucket")
             {
-                currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                currentInteraction.SetActive(false);
-                currentInteraction.name = "EmptyBucket";
-                //PlayClip(prendreItem);
-                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-                sp.PlaySound(prendreItem, 0.7f);
-
-                Debug.Log(currentInteraction);
+                if(!mustClickToPickup)
+                {
+                    currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                    currentInteraction.SetActive(false);
+                    currentInteraction.name = "EmptyBucket";
+                    //PlayClip(prendreItem);
+                    SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                    sp.PlaySound(prendreItem, 0.7f);
+                }
+                else
+                {
+                    canTakeBucket = true;
+                }
             }
         }
 
         if (other.tag == "WaterBarrel" && currentInteraction != null && currentInteraction.name == "EmptyBucket")
         {
-            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            currentInteraction.SetActive(false);
-            currentInteraction.name = "FullBucket";
-            //PlayClip(recupererEau);
-            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(recupererEau, 1f);
-
-            Debug.Log(currentInteraction);
+            if(!mustClickToPickup)
+            {
+                currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                currentInteraction.SetActive(false);
+                currentInteraction.name = "FullBucket";
+                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                sp.PlaySound(recupererEau, 1f);
+            }
+            else
+            {
+                canTakeFullBucket = true;
+            }
         }
 
         if (other.tag == "WoodBarrel")
         {
-            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            currentInteraction.SetActive(false);
-            currentInteraction.name = "WoodPlank";
-            //PlayClip(prendreItem);
-            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(prendreItem, 0.7f);
-            Debug.Log(currentInteraction);
+            if(!mustClickToPickup)
+            {
+                currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                currentInteraction.SetActive(false);
+                currentInteraction.name = "WoodPlank";
+                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                sp.PlaySound(prendreItem, 0.7f);
+            }
+            else
+            {
+                canTakeWood = true;
+            }
         }
 
         if (other.tag == "BouletBarrel")
         {
-            currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            currentInteraction.SetActive(false);
-            currentInteraction.name = "CanonBall";
-            //PlayClip(prendreItem);
-            SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
-            sp.PlaySound(prendreItem, 0.7f);
+            if(!mustClickToPickup)
+            {
+                currentInteraction = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                currentInteraction.SetActive(false);
+                currentInteraction.name = "CanonBall";
+                //PlayClip(prendreItem);
+                SoundPlayer sp = Instantiate(audioPlayer, transform.position, Quaternion.identity, transform);
+                sp.PlaySound(prendreItem, 0.7f);
+            }
+            else
+            {
+                canTakeBoulet = true;
+            }
 
-            Debug.Log(currentInteraction);
         }
 
         if (other.tag == "RhumerieColliderDetection")
@@ -428,8 +512,6 @@ public class PlayerController : MonoBehaviour
             isOnWaterHole=true;
             waterHole = other.gameObject;
         }
-
-        Debug.Log(other.tag);
     }
 
     public void OnTriggerExit(Collider other)
@@ -463,7 +545,27 @@ public class PlayerController : MonoBehaviour
         {
             canHeal = false;
         }
+        if (other.tag == "BouletBarrel")
+        {
+            canTakeBoulet = false;
+        }
+        if (other.tag == "WoodBarrel")
+        {
+            canTakeWood = false;
+        }
+        if (other.tag == "Bucket")
 
+        {
+            canTakeBucket = false;
+        }
+        if (other.tag == "WaterBarrel")
+        {
+            canTakeFullBucket = false;
+        }
+        if (other.tag == "Canon")
+        {
+            canEnterCanon = false;
+        }
     }
 
     public void OnCollisionEnter(Collision collision)

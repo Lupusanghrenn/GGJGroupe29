@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject water;
 
+    private string lastShipSpawned = "";
+
     public float currentLife;
     private GameObject boat;
     public List<GameObject> eventsProbable;
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     public float BaseTimeToWait;
     public float baseTimeMin;
     public float baseTimeMax;
+    public float reductionPerSpawn;
+    public float chanceToSpawnFire;
     public float gameTime;
     public Text timerText;
     public Image lifeFill;
@@ -31,6 +35,8 @@ public class GameManager : MonoBehaviour
     private float gameTimeLeft;
     private int nbSpawn = 0;
 
+    public bool canSpawnRight = true;
+    public bool canSpawnLeft = true;
     public int nbJoueur = 0;
     // Start is called before the first frame update
     void Start()
@@ -42,12 +48,30 @@ public class GameManager : MonoBehaviour
         gameTimeLeft = gameTime;
         boat = GameObject.FindGameObjectWithTag("Boat");
         timeToWait = Random.Range(baseTimeMin, baseTimeMax);
+
+        StartCoroutine(SpawnFireRoutine());
+    }
+
+    IEnumerator SpawnFireRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+
+        int random = Random.Range(0, 101);
+
+        if(random <= chanceToSpawnFire)
+        {
+            Debug.Log("EVENT PROBABLE: Fire");
+            float rdmX = Random.Range(spawnFire.bounds.min.x, spawnFire.bounds.max.x);
+            float rdmZ = Random.Range(spawnFire.bounds.min.z, spawnFire.bounds.max.z);
+            Instantiate(eventsProbable[0], new Vector3(rdmX, spawnFire.transform.position.y + 1.5f, rdmZ), Quaternion.identity, boat.transform);
+        }
+
+        StartCoroutine(SpawnFireRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-
         currentLife -= water.transform.position.y * Time.deltaTime * 1.5f;
         //Debug.Log(life);
         if (gameTimeLeft <= 0)
@@ -89,56 +113,94 @@ public class GameManager : MonoBehaviour
         }
 
         timeElapsed += Time.deltaTime;
+
         if (timeElapsed >= timeToWait)
         {
             //event
             nbSpawn++;
 
             int rdmEventPool = Random.Range(0, 101);
-            if (rdmEventPool < 50) //événement probable
+            //if (rdmEventPool < 50) //événement probable
+            //{
+            //    int rdmEvent = Random.Range(0, eventsProbable.Count);
+
+            //    if(eventsProbable[rdmEvent].name == "Tanguage")
+            //    {
+            //        Debug.Log("EVENT PROBABLE: Tanguage");
+            //        Instantiate(eventsProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+            //    }
+            //    if (eventsProbable[rdmEvent].name == "Fire")
+            //    {
+            //        Debug.Log("EVENT PROBABLE: Fire");
+            //        //float rdmX = Random.Range(-spawnFire.size.x / 2, spawnFire.size.x / 2);
+            //        //float rdmZ = Random.Range(-spawnFire.size.z / 2, spawnFire.size.z / 2);
+
+            //        float rdmX = Random.Range(spawnFire.bounds.min.x, spawnFire.bounds.max.x);
+            //        float rdmZ = Random.Range(spawnFire.bounds.min.z, spawnFire.bounds.max.z);
+            //        Instantiate(eventsProbable[rdmEvent], new Vector3(rdmX, spawnFire.transform.position.y + 1.5f, rdmZ), Quaternion.identity, boat.transform);
+            //    }
+            //}
+            int rdmEvent = Random.Range(0, eventsPeuProbable.Count);
+
+            if (eventsPeuProbable[rdmEvent].name == "ObjetLourd")
             {
-                int rdmEvent = Random.Range(0, eventsProbable.Count);
+                Debug.Log("EVENT PEU PROBABLE: ObjetLourd");
+                Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+            }
+            else if (eventsPeuProbable[rdmEvent].name == "BateauPirate" && (canSpawnLeft || canSpawnRight))
+            {
+                Debug.Log("EVENT PEU PROBABLE: Bateau Pirate");
 
-                if(eventsProbable[rdmEvent].name == "Tanguage")
+                if(canSpawnLeft && canSpawnRight)
                 {
-                    Debug.Log("EVENT PROBABLE: Tanguage");
-                    Instantiate(eventsProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+                    GameObject ship = Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+
+                    int random = Random.Range(0, 2);
+
+                    if (random == 0)
+                    {
+                        ship.GetComponent<SpawnEnemyShipEvent>().direction = "Right";
+                        canSpawnRight = false;
+                        StartCoroutine(BoatSpawnTimerRight());
+                    }
+                    if (random == 1)
+                    {
+                        ship.GetComponent<SpawnEnemyShipEvent>().direction = "Left";
+                        canSpawnLeft = false;
+                        StartCoroutine(BoatSpawnTimerLeft());
+                    }
                 }
-                if (eventsProbable[rdmEvent].name == "Fire")
+                else if(canSpawnLeft && !canSpawnRight)
                 {
-                    Debug.Log("EVENT PROBABLE: Fire");
-                    //float rdmX = Random.Range(-spawnFire.size.x / 2, spawnFire.size.x / 2);
-                    //float rdmZ = Random.Range(-spawnFire.size.z / 2, spawnFire.size.z / 2);
+                    GameObject ship = Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+                    ship.GetComponent<SpawnEnemyShipEvent>().direction = "Left";
+                    canSpawnLeft = false;
+                    StartCoroutine(BoatSpawnTimerLeft());
+                }
+                else if(canSpawnRight && !canSpawnLeft)
+                {
+                    GameObject ship = Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+                    ship.GetComponent<SpawnEnemyShipEvent>().direction = "Right";
+                    canSpawnRight = false;
+                    StartCoroutine(BoatSpawnTimerRight());
 
-                    float rdmX = Random.Range(spawnFire.bounds.min.x, spawnFire.bounds.max.x);
-                    float rdmZ = Random.Range(spawnFire.bounds.min.z, spawnFire.bounds.max.z);
-                    Instantiate(eventsProbable[rdmEvent], new Vector3(rdmX, spawnFire.transform.position.y + 1.5f, rdmZ), Quaternion.identity, boat.transform);
                 }
             }
-            else //événement peu probable
+            else if (eventsPeuProbable[rdmEvent].name == "Hole")
             {
-                int rdmEvent = Random.Range(0, eventsPeuProbable.Count);
-
-                if (eventsPeuProbable[rdmEvent].name == "ObjetLourd")
-                {
-                    Debug.Log("EVENT PEU PROBABLE: ObjetLourd");
-                    Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
-                }
-                else if (eventsPeuProbable[rdmEvent].name == "BateauPirate")
-                {
-                    Debug.Log("EVENT PEU PROBABLE: Bateau Pirate");
-                    Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
-                }
-                else if (eventsPeuProbable[rdmEvent].name == "Hole")
-                {
-                    Debug.Log("EVENT PEU PROBABLE: Hole");
-                    Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
-                }
+                Debug.Log("EVENT PEU PROBABLE: Hole");
+                Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("EVENT PEU PROBABLE: Hole");
+                Instantiate(eventsPeuProbable[rdmEvent], Vector3.zero, Quaternion.identity);
             }
 
-            if(baseTimeMax >= 10)
+
+            if (baseTimeMax >= 10)
             {
-                baseTimeMax = baseTimeMax - (nbSpawn * 1.0f);
+                baseTimeMax = baseTimeMax - (nbSpawn * reductionPerSpawn);
             }
             timeToWait = Random.Range(baseTimeMin, baseTimeMax);
             timeElapsed = 0;
@@ -157,6 +219,16 @@ public class GameManager : MonoBehaviour
         lifeFill.fillAmount = currentLife / maxLife;
     }
 
+    IEnumerator BoatSpawnTimerRight()
+    {
+        yield return new WaitForSeconds(14f);
+        canSpawnRight = true;
+    }
+    IEnumerator BoatSpawnTimerLeft()
+    {
+        yield return new WaitForSeconds(14f);
+        canSpawnLeft = true;
+    }
     public void Win()
     {
         Time.timeScale = 0;
@@ -164,7 +236,7 @@ public class GameManager : MonoBehaviour
         GetComponent<AudioSource>().clip = null;
         GetComponent<AudioSource>().PlayOneShot(sonWin);
     }
-    
+
     public void Lose()
     {
         Time.timeScale = 0;

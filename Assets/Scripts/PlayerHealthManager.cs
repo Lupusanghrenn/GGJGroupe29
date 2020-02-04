@@ -12,6 +12,8 @@ public class PlayerHealthManager : MonoBehaviour
     public RespawnCircle respawnCircle;
     private Animator animator;
 
+    private bool dead = false;
+
     public AudioClip degatPerso;
     // Start is called before the first frame update
     void Start()
@@ -24,14 +26,19 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        //on prend es degats
-        currentHealth -= amount;
-        if (currentHealth <= 0) //le player est mort
+        if(!dead)
         {
-            currentHealth = 0;
-            StartCoroutine(Die());
+            //on prend es degats
+            currentHealth -= amount;
+            if (currentHealth <= 0) //le player est mort
+            {
+                currentHealth = 0;
+                StartCoroutine(Die());
+                dead = true;
+            }
+            //on update la barre de vie
+
         }
-        //on update la barre de vie
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
@@ -47,8 +54,6 @@ public class PlayerHealthManager : MonoBehaviour
 
     public IEnumerator Die()
     {
-        //on desactive tout
-        Debug.Log("Player dead");
         animator.SetBool("Dead", true);
         GetComponent<PlayerController>().enabled = false;
         respawnCircle.timeTimeToRespawn = timeToRespawn;
@@ -56,14 +61,13 @@ public class PlayerHealthManager : MonoBehaviour
 
         yield return new WaitForSeconds(timeToRespawn);
 
-
+        dead = false;
         respawnCircle.Reset();
         respawnCircle.gameObject.SetActive(false);
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         GetComponent<PlayerController>().enabled = true;
         transform.position = spawnPoints.position;
-        Debug.Log("aaaaaa");
         animator.SetBool("Dead", false);
     }
 }

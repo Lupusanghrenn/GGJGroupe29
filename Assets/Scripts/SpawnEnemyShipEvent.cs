@@ -7,6 +7,9 @@ public class SpawnEnemyShipEvent : MonoBehaviour
     public Vector3 spawnPointLeft;
     public Vector3 spawnPointRight;
 
+    public string direction;
+
+    public EnemyShip enemyShip;
     private GameObject water;
     public GameObject enemyShipPrefab;
 
@@ -16,24 +19,23 @@ public class SpawnEnemyShipEvent : MonoBehaviour
         SpawnEnemyShip();
         Destroy(this.gameObject);
     }
+    
 
     private void SpawnEnemyShip()
     {
-        int rand = Random.Range(0, 2);
-
         // Spawn Left
-        if (rand == 0)
+        if (direction == "Right")
         {
-            EnemyShip enemyShip = Instantiate(enemyShipPrefab, spawnPointLeft, Quaternion.Euler(new Vector3(0, -90, 0)), water.transform).GetComponent<EnemyShip>();
+            enemyShip = Instantiate(enemyShipPrefab, new Vector3(spawnPointLeft.x, spawnPointLeft.y + water.transform.position.y, spawnPointLeft.z), Quaternion.Euler(new Vector3(0, -90, 0)), water.transform).GetComponent<EnemyShip>();
             enemyShip.direction = "Right";
             enemyShip.spawnPointLeft = this.spawnPointLeft;
             enemyShip.spawnPointRight = this.spawnPointRight;
         }
 
         // Spawn Right
-        if (rand == 1)
+        if (direction == "Left")
         {
-            EnemyShip enemyShip = Instantiate(enemyShipPrefab, spawnPointRight, Quaternion.Euler(new Vector3(0, 90, 0)), water.transform).GetComponent<EnemyShip>();
+            enemyShip = Instantiate(enemyShipPrefab, new Vector3(spawnPointRight.x, spawnPointRight.y + water.transform.position.y, spawnPointRight.z), Quaternion.Euler(new Vector3(0, 90, 0)), water.transform).GetComponent<EnemyShip>();
             enemyShip.direction = "Left";
             enemyShip.spawnPointLeft = this.spawnPointLeft;
             enemyShip.spawnPointRight = this.spawnPointRight;
